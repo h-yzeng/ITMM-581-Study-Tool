@@ -7,10 +7,10 @@ export const CHAPTER_COLORS = {
 
 export const CHAPTERS = [
   { id: 'all', label: 'All Chapters' },
-  { id: '8',   label: 'Ch. 8 — Sources of Capital' },
-  { id: '9',   label: 'Ch. 9 — Legal Challenges' },
-  { id: '10',  label: 'Ch. 10 — Marketing Challenges' },
-  { id: '12',  label: 'Ch. 12 — Business Plan' },
+  { id: '8',   label: 'Ch. 8 - Sources of Capital' },
+  { id: '9',   label: 'Ch. 9 - Legal Challenges' },
+  { id: '10',  label: 'Ch. 10 - Marketing Challenges' },
+  { id: '12',  label: 'Ch. 12 - Business Plan' },
 ]
 
 export const TOPICS_BY_CHAPTER = {
