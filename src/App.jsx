@@ -16,9 +16,9 @@ function pullQuestions(count, ch, type, diff) {
   pool.sort(() => Math.random() - 0.5)
   while (pool.length < count && pool.length > 0) {
     const extra = [...QUESTION_BANK]
-      .filter(q => ch === 'all'   || String(q.chapter) === ch)
+      .filter(q => ch === 'all'     || String(q.chapter) === ch)
       .filter(q => type === 'mixed' || q.type === type)
-      .filter(q => diff === 'all' || q.difficulty === diff)
+      .filter(q => diff === 'all'   || q.difficulty === diff)
       .sort(() => Math.random() - 0.5)
     pool = [...pool, ...extra]
   }
@@ -28,6 +28,7 @@ function pullQuestions(count, ch, type, diff) {
 const fcCardKey = c => `${c.ch}:${c.topic}:${(c.front || '').slice(0, 40)}`
 
 export default function App() {
+  // ── State ────────────────────────────────────────────────────────────────
   const [screen, setScreen]         = useState('home')
   const [mode, setMode]             = useState('practice')
   const [selChapter, setSelChapter] = useState('all')
@@ -58,6 +59,44 @@ export default function App() {
   const [sessionHistory, setSessionHistory] = useState([])
   const [fcLastSeen, setFcLastSeen] = useState({})
 
+  // ── Flashcard derived state (must be BEFORE the useEffects that reference them)
+  const fcCardsRaw = FLASHCARDS.filter(c => {
+    if (fcCh !== 'all' && c.ch !== parseInt(fcCh)) return false
+    if (fcTopic !== 'all' && c.topic !== fcTopic) return false
+    return true
+  })
+
+  // Spaced repetition sort: unseen first, then oldest-reviewed first
+  const fcCards = [...fcCardsRaw].sort((a, b) => {
+    const la = fcLastSeen[fcCardKey(a)] || 0
+    const lb = fcLastSeen[fcCardKey(b)] || 0
+    if (!la && lb)  return -1
+    if (la && !lb)  return 1
+    return la - lb
+  })
+
+  const fcCard       = fcCards[fcIdx] || fcCards[0]
+  const fcTopics     = fcCh !== 'all' ? (TOPICS_BY_CHAPTER[parseInt(fcCh)] || []) : []
+  const fcKnownCount = Object.values(fcKnown).filter(Boolean).length
+
+  // doMarkCard also defined before the useEffect that calls it
+  const doMarkCard = v => {
+    setFcKnown(p => ({ ...p, [fcIdx]: v }))
+    const card = fcCards[fcIdx]
+    if (card) {
+      setFcLastSeen(p => {
+        const n = { ...p, [fcCardKey(card)]: Date.now() }
+        saveStore('fcLastSeen', n)
+        return n
+      })
+    }
+    if (fcIdx < fcCards.length - 1) {
+      setFcFlipped(false)
+      setTimeout(() => setFcIdx(i => Math.min(i + 1, fcCards.length - 1)), 100)
+    }
+  }
+
+  // ── Effects ──────────────────────────────────────────────────────────────
   useEffect(() => {
     const defaultStats = { totalAnswered: 0, byChapter: { 8: 0, 9: 0, 10: 0, 12: 0 }, byTopic: {}, sessions: 0 }
     setStats(loadStore('stats', defaultStats))
@@ -111,7 +150,7 @@ export default function App() {
     return () => window.removeEventListener('keydown', handler)
   }, [screen, curIdx, mode, questions, revealed, answers])
 
-  // Keyboard shortcuts — flashcards
+  // Keyboard shortcuts — flashcards (fcCards and doMarkCard are defined above)
   useEffect(() => {
     if (screen !== 'flashcards') return
     const handler = e => {
@@ -123,40 +162,9 @@ export default function App() {
     }
     window.addEventListener('keydown', handler)
     return () => window.removeEventListener('keydown', handler)
-  }, [screen, fcIdx, fcCards?.length])
+  }, [screen, fcIdx, fcCards.length])
 
-  // Flashcard derived state
-  const fcCardsRaw = FLASHCARDS.filter(c => {
-    if (fcCh !== 'all' && c.ch !== parseInt(fcCh)) return false
-    if (fcTopic !== 'all' && c.topic !== fcTopic) return false
-    return true
-  })
-
-  // Spaced repetition sort: unseen first, then oldest-reviewed first
-  const fcCards = [...fcCardsRaw].sort((a, b) => {
-    const la = fcLastSeen[fcCardKey(a)] || 0
-    const lb = fcLastSeen[fcCardKey(b)] || 0
-    if (!la && lb)  return -1
-    if (la  && !lb) return 1
-    return la - lb
-  })
-
-  const fcCard       = fcCards[fcIdx] || fcCards[0]
-  const fcTopics     = fcCh !== 'all' ? (TOPICS_BY_CHAPTER[parseInt(fcCh)] || []) : []
-  const fcKnownCount = Object.values(fcKnown).filter(Boolean).length
-
-  const doMarkCard = v => {
-    setFcKnown(p => ({ ...p, [fcIdx]: v }))
-    const card = fcCards[fcIdx]
-    if (card) {
-      setFcLastSeen(p => { const n = { ...p, [fcCardKey(card)]: Date.now() }; saveStore('fcLastSeen', n); return n })
-    }
-    if (fcIdx < fcCards.length - 1) {
-      setFcFlipped(false)
-      setTimeout(() => setFcIdx(i => Math.min(i + 1, fcCards.length - 1)), 100)
-    }
-  }
-
+  // ── Helpers ──────────────────────────────────────────────────────────────
   const bankSize = QUESTION_BANK.length
 
   const toggleFlag = q => {
@@ -164,7 +172,6 @@ export default function App() {
     setFlagged(p => { const n = { ...p }; n[k] ? delete n[k] : (n[k] = true); saveStore('flagged', n); return n })
   }
 
-  // Weak-spot drill: topics with miss rate ≥ 50% and ≥ 3 answered
   const computeWeakDrill = () => {
     if (!stats?.byTopic) return []
     const weakTopics = new Set()
@@ -217,8 +224,8 @@ export default function App() {
       ...stats,
       totalAnswered: (stats.totalAnswered || 0) + questions.length,
       byChapter: { ...stats.byChapter },
-      byTopic: { ...stats.byTopic },
-      sessions: (stats.sessions || 0) + 1,
+      byTopic:   { ...stats.byTopic },
+      sessions:  (stats.sessions || 0) + 1,
     }
     questions.forEach((q, i) => {
       const k = qKey(q), ch = q.chapter, tpKey = `${ch}:${q.topic || 'General'}`, ok = answers[i] === q.answer
@@ -237,9 +244,7 @@ export default function App() {
     const pct = Math.round(correct / questions.length * 100)
     const newHist = [...sessionHistory, {
       date: new Date().toLocaleDateString('en-US', { month: 'numeric', day: 'numeric' }),
-      pct,
-      correct,
-      total: questions.length,
+      pct, correct, total: questions.length,
     }].slice(-20)
     setStats(ns); setWrongBank(nw); setRightBank(nr); setSessionHistory(newHist)
     saveStore('stats', ns); saveStore('wrongBank', nw); saveStore('rightBank', nr)
@@ -257,22 +262,23 @@ export default function App() {
     URL.revokeObjectURL(url)
   }
 
+  // ── Computed ──────────────────────────────────────────────────────────────
   const answeredAll = questions.length > 0 && Object.keys(answers).length === questions.length
   const prog = questions.length ? Math.round(Object.keys(answers).length / questions.length * 100) : 0
 
   // Dark-mode theme tokens
-  const dk       = darkMode
-  const bg       = dk ? '#0f172a' : '#f1f5f9'
-  const cardBg   = dk ? '#1e293b' : '#fff'
-  const text     = dk ? '#e2e8f0' : '#1e293b'
-  const subText  = dk ? '#94a3b8' : '#64748b'
-  const border   = dk ? '#334155' : '#e2e8f0'
-  const pillSel  = dk ? '#4f46e5' : '#1e293b'
+  const dk      = darkMode
+  const bg      = dk ? '#0f172a' : '#f1f5f9'
+  const cardBg  = dk ? '#1e293b' : '#fff'
+  const text    = dk ? '#e2e8f0' : '#1e293b'
+  const subText = dk ? '#94a3b8' : '#64748b'
+  const border  = dk ? '#334155' : '#e2e8f0'
+  const pillSel = dk ? '#4f46e5' : '#1e293b'
 
-  const pill  = (active) => ({ ...S.pill,  background: active ? pillSel : cardBg, color: active ? '#fff' : text, border: `1.5px solid ${active ? pillSel : border}` })
-  const count = (active) => ({ ...S.countBtn, background: active ? pillSel : cardBg, color: active ? '#fff' : text, border: `1.5px solid ${active ? pillSel : border}` })
+  const pill  = active => ({ ...S.pill,     background: active ? pillSel : cardBg, color: active ? '#fff' : text, border: `1.5px solid ${active ? pillSel : border}` })
+  const count = active => ({ ...S.countBtn, background: active ? pillSel : cardBg, color: active ? '#fff' : text, border: `1.5px solid ${active ? pillSel : border}` })
 
-  // Session history SVG chart
+  // ── Session history SVG chart ─────────────────────────────────────────────
   const SChart = () => {
     const pts = sessionHistory
     if (pts.length < 2) return (
@@ -285,11 +291,10 @@ export default function App() {
     const sx = i => PL + (i / maxX) * (W - PL - PR)
     const sy = p => PT + ((100 - p.pct) / 100) * (H - PT - PB)
     const pathD = pts.map((p, i) => `${i === 0 ? 'M' : 'L'} ${sx(i).toFixed(1)} ${sy(p).toFixed(1)}`).join(' ')
-    const grids = [0, 25, 50, 70, 90, 100]
     return (
       <div style={{ overflowX: 'auto' }}>
         <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ display: 'block', width: '100%', height: 'auto', minWidth: 240 }}>
-          {grids.map(v => {
+          {[0, 25, 50, 70, 90, 100].map(v => {
             const yv = sy({ pct: v })
             return (
               <g key={v}>
@@ -319,10 +324,10 @@ export default function App() {
 
   // ── HOME ──────────────────────────────────────────────────────────────────
   if (screen === 'home') {
-    const wCount  = wrongBank ? Object.keys(wrongBank).length : 0
-    const fCount  = flagged   ? Object.keys(flagged).length   : 0
-    const total   = stats?.totalAnswered || 0
-    const weakQs  = computeWeakDrill()
+    const wCount = wrongBank ? Object.keys(wrongBank).length : 0
+    const fCount = flagged   ? Object.keys(flagged).length   : 0
+    const total  = stats?.totalAnswered || 0
+    const weakQs = computeWeakDrill()
     return (
       <div style={{ ...S.page, background: bg }}>
         <div style={S.container}>
@@ -392,7 +397,6 @@ export default function App() {
                 ))}
               </div>
             </div>
-
             <div style={S.section}>
               <label style={{ ...S.label, color: subText }}>DIFFICULTY</label>
               <div style={S.pills}>
@@ -401,7 +405,6 @@ export default function App() {
                 ))}
               </div>
             </div>
-
             <div style={S.section}>
               <label style={{ ...S.label, color: subText }}>NUMBER OF QUESTIONS</label>
               <div style={S.countRow}>
@@ -433,13 +436,11 @@ export default function App() {
               🎯 Study Weak Spots — {weakQs.length} questions from your lowest-scoring topics
             </button>
           )}
-
           {wrongBank && Object.keys(wrongBank).length > 0 && (
             <button onClick={() => startRetry(Object.values(wrongBank).map(x => x.q))} style={{ ...S.retryPoolBtn, background: dk ? '#1c1917' : '#fef3c7', borderColor: '#f59e0b', color: '#92400e' }}>
               🔁 Retry Pool — {Object.keys(wrongBank).length} question{Object.keys(wrongBank).length !== 1 ? 's' : ''} you've gotten wrong (shuffled)
             </button>
           )}
-
           {fCount > 0 && (
             <button onClick={() => {
               const flaggedQs = Object.keys(flagged).map(k => QUESTION_BANK.find(q => qKey(q) === k)).filter(Boolean)
@@ -506,21 +507,19 @@ export default function App() {
                 {q.type === 'tf' && <span style={{ ...S.diffTag, background: '#f0f9ff', color: '#0369a1' }}>T/F</span>}
                 <span style={{ ...S.qNum, color: subText }}>Q{curIdx + 1}/{questions.length}</span>
               </div>
-              <button onClick={() => toggleFlag(q)} title="Flag as confusing  (F key)" style={{ flexShrink: 0, background: isFlagged ? '#ede9fe' : 'none', border: `1px solid ${isFlagged ? '#8b5cf6' : border}`, borderRadius: 6, padding: '3px 9px', cursor: 'pointer', fontSize: 13, color: isFlagged ? '#7c3aed' : subText, marginLeft: 8 }}>
+              <button onClick={() => toggleFlag(q)} title="Flag as confusing (F key)" style={{ flexShrink: 0, background: isFlagged ? '#ede9fe' : 'none', border: `1px solid ${isFlagged ? '#8b5cf6' : border}`, borderRadius: 6, padding: '3px 9px', cursor: 'pointer', fontSize: 13, color: isFlagged ? '#7c3aed' : subText, marginLeft: 8 }}>
                 🚩
               </button>
             </div>
-
             <p style={{ ...S.qText, color: text }}>{q.question}</p>
-
             <div style={{ ...S.options, ...(q.type === 'tf' ? { flexDirection: 'row', gap: 12 } : {}) }}>
               {q.options.map(opt => {
                 const letter = opt[0], isChosen = chosen === letter, isCorrect = q.answer === letter
                 let bg2 = dk ? '#0f172a' : '#f8fafc', bdr = border, col = text
                 if (!isExam && isRev) {
-                  if (isCorrect)      { bg2 = '#d1fae5'; bdr = '#10b981'; col = '#065f46' }
-                  else if (isChosen)  { bg2 = '#fee2e2'; bdr = '#ef4444'; col = '#991b1b' }
-                } else if (isChosen)  { bg2 = '#ede9fe'; bdr = '#8b5cf6'; col = '#4c1d95' }
+                  if (isCorrect)     { bg2 = '#d1fae5'; bdr = '#10b981'; col = '#065f46' }
+                  else if (isChosen) { bg2 = '#fee2e2'; bdr = '#ef4444'; col = '#991b1b' }
+                } else if (isChosen) { bg2 = '#ede9fe'; bdr = '#8b5cf6'; col = '#4c1d95' }
                 const isTF = q.type === 'tf'
                 return (
                   <button key={letter} onClick={() => selectAnswer(curIdx, letter)}
@@ -533,7 +532,6 @@ export default function App() {
                 )
               })}
             </div>
-
             {!isExam && chosen && !isRev && (
               <button onClick={() => revealAnswer(curIdx)} style={{ ...S.revealBtn, background: pillSel }}>Check Answer</button>
             )}
@@ -642,13 +640,13 @@ export default function App() {
 
   // ── STATS & HEATMAP ───────────────────────────────────────────────────────
   if (screen === 'stats') {
-    const total    = stats?.totalAnswered || 0
-    const byChap   = stats?.byChapter    || {}
-    const byTopic  = stats?.byTopic      || {}
-    const wCount   = Object.keys(wrongBank || {}).length
-    const rCount   = Object.keys(rightBank || {}).length
-    const fCount   = Object.keys(flagged  || {}).length
-    const heatmap  = CHAPTER_IDS.map(ch => ({
+    const total   = stats?.totalAnswered || 0
+    const byChap  = stats?.byChapter    || {}
+    const byTopic = stats?.byTopic      || {}
+    const wCount  = Object.keys(wrongBank || {}).length
+    const rCount  = Object.keys(rightBank || {}).length
+    const fCount  = Object.keys(flagged  || {}).length
+    const heatmap = CHAPTER_IDS.map(ch => ({
       ch,
       topics: TOPICS_BY_CHAPTER[ch].map(tp => {
         const d   = byTopic[`${ch}:${tp}`] || { right: 0, wrong: 0 }
@@ -668,10 +666,10 @@ export default function App() {
 
           <div style={S.sumGrid}>
             {[
-              { label: 'Total Answered', val: total,                    c: text       },
-              { label: 'Sessions',       val: stats?.sessions || 0,     c: '#6366f1'  },
-              { label: 'Mastered ✓',    val: rCount,                   c: '#10b981'  },
-              { label: 'Retry Pool ✗',  val: wCount,                   c: '#ef4444'  },
+              { label: 'Total Answered', val: total,                c: text      },
+              { label: 'Sessions',       val: stats?.sessions || 0, c: '#6366f1' },
+              { label: 'Mastered ✓',    val: rCount,               c: '#10b981' },
+              { label: 'Retry Pool ✗',  val: wCount,               c: '#ef4444' },
             ].map(x => (
               <div key={x.label} style={{ ...S.sumCard, background: cardBg, border: dk ? `1px solid ${border}` : 'none' }}>
                 <div style={{ fontSize: 26, fontWeight: 900, color: x.c }}>{x.val}</div>
@@ -680,23 +678,18 @@ export default function App() {
             ))}
           </div>
 
-          {/* Score over time chart */}
           <div style={{ ...S.secCard, background: cardBg, border: dk ? `1px solid ${border}` : 'none' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
               <h3 style={{ ...S.secTitle, color: text, margin: 0 }}>Score Over Time</h3>
-              {sessionHistory.length > 0 && (
-                <span style={{ fontSize: 11, color: subText, fontFamily: 'monospace' }}>last {sessionHistory.length} session{sessionHistory.length !== 1 ? 's' : ''}</span>
-              )}
+              {sessionHistory.length > 0 && <span style={{ fontSize: 11, color: subText, fontFamily: 'monospace' }}>last {sessionHistory.length} session{sessionHistory.length !== 1 ? 's' : ''}</span>}
             </div>
             <SChart />
           </div>
 
-          {/* By chapter */}
           <div style={{ ...S.secCard, background: cardBg, border: dk ? `1px solid ${border}` : 'none' }}>
             <h3 style={{ ...S.secTitle, color: text }}>Questions Answered by Chapter</h3>
             {CHAPTER_IDS.map(ch => {
-              const n   = byChap[ch] || 0
-              const max = Math.max(...CHAPTER_IDS.map(c => byChap[c] || 0), 1)
+              const n = byChap[ch] || 0, max = Math.max(...CHAPTER_IDS.map(c => byChap[c] || 0), 1)
               return (
                 <div key={ch} style={{ ...S.bRow, marginBottom: 10 }}>
                   <span style={{ color: CHAPTER_COLORS[ch], fontWeight: 700, minWidth: 50, fontSize: 13 }}>Ch.{ch}</span>
@@ -709,17 +702,10 @@ export default function App() {
             })}
           </div>
 
-          {/* Heatmap */}
           <div style={{ ...S.secCard, background: cardBg, border: dk ? `1px solid ${border}` : 'none' }}>
             <h3 style={{ ...S.secTitle, color: text }}>Chapter & Topic Weakness Heatmap</h3>
             <div style={{ fontSize: 11, color: subText, fontFamily: 'sans-serif', marginBottom: 12, display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-              {[
-                { bg: '#d1fae5', tc: '#065f46', lbl: '0% miss' },
-                { bg: '#fef9c3', tc: '#713f12', lbl: '<30%'    },
-                { bg: '#fed7aa', tc: '#9a3412', lbl: '<60%'    },
-                { bg: '#fee2e2', tc: '#991b1b', lbl: '60%+'    },
-                { bg: dk ? '#1e293b' : '#f1f5f9', tc: dk ? '#475569' : '#94a3b8', lbl: 'No data' },
-              ].map(x => (
+              {[{ bg: '#d1fae5', tc: '#065f46', lbl: '0% miss' }, { bg: '#fef9c3', tc: '#713f12', lbl: '<30%' }, { bg: '#fed7aa', tc: '#9a3412', lbl: '<60%' }, { bg: '#fee2e2', tc: '#991b1b', lbl: '60%+' }, { bg: dk ? '#1e293b' : '#f1f5f9', tc: dk ? '#475569' : '#94a3b8', lbl: 'No data' }].map(x => (
                 <span key={x.lbl} style={{ background: x.bg, color: x.tc, padding: '2px 7px', borderRadius: 3, fontSize: 10, fontWeight: 600 }}>{x.lbl}</span>
               ))}
             </div>
@@ -743,7 +729,6 @@ export default function App() {
             ))}
           </div>
 
-          {/* Flagged questions */}
           {fCount > 0 && (
             <div style={{ ...S.secCard, background: cardBg, border: dk ? `1px solid ${border}` : 'none' }}>
               <h3 style={{ ...S.secTitle, color: text }}>🚩 Flagged Questions ({fCount})</h3>
@@ -759,19 +744,15 @@ export default function App() {
                 )
               })}
               <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
-                <button onClick={() => {
-                  const flaggedQs = Object.keys(flagged).map(k => QUESTION_BANK.find(q => qKey(q) === k)).filter(Boolean)
-                  startRetry(flaggedQs)
-                }} style={{ ...S.retryBtn, margin: 0, flex: 1 }}>🔁 Drill Flagged Questions</button>
+                <button onClick={() => { const qs = Object.keys(flagged).map(k => QUESTION_BANK.find(q => qKey(q) === k)).filter(Boolean); startRetry(qs) }} style={{ ...S.retryBtn, margin: 0, flex: 1 }}>🔁 Drill Flagged Questions</button>
                 <button onClick={() => { setFlagged({}); saveStore('flagged', {}) }} style={{ ...S.revBtn, background: dk ? '#334155' : '#f1f5f9', color: subText, flex: 0, padding: '12px 14px', fontSize: 12 }}>Clear All</button>
               </div>
             </div>
           )}
 
-          {/* Retry pool */}
-          {Object.keys(wrongBank || {}).length > 0 && (
+          {wCount > 0 && (
             <div style={{ ...S.secCard, background: cardBg, border: dk ? `1px solid ${border}` : 'none' }}>
-              <h3 style={{ ...S.secTitle, color: text }}>Retry Pool — {Object.keys(wrongBank).length} questions</h3>
+              <h3 style={{ ...S.secTitle, color: text }}>Retry Pool — {wCount} questions</h3>
               <p style={{ fontSize: 12, color: subText, fontFamily: 'sans-serif', marginBottom: 12 }}>Red border = gotten wrong 2+ times. These are your biggest gaps.</p>
               {Object.values(wrongBank).sort((a, b) => b.wrongCount - a.wrongCount).map((item, i) => (
                 <div key={i} style={{ ...S.reviewCard, background: dk ? '#0f172a' : '#fff', border: dk ? `1px solid ${border}` : 'none', borderLeft: `4px solid ${item.wrongCount >= 2 ? '#ef4444' : '#f59e0b'}`, padding: '10px 14px', marginBottom: 8 }}>
@@ -804,14 +785,14 @@ export default function App() {
 
   // ── FLASHCARDS ────────────────────────────────────────────────────────────
   if (screen === 'flashcards') {
-    const fcProg    = fcCards.length > 0 ? Math.round((fcIdx + 1) / fcCards.length * 100) : 0
-    const isKnown   = fcKnown[fcIdx]
-    const curCard   = fcCards[fcIdx]
-    const lastSeen  = curCard ? fcLastSeen[fcCardKey(curCard)] : null
+    const fcProg   = fcCards.length > 0 ? Math.round((fcIdx + 1) / fcCards.length * 100) : 0
+    const isKnown  = fcKnown[fcIdx]
+    const curCard  = fcCards[fcIdx]
+    const lastSeen = curCard ? fcLastSeen[fcCardKey(curCard)] : null
     const daysSince = lastSeen ? Math.floor((Date.now() - lastSeen) / 86400000) : null
 
     const goNext = () => { setFcFlipped(false); setTimeout(() => setFcIdx(i => Math.min(i + 1, fcCards.length - 1)), 100) }
-    const goPrev = () => { setFcFlipped(false); setTimeout(() => setFcIdx(i => Math.max(i - 1, 0)), 100) }
+    const goPrev = () => { setFcFlipped(false); setTimeout(() => setFcIdx(i => Math.max(0, i - 1)), 100) }
 
     return (
       <div style={{ background: '#0f172a', minHeight: '100vh', padding: '20px 16px 48px', fontFamily: S.page.fontFamily }}>
