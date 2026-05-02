@@ -33,9 +33,11 @@ export const TOPICS_BY_CHAPTER = {
     'Corporations',
     'LLCs and S-Corps',
     'Bankruptcy',
+    'B Corps and L3Cs',
   ],
   10: [
     'Entrepreneurial Marketing',
+    '4Cs Marketing Framework',
     'Market Research',
     'Market Segmentation',
     'Consumer Behavior',
@@ -53,6 +55,8 @@ export const TOPICS_BY_CHAPTER = {
     'Financial Segment',
     'Pitching the Plan',
     'Updating the Business Plan',
+    'Planning Pitfalls',
+    'Milestone Schedule',
   ],
 }
 

@@ -1,5 +1,5 @@
 // Static question bank — no API key required.
-// 180 questions across Chapters 8, 9, 10, 12 (MCQ + True/False)
+// 201 questions across Chapters 8, 9, 10, 12 (MCQ + True/False)
 
 export const QUESTION_BANK = [
 
@@ -964,4 +964,120 @@ export const QUESTION_BANK = [
     question:"Beyond fundraising, what internal benefit does the business planning PROCESS provide to the entrepreneur?",
     options:["A. It qualifies the entrepreneur for government grants","B. It forces a thorough analysis of the venture's feasibility and surfaces potential problems before they become crises","C. It provides legal protection against future lawsuits","D. It guarantees that the venture will succeed if followed precisely"],
     answer:"B", explanation:"The process of writing the plan is often as valuable as the plan itself. Thinking through every aspect of the venture forces the entrepreneur to identify weaknesses, unrealistic assumptions, and potential obstacles — all before committing significant capital." },
+
+  // ── Gap-fill: thin topics brought to ≥ 5 questions each ──────────────────
+
+  // Private Placements (+2)
+  { chapter:8, topic:"Private Placements", type:"mcq", difficulty:"medium",
+    question:"Which of the following best describes an 'accredited investor' under SEC rules for Regulation D?",
+    options:["A. Any investor who passes an SEC-administered financial literacy test","B. An individual with net worth over $1 million (excluding primary residence) or annual income over $200,000","C. Only institutional investors such as banks and pension funds","D. Any investor who receives prior approval from the SEC on a case-by-case basis"],
+    answer:"B", explanation:"Under SEC Regulation D, an accredited investor is an individual with a net worth exceeding $1 million (excluding their primary residence) or annual income exceeding $200,000 individually ($300,000 jointly) for the past two years. Most Reg D offerings are limited to accredited investors." },
+
+  { chapter:8, topic:"Private Placements", type:"tf", difficulty:"medium",
+    question:"Under Regulation D Rule 506(c), issuers are permitted to use general solicitation and advertising to attract investors, provided all purchasers are verified accredited investors.",
+    options:["A. True","B. False"], answer:"A",
+    explanation:"Rule 506(c), added by the JOBS Act of 2012, permits general solicitation (advertising, social media, cold outreach) for private placements as long as the issuer takes reasonable steps to verify that every purchaser is an accredited investor." },
+
+  // Crowdfunding (+2)
+  { chapter:8, topic:"Crowdfunding", type:"mcq", difficulty:"easy",
+    question:"Which type of crowdfunding involves backers pledging money in exchange for a tangible reward or early product — without receiving equity or debt?",
+    options:["A. Equity crowdfunding","B. Debt-based crowdfunding","C. Rewards-based crowdfunding","D. Revenue-based crowdfunding"],
+    answer:"C", explanation:"In rewards-based crowdfunding (e.g., Kickstarter, Indiegogo), backers pledge funds in exchange for a product, perk, or experience. No ownership stake is given and no debt is created, making it a non-dilutive funding source." },
+
+  { chapter:8, topic:"Crowdfunding", type:"tf", difficulty:"easy",
+    question:"Donation-based crowdfunding requires the platform to file a registration statement with the SEC because it involves raising money from the public.",
+    options:["A. True","B. False"], answer:"B",
+    explanation:"Donation-based crowdfunding involves charitable gifts with nothing given in return. Since no securities are sold, SEC registration is not required. Only equity crowdfunding triggers federal securities regulations such as Regulation CF." },
+
+  // Sole Proprietorships (+3)
+  { chapter:9, topic:"Sole Proprietorships", type:"mcq", difficulty:"easy",
+    question:"Which of the following is the most significant ADVANTAGE of a sole proprietorship over other business forms?",
+    options:["A. Limited personal liability for all business debts","B. Complete owner control over all business decisions without partners or shareholders","C. Ease of raising large amounts of external capital","D. Perpetual existence that continues beyond the owner's lifetime"],
+    answer:"B", explanation:"The sole proprietor has absolute decision-making authority — no board approvals, no partner disputes, no shareholder votes. This total control is the primary management advantage of the sole proprietorship form." },
+
+  { chapter:9, topic:"Sole Proprietorships", type:"mcq", difficulty:"medium",
+    question:"A sole proprietorship automatically terminates upon which of the following events?",
+    options:["A. The business fails to file an annual state report","B. The owner's death or permanent legal incapacity","C. The business adds a new product or service line","D. The owner hires the first employee"],
+    answer:"B", explanation:"A sole proprietorship has no separate legal existence from its owner. Upon the owner's death or legal incapacity, the business ceases to exist. This lack of continuity is a key disadvantage compared to corporations, which have perpetual existence." },
+
+  { chapter:9, topic:"Sole Proprietorships", type:"tf", difficulty:"easy",
+    question:"A sole proprietor can protect personal assets from business debts by filing a Certificate of Sole Proprietorship with the state.",
+    options:["A. True","B. False"], answer:"B",
+    explanation:"No state filing protects a sole proprietor's personal assets from business liabilities. Unlimited personal liability is an inherent characteristic of the sole proprietorship — the only way to achieve liability protection is to reorganize as an LLC or corporation." },
+
+  // Corporations (+2)
+  { chapter:9, topic:"Corporations", type:"mcq", difficulty:"medium",
+    question:"What is the primary governance document that establishes a corporation's internal rules for management, meetings, and officer roles?",
+    options:["A. Articles of Incorporation","B. Operating Agreement","C. Corporate Bylaws","D. Partnership Agreement"],
+    answer:"C", explanation:"Corporate bylaws are the internal rules governing how the corporation operates — board election procedures, officer duties, meeting requirements, and voting rights. The Articles of Incorporation create the corporation with the state; bylaws govern its internal operations." },
+
+  { chapter:9, topic:"Corporations", type:"mcq", difficulty:"hard",
+    question:"'Piercing the corporate veil' occurs when a court:",
+    options:["A. Allows a corporation to enter a new foreign market","B. Holds shareholders personally liable for corporate debts because corporate formalities were ignored","C. Grants employees stock options in a private company","D. Converts a C-Corporation's status to an S-Corporation"],
+    answer:"B", explanation:"Courts pierce the corporate veil and impose personal liability on shareholders when they commingle personal and business funds, undercapitalize the company, or use the corporation as an alter ego. Maintaining proper corporate formalities prevents this." },
+
+  // 4Cs Marketing Framework (+2)
+  { chapter:10, topic:"4Cs Marketing Framework", type:"mcq", difficulty:"medium",
+    question:"In the 4Cs framework, 'Customer cost' is broader than 'Price' in the 4Ps because it includes:",
+    options:["A. Only the manufacturer's cost to produce the product","B. Government taxes and import tariffs","C. The full cost to the buyer including time, effort, switching costs, and psychological burden beyond the monetary price","D. The cost of the company's marketing and advertising spend"],
+    answer:"C", explanation:"'Customer cost' captures everything the buyer gives up — not just money, but also the time spent shopping, the effort of switching from a current provider, and the psychological anxiety of a significant purchase decision. This broader view centers the marketer on the customer's total experience." },
+
+  { chapter:10, topic:"4Cs Marketing Framework", type:"tf", difficulty:"medium",
+    question:"The 4Cs framework was developed as a seller-centric replacement for the 4Ps to help companies focus on production efficiency.",
+    options:["A. True","B. False"], answer:"B",
+    explanation:"The 4Cs framework was developed as a CUSTOMER-centric alternative to the seller-centric 4Ps. It reframes each element from the buyer's perspective: Customer solution (not Product), Customer cost (not Price), Convenience (not Place), and Communication (not Promotion)." },
+
+  // Consumer Behavior (+2)
+  { chapter:10, topic:"Consumer Behavior", type:"mcq", difficulty:"medium",
+    question:"The first stage in the consumer decision-making process — where the buyer perceives a gap between their current state and a desired state — is called:",
+    options:["A. Information search","B. Evaluation of alternatives","C. Problem/need recognition","D. Post-purchase evaluation"],
+    answer:"C", explanation:"The consumer decision process begins with problem or need recognition — the buyer perceives a difference between where they are and where they want to be. This gap triggers the search for information and evaluation of possible solutions." },
+
+  { chapter:10, topic:"Consumer Behavior", type:"mcq", difficulty:"medium",
+    question:"'Cognitive dissonance' in the context of consumer behavior refers to:",
+    options:["A. Brand loyalty built through repeated positive purchases","B. Post-purchase doubt or anxiety about whether the right buying decision was made","C. The inability to process competing advertising messages simultaneously","D. Price sensitivity among budget-conscious consumer segments"],
+    answer:"B", explanation:"Cognitive dissonance is the post-purchase psychological discomfort when a buyer second-guesses a decision. Marketers reduce it through follow-up communications, strong warranties, and customer service that reinforces the buyer's confidence in their choice." },
+
+  // Operations and Management Segments (+2)
+  { chapter:12, topic:"Operations and Management Segments", type:"mcq", difficulty:"medium",
+    question:"Which of the following best describes the content of the Operations Segment in a business plan?",
+    options:["A. The entrepreneur's personal investment history and net worth","B. Location, facilities, equipment, production/service delivery process, and quality control","C. The company's social media marketing calendar and influencer strategy","D. Historical financial performance of the industry sector"],
+    answer:"B", explanation:"The Operations Segment documents the physical and logistical infrastructure: where the business operates, what facilities and equipment are needed, how products or services are produced or delivered, supply chain details, and how quality is controlled." },
+
+  { chapter:12, topic:"Operations and Management Segments", type:"tf", difficulty:"medium",
+    question:"The Management Segment of a business plan should omit any gaps in the management team to avoid raising concerns with investors.",
+    options:["A. True","B. False"], answer:"B",
+    explanation:"The opposite is true. A credible Management Segment openly acknowledges team gaps (e.g., 'we need a CFO') and presents a concrete plan to fill them. Investors value transparency and preparation far more than an implausible claim of having a complete, flawless team." },
+
+  // Updating the Business Plan (+3)
+  { chapter:12, topic:"Updating the Business Plan", type:"mcq", difficulty:"medium",
+    question:"Which of the following events should trigger a revision to the business plan?",
+    options:["A. Only when seeking a new round of investor funding","B. After major milestones such as a product launch, significant market shift, or reaching breakeven","C. Only when the original plan is more than five years old","D. Only when the management team changes completely"],
+    answer:"B", explanation:"The business plan should be reviewed and updated whenever significant events occur — hitting or missing milestones, entering new markets, losing key team members, or facing major competitive changes. It is a living document, not a static archive." },
+
+  { chapter:12, topic:"Updating the Business Plan", type:"tf", difficulty:"easy",
+    question:"A business plan that was accurate at launch never needs to be updated if the venture is performing as expected.",
+    options:["A. True","B. False"], answer:"B",
+    explanation:"Even a well-performing venture must update its plan regularly because market conditions, competition, technology, and customer needs constantly evolve. The plan must reflect current reality to remain a useful strategic and management tool." },
+
+  { chapter:12, topic:"Updating the Business Plan", type:"mcq", difficulty:"medium",
+    question:"How frequently does the textbook recommend an active venture review and potentially update its business plan?",
+    options:["A. Only at the start of each new fiscal year","B. Quarterly and after reaching major milestones","C. Every five years when seeking a new funding round","D. Only when the board of directors requests a review"],
+    answer:"B", explanation:"The textbook recommends quarterly reviews plus updates after significant milestones. Regular review keeps the plan current and allows the entrepreneur to compare actual performance against planned benchmarks, enabling timely course corrections." },
+
+  // Milestone Schedule (+3)
+  { chapter:12, topic:"Milestone Schedule", type:"mcq", difficulty:"medium",
+    question:"Which of the following would NOT typically appear in a business plan's milestone schedule?",
+    options:["A. Target date for the product launch","B. Projected date for reaching breakeven","C. The entrepreneur's personal five-year financial plan","D. Date of first significant customer acquisition"],
+    answer:"C", explanation:"A milestone schedule contains venture-specific operational targets — product launches, customer acquisition goals, key hires, revenue milestones, and financing events. The entrepreneur's personal financial goals belong in personal financial planning, not the venture's milestone schedule." },
+
+  { chapter:12, topic:"Milestone Schedule", type:"mcq", difficulty:"medium",
+    question:"The milestone schedule primarily serves which function in the business plan?",
+    options:["A. Convincing investors about the size of the market opportunity","B. Demonstrating the management team's academic credentials","C. Translating the plan into an actionable timeline with measurable accountability checkpoints","D. Presenting three-year financial projections in chart form"],
+    answer:"C", explanation:"The milestone schedule converts strategic intent into an operational timeline — specific, measurable targets tied to dates. It is the accountability mechanism that links the plan's vision to day-to-day execution and gives investors benchmarks to track progress." },
+
+  { chapter:12, topic:"Milestone Schedule", type:"tf", difficulty:"medium",
+    question:"Missing a milestone in the schedule is always a sign of terminal business failure and should never be disclosed to investors.",
+    options:["A. True","B. False"], answer:"B",
+    explanation:"Missing milestones signals execution challenges that need to be addressed — but they must be communicated transparently to investors. Experienced investors expect some slippage; what matters is that the entrepreneur acknowledges the issue, analyzes the cause, and adjusts the plan accordingly." },
 ]
