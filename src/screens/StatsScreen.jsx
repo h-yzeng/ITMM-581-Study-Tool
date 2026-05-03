@@ -4,6 +4,7 @@ import { qKey, saveStore } from '../hooks/useStorage.js'
 import { S } from '../styles.js'
 import { DarkToggle } from '../components/DarkToggle.jsx'
 import { SChart } from '../components/SChart.jsx'
+import { IconBarChart, IconFlag, IconRepeat } from '../components/Icons.jsx'
 
 export function StatsScreen({
   theme, toggleDark,
@@ -36,16 +37,18 @@ export function StatsScreen({
       <div style={S.container}>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
-          <button onClick={() => setScreen('home')} style={{ ...S.backBtn, color: subText }}>← Home</button>
-          <h2 style={{ margin: 0, fontSize: 20, fontWeight: 800, color: text }}>📊 Stats &amp; Heatmap</h2>
+          <button onClick={() => setScreen('home')} style={{ ...S.backBtn, color: subText }}>&larr; Home</button>
+          <h2 style={{ margin: 0, fontSize: 20, fontWeight: 800, color: text, display: 'flex', alignItems: 'center', gap: 8 }}>
+            <IconBarChart size={20} /> Stats &amp; Heatmap
+          </h2>
         </div>
 
         <div style={S.sumGrid}>
           {[
             { label: 'Total Answered', val: total,                c: text      },
             { label: 'Sessions',       val: stats?.sessions || 0, c: '#6366f1' },
-            { label: 'Mastered ✓',    val: rCount,               c: '#10b981' },
-            { label: 'Retry Pool ✗',  val: wCount,               c: '#ef4444' },
+            { label: 'Mastered',       val: rCount,               c: '#10b981' },
+            { label: 'Retry Pool',     val: wCount,               c: '#ef4444' },
           ].map(x => (
             <div key={x.label} style={{ ...S.sumCard, background: cardBg, border: dk ? `1px solid ${border}` : 'none' }}>
               <div style={{ fontSize: 26, fontWeight: 900, color: x.c }}>{x.val}</div>
@@ -107,7 +110,9 @@ export function StatsScreen({
 
         {fCount > 0 && (
           <div style={{ ...S.secCard, background: cardBg, border: dk ? `1px solid ${border}` : 'none' }}>
-            <h3 style={{ ...S.secTitle, color: text }}>🚩 Flagged Questions ({fCount})</h3>
+            <h3 style={{ ...S.secTitle, color: text, display: 'flex', alignItems: 'center', gap: 8 }}>
+              <IconFlag size={16} filled color="#8b5cf6" /> Flagged Questions ({fCount})
+            </h3>
             <p style={{ fontSize: 12, color: subText, fontFamily: 'sans-serif', marginBottom: 12 }}>Questions you marked as confusing during practice.</p>
             {Object.keys(flagged).map(k => {
               const q = QUESTION_BANK.find(q => qKey(q) === k)
@@ -115,12 +120,14 @@ export function StatsScreen({
               return (
                 <div key={k} style={{ ...S.reviewCard, background: dk ? '#0f172a' : '#fff', border: `1px solid ${border}`, borderLeft: '4px solid #8b5cf6', padding: '10px 14px', marginBottom: 8 }}>
                   <p style={{ margin: 0, fontSize: 13, color: text }}>{q.question}</p>
-                  <div style={{ fontSize: 11, color: subText, marginTop: 4, fontFamily: 'sans-serif' }}>Ch.{q.chapter} · {q.topic}</div>
+                  <div style={{ fontSize: 11, color: subText, marginTop: 4, fontFamily: 'sans-serif' }}>Ch.{q.chapter} &middot; {q.topic}</div>
                 </div>
               )
             })}
             <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
-              <button onClick={() => { const qs = Object.keys(flagged).map(k => QUESTION_BANK.find(q => qKey(q) === k)).filter(Boolean); startRetry(qs) }} style={{ ...S.retryBtn, margin: 0, flex: 1 }}>🔁 Drill Flagged Questions</button>
+              <button onClick={() => { const qs = Object.keys(flagged).map(k => QUESTION_BANK.find(q => qKey(q) === k)).filter(Boolean); startRetry(qs) }} style={{ ...S.retryBtn, margin: 0, flex: 1 }}>
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}><IconRepeat size={14} /> Drill Flagged Questions</span>
+              </button>
               <button onClick={() => { setFlagged({}); saveStore('flagged', {}) }} style={{ ...S.revBtn, background: dk ? '#334155' : '#f1f5f9', color: subText, flex: 0, padding: '12px 14px', fontSize: 12 }}>Clear All</button>
             </div>
           </div>
@@ -128,31 +135,33 @@ export function StatsScreen({
 
         {wCount > 0 && (
           <div style={{ ...S.secCard, background: cardBg, border: dk ? `1px solid ${border}` : 'none' }}>
-            <h3 style={{ ...S.secTitle, color: text }}>Retry Pool — {wCount} questions</h3>
+            <h3 style={{ ...S.secTitle, color: text }}>Retry Pool &mdash; {wCount} questions</h3>
             <p style={{ fontSize: 12, color: subText, fontFamily: 'sans-serif', marginBottom: 12 }}>Red border = gotten wrong 2+ times. These are your biggest gaps.</p>
             {Object.values(wrongBank).sort((a, b) => b.wrongCount - a.wrongCount).map((item, i) => (
               <div key={i} style={{ ...S.reviewCard, background: dk ? '#0f172a' : '#fff', border: dk ? `1px solid ${border}` : 'none', borderLeft: `4px solid ${item.wrongCount >= 2 ? '#ef4444' : '#f59e0b'}`, padding: '10px 14px', marginBottom: 8 }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 8 }}>
                   <p style={{ margin: 0, fontSize: 13, color: text, flex: 1 }}>{item.q?.question}</p>
-                  <span style={{ background: item.wrongCount >= 2 ? '#fee2e2' : '#fef3c7', color: item.wrongCount >= 2 ? '#991b1b' : '#92400e', padding: '2px 8px', borderRadius: 4, fontSize: 11, fontWeight: 700, whiteSpace: 'nowrap', fontFamily: 'monospace' }}>✗ ×{item.wrongCount}</span>
+                  <span style={{ background: item.wrongCount >= 2 ? '#fee2e2' : '#fef3c7', color: item.wrongCount >= 2 ? '#991b1b' : '#92400e', padding: '2px 8px', borderRadius: 4, fontSize: 11, fontWeight: 700, whiteSpace: 'nowrap', fontFamily: 'monospace' }}>&#10007; &times;{item.wrongCount}</span>
                 </div>
-                <div style={{ fontSize: 11, color: subText, marginTop: 4, fontFamily: 'sans-serif' }}>Ch.{item.q?.chapter} · {item.q?.topic}</div>
+                <div style={{ fontSize: 11, color: subText, marginTop: 4, fontFamily: 'sans-serif' }}>Ch.{item.q?.chapter} &middot; {item.q?.topic}</div>
               </div>
             ))}
-            <button onClick={() => startRetry(Object.values(wrongBank).map(x => x.q))} style={{ ...S.retryBtn, marginTop: 6 }}>🔁 Start Retry Pool (Shuffled)</button>
+            <button onClick={() => startRetry(Object.values(wrongBank).map(x => x.q))} style={{ ...S.retryBtn, marginTop: 6 }}>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}><IconRepeat size={14} /> Start Retry Pool (Shuffled)</span>
+            </button>
           </div>
         )}
 
         {rCount > 0 && (
           <div style={{ ...S.secCard, background: cardBg, border: dk ? `1px solid ${border}` : 'none' }}>
-            <h3 style={{ ...S.secTitle, color: text }}>✓ Mastered ({rCount} questions)</h3>
+            <h3 style={{ ...S.secTitle, color: text }}>Mastered ({rCount} questions)</h3>
             <p style={{ fontSize: 12, color: subText, fontFamily: 'sans-serif', margin: 0 }}>Re-added to retry pool if you get them wrong again.</p>
           </div>
         )}
 
         <div style={{ display: 'flex', gap: 8 }}>
-          <button onClick={() => setScreen('home')} style={{ ...S.homeBtn, background: pillSel, flex: 1 }}>← Back to Home</button>
-          <button onClick={exportStats} style={{ ...S.revBtn, background: dk ? '#334155' : '#f1f5f9', color: text, flex: 0, padding: '11px 16px', fontSize: 12, whiteSpace: 'nowrap' }}>⬇ Export JSON</button>
+          <button onClick={() => setScreen('home')} style={{ ...S.homeBtn, background: pillSel, flex: 1 }}>&larr; Back to Home</button>
+          <button onClick={exportStats} style={{ ...S.revBtn, background: dk ? '#334155' : '#f1f5f9', color: text, flex: 0, padding: '11px 16px', fontSize: 12, whiteSpace: 'nowrap' }}>Export JSON</button>
         </div>
 
       </div>

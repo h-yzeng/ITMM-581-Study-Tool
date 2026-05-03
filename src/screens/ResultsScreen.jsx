@@ -1,6 +1,7 @@
 import { CHAPTER_IDS, CHAPTER_COLORS } from '../data/chapters.js'
 import { S } from '../styles.js'
 import { DarkToggle } from '../components/DarkToggle.jsx'
+import { IconRepeat, IconBarChart } from '../components/Icons.jsx'
 
 export function ResultsScreen({ theme, toggleDark, questions, answers, score, startRetry, setScreen }) {
   const { dk, bg, cardBg, text, subText, border, pillSel } = theme
@@ -42,14 +43,22 @@ export function ResultsScreen({ theme, toggleDark, questions, answers, score, st
             })}
           </div>
 
-          {wrongQs.length > 0
-            ? <button onClick={() => startRetry(wrongQs)} style={S.retryBtn}>🔁 Retry {wrongQs.length} Wrong (Shuffled)</button>
-            : <div style={{ textAlign: 'center', padding: '10px 0', fontSize: 14, color: '#10b981', fontWeight: 700 }}>🎉 Perfect score!</div>}
+          {wrongQs.length > 0 ? (
+            <button onClick={() => startRetry(wrongQs)} style={S.retryBtn}>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}>
+                <IconRepeat size={14} /> Retry {wrongQs.length} Wrong (Shuffled)
+              </span>
+            </button>
+          ) : (
+            <div style={{ textAlign: 'center', padding: '10px 0', fontSize: 14, color: '#10b981', fontWeight: 700 }}>Perfect score!</div>
+          )}
 
           <div style={S.resBtns}>
             <button onClick={() => setScreen('review')} style={{ ...S.revBtn, background: dk ? '#334155' : '#f1f5f9', color: text }}>Review</button>
-            <button onClick={() => setScreen('stats')}  style={{ ...S.revBtn, background: dk ? '#334155' : '#f1f5f9', color: text }}>📊 Stats</button>
-            <button onClick={() => setScreen('home')}   style={{ ...S.homeBtn, background: pillSel }}>New Exam</button>
+            <button onClick={() => setScreen('stats')}  style={{ ...S.revBtn, background: dk ? '#334155' : '#f1f5f9', color: text, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
+              <IconBarChart size={14} /> Stats
+            </button>
+            <button onClick={() => setScreen('home')} style={{ ...S.homeBtn, background: pillSel }}>New Exam</button>
           </div>
         </div>
       </div>

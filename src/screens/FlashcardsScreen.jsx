@@ -2,6 +2,7 @@ import { CHAPTER_IDS, CHAPTER_COLORS } from '../data/chapters.js'
 import { fcCardKey } from '../utils/quiz.js'
 import { S } from '../styles.js'
 import { DarkToggle } from '../components/DarkToggle.jsx'
+import { IconStar, IconBook } from '../components/Icons.jsx'
 
 export function FlashcardsScreen({
   theme, toggleDark,
@@ -25,14 +26,14 @@ export function FlashcardsScreen({
       <div style={S.container}>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
-          <button onClick={() => setScreen('home')} style={{ ...S.backBtn, color: '#94a3b8' }}>← Back</button>
+          <button onClick={() => setScreen('home')} style={{ ...S.backBtn, color: '#94a3b8' }}>&larr; Back</button>
           <div style={{ flex: 1 }}>
             <div style={{ ...S.progTrack, background: '#1e293b' }}>
               <div style={{ ...S.progFill, width: `${fcProg}%`, background: '#6366f1' }} />
             </div>
           </div>
           <span style={{ color: '#64748b', fontSize: 12, fontFamily: 'monospace' }}>{fcIdx + 1}/{fcCards.length}</span>
-          <span style={{ color: '#10b981', fontSize: 12, fontFamily: 'monospace' }}>✓ {fcKnownCount}</span>
+          <span style={{ color: '#10b981', fontSize: 12, fontFamily: 'monospace' }}>&#10003; {fcKnownCount}</span>
         </div>
 
         <div style={{ display: 'flex', gap: 5, flexWrap: 'wrap', marginBottom: 8 }}>
@@ -62,7 +63,7 @@ export function FlashcardsScreen({
         {fcCard && (
           <div onClick={() => setFcFlipped(f => !f)} style={{ ...S.fcCard, borderColor: isKnown === true ? '#10b981' : isKnown === false ? '#ef4444' : '#334155' }}>
             <div style={{ position: 'absolute', top: 12, left: 14, right: 14, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontSize: 10, fontFamily: 'monospace', color: '#475569' }}>{fcFlipped ? 'ANSWER' : 'QUESTION'} · tap or Space</span>
+              <span style={{ fontSize: 10, fontFamily: 'monospace', color: '#475569' }}>{fcFlipped ? 'ANSWER' : 'QUESTION'} &middot; tap or Space</span>
               {daysSince !== null ? (
                 <span style={{ fontSize: 9, fontFamily: 'monospace', padding: '1px 6px', borderRadius: 3, background: '#0f172a', color: daysSince === 0 ? '#10b981' : daysSince <= 2 ? '#f59e0b' : '#ef4444' }}>
                   {daysSince === 0 ? 'seen today' : `${daysSince}d ago`}
@@ -72,7 +73,7 @@ export function FlashcardsScreen({
               )}
             </div>
             <div style={{ fontSize: 10, fontWeight: 700, padding: '2px 10px', borderRadius: 4, fontFamily: 'monospace', background: CHAPTER_COLORS[fcCard.ch] + '33', color: CHAPTER_COLORS[fcCard.ch] }}>
-              Ch.{fcCard.ch} · {fcCard.topic}
+              Ch.{fcCard.ch} &middot; {fcCard.topic}
             </div>
             <p style={{ fontSize: fcFlipped ? 14 : 17, fontWeight: fcFlipped ? 400 : 600, color: '#f1f5f9', lineHeight: 1.65, margin: 0, whiteSpace: 'pre-line', textAlign: 'center' }}>
               {fcFlipped ? fcCard.back : fcCard.front}
@@ -81,24 +82,26 @@ export function FlashcardsScreen({
         )}
 
         <div style={{ display: 'flex', gap: 10, marginBottom: 12 }}>
-          <button onClick={() => doMarkCard(false)} style={S.fcNo}>✗ Still Learning (X)</button>
-          <button onClick={() => doMarkCard(true)}  style={S.fcYes}>✓ Got It (G)</button>
+          <button onClick={() => doMarkCard(false)} style={S.fcNo}>&#10007; Still Learning (X)</button>
+          <button onClick={() => doMarkCard(true)}  style={S.fcYes}>&#10003; Got It (G)</button>
         </div>
 
         <div style={S.navRow}>
-          <button onClick={goPrev} disabled={fcIdx === 0} style={{ ...S.navBtn, opacity: fcIdx === 0 ? 0.3 : 1, background: '#1e293b', color: '#94a3b8', border: '1px solid #334155' }}>← Prev</button>
-          <button onClick={goNext} disabled={fcIdx === fcCards.length - 1} style={{ ...S.navBtn, opacity: fcIdx === fcCards.length - 1 ? 0.3 : 1, background: '#1e293b', color: '#94a3b8', border: '1px solid #334155' }}>Next →</button>
+          <button onClick={goPrev} disabled={fcIdx === 0} style={{ ...S.navBtn, opacity: fcIdx === 0 ? 0.3 : 1, background: '#1e293b', color: '#94a3b8', border: '1px solid #334155' }}>&larr; Prev</button>
+          <button onClick={goNext} disabled={fcIdx === fcCards.length - 1} style={{ ...S.navBtn, opacity: fcIdx === fcCards.length - 1 ? 0.3 : 1, background: '#1e293b', color: '#94a3b8', border: '1px solid #334155' }}>Next &rarr;</button>
         </div>
 
         <div style={{ textAlign: 'center', fontSize: 10, color: '#475569', fontFamily: 'monospace', marginTop: 8 }}>
-          ← → navigate · Space flip · G got it · X still learning
+          &larr; &rarr; navigate &middot; Space flip &middot; G got it &middot; X still learning
         </div>
 
         {fcIdx === fcCards.length - 1 && (
           <div style={{ textAlign: 'center', marginTop: 16, color: '#64748b', fontFamily: 'sans-serif', fontSize: 13 }}>
-            <div style={{ fontSize: 26, marginBottom: 6 }}>{fcKnownCount === fcCards.length ? '🎉' : '📚'}</div>
+            <div style={{ color: fcKnownCount === fcCards.length ? '#10b981' : '#64748b', marginBottom: 6, display: 'flex', justifyContent: 'center' }}>
+              {fcKnownCount === fcCards.length ? <IconStar size={28} /> : <IconBook size={28} />}
+            </div>
             <div>{fcKnownCount}/{fcCards.length} marked as known</div>
-            <button onClick={() => { setFcIdx(0); setFcFlipped(false); }}
+            <button onClick={() => { setFcIdx(0); setFcFlipped(false) }}
               style={{ ...S.homeBtn, width: 'auto', marginTop: 10, padding: '10px 24px', background: '#6366f1' }}>
               Restart Deck
             </button>

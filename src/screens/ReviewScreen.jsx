@@ -11,7 +11,7 @@ export function ReviewScreen({ theme, toggleDark, questions, answers, setScreen 
       <div style={S.container}>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
-          <button onClick={() => setScreen('results')} style={{ ...S.backBtn, color: subText }}>← Results</button>
+          <button onClick={() => setScreen('results')} style={{ ...S.backBtn, color: subText }}>&larr; Results</button>
           <h2 style={{ margin: 0, fontSize: 18, fontWeight: 700, color: text }}>Full Review</h2>
         </div>
 

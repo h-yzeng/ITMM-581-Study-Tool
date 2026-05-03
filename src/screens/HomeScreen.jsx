@@ -1,11 +1,18 @@
-import { CHAPTERS, TOPIC_CARDS, CHAPTER_COLORS, DIFF_COLORS } from '../data/chapters.js'
+import { CHAPTERS, TOPIC_CARDS, CHAPTER_COLORS } from '../data/chapters.js'
 import { QUESTION_BANK } from '../data/questionBank.js'
 import { qKey } from '../hooks/useStorage.js'
 import { S } from '../styles.js'
 import { DarkToggle } from '../components/DarkToggle.jsx'
+import { IconPencil, IconClock, IconCards, IconFlag, IconBarChart, IconRepeat, IconTarget } from '../components/Icons.jsx'
 
-const BANK_SIZE = QUESTION_BANK.length
+const BANK_SIZE   = QUESTION_BANK.length
 const CHAPTER_IDS = [8, 9, 10, 12]
+
+const MODES = [
+  { id: 'practice',   Icon: IconPencil, label: 'Practice',   sub: 'Reveal as you go' },
+  { id: 'exam',       Icon: IconClock,  label: 'Exam Sim',   sub: 'Timed & locked'   },
+  { id: 'flashcards', Icon: IconCards,  label: 'Flashcards', sub: 'Flip-card review'  },
+]
 
 export function HomeScreen({
   theme, toggleDark,
@@ -33,7 +40,7 @@ export function HomeScreen({
         <div style={S.header}>
           <div style={S.badge}>EXAM PREP</div>
           <h1 style={{ ...S.title, color: dk ? '#f1f5f9' : '#0f172a' }}>IT Entrepreneurship</h1>
-          <p style={{ ...S.subtitle, color: subText }}>Kuratko 12e · Chapters 8, 9, 10 &amp; 12</p>
+          <p style={{ ...S.subtitle, color: subText }}>Kuratko 12e &middot; Chapters 8, 9, 10 &amp; 12</p>
         </div>
 
         {stats && (
@@ -52,22 +59,20 @@ export function HomeScreen({
               <span style={{ ...S.statsNum, color: '#ef4444' }}>{wCount}</span>
               <span style={{ ...S.statsLbl, color: subText }}>Retry</span>
             </div>
-            <span style={{ ...S.statsArrow, color: subText }}>📊 →</span>
+            <span style={{ ...S.statsArrow, color: subText, display: 'flex', alignItems: 'center', gap: 4 }}>
+              <IconBarChart size={14} /> &rarr;
+            </span>
           </button>
         )}
 
         <div style={S.section}>
           <label style={{ ...S.label, color: subText }}>STUDY MODE</label>
           <div style={S.modeRow}>
-            {[
-              { id: 'practice',   icon: '📝', label: 'Practice',   sub: 'Reveal as you go' },
-              { id: 'exam',       icon: '⏱',  label: 'Exam Sim',   sub: 'Timed & locked'  },
-              { id: 'flashcards', icon: '🃏', label: 'Flashcards', sub: 'Flip-card review' },
-            ].map(m => (
-              <button key={m.id} onClick={() => setMode(m.id)} style={{ ...S.modeBtn, background: mode === m.id ? pillSel : cardBg, border: `1.5px solid ${mode === m.id ? pillSel : border}`, color: mode === m.id ? '#fff' : text }}>
-                <span style={{ fontSize: 22 }}>{m.icon}</span>
-                <span style={{ fontWeight: 700, fontSize: 13 }}>{m.label}</span>
-                <span style={{ fontSize: 10, color: mode === m.id ? '#c7d2fe' : subText, lineHeight: 1.3 }}>{m.sub}</span>
+            {MODES.map(({ id, Icon, label, sub }) => (
+              <button key={id} onClick={() => setMode(id)} style={{ ...S.modeBtn, background: mode === id ? pillSel : cardBg, border: `1.5px solid ${mode === id ? pillSel : border}`, color: mode === id ? '#fff' : text }}>
+                <span style={{ color: mode === id ? '#c7d2fe' : subText, display: 'flex' }}><Icon size={22} /></span>
+                <span style={{ fontWeight: 700, fontSize: 13 }}>{label}</span>
+                <span style={{ fontSize: 10, color: mode === id ? '#c7d2fe' : subText, lineHeight: 1.3 }}>{sub}</span>
               </button>
             ))}
           </div>
@@ -94,7 +99,7 @@ export function HomeScreen({
           <div style={S.section}>
             <label style={{ ...S.label, color: subText }}>DIFFICULTY</label>
             <div style={S.pills}>
-              {[{ id: 'all', label: 'All Levels' }, { id: 'easy', label: '🟢 Easy' }, { id: 'medium', label: '🟡 Medium' }, { id: 'hard', label: '🔴 Hard' }].map(d => (
+              {[{ id: 'all', label: 'All Levels' }, { id: 'easy', label: 'Easy' }, { id: 'medium', label: 'Medium' }, { id: 'hard', label: 'Hard' }].map(d => (
                 <button key={d.id} onClick={() => setSelDiff(d.id)} style={pill(selDiff === d.id)}>{d.label}</button>
               ))}
             </div>
@@ -110,7 +115,7 @@ export function HomeScreen({
         </>)}
 
         {mode === 'exam' && (
-          <div style={S.examBanner}>⏱ <strong>Exam Sim:</strong> {qCount} min timer · answers locked until you submit</div>
+          <div style={S.examBanner}><strong>Exam Sim:</strong> {qCount} min timer &middot; answers locked until you submit</div>
         )}
 
         <div style={S.topicsGrid}>
@@ -120,19 +125,23 @@ export function HomeScreen({
                 <span style={{ fontSize: 13, fontWeight: 800, color: CHAPTER_COLORS[item.ch] }}>{item.title}</span>
                 <span style={{ fontSize: 10, color: subText, fontFamily: 'sans-serif' }}>{item.sub}</span>
               </div>
-              {item.topics.map(t => <div key={t} style={{ ...S.topicItem, color: subText }}>· {t}</div>)}
+              {item.topics.map(t => <div key={t} style={{ ...S.topicItem, color: subText }}>&middot; {t}</div>)}
             </div>
           ))}
         </div>
 
         {weakQs.length > 0 && mode !== 'flashcards' && (
           <button onClick={startWeakDrill} style={{ ...S.retryPoolBtn, background: dk ? '#1c1917' : '#fef3c7', borderColor: '#f59e0b', color: '#92400e' }}>
-            🎯 Study Weak Spots — {weakQs.length} questions from your lowest-scoring topics
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}>
+              <IconTarget size={14} /> Study Weak Spots &mdash; {weakQs.length} questions from your lowest-scoring topics
+            </span>
           </button>
         )}
         {wCount > 0 && (
           <button onClick={() => startRetry(Object.values(wrongBank).map(x => x.q))} style={{ ...S.retryPoolBtn, background: dk ? '#1c1917' : '#fef3c7', borderColor: '#f59e0b', color: '#92400e' }}>
-            🔁 Retry Pool — {wCount} question{wCount !== 1 ? 's' : ''} you've gotten wrong (shuffled)
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}>
+              <IconRepeat size={14} /> Retry Pool &mdash; {wCount} question{wCount !== 1 ? 's' : ''} you&apos;ve gotten wrong (shuffled)
+            </span>
           </button>
         )}
         {fCount > 0 && (
@@ -140,7 +149,9 @@ export function HomeScreen({
             const flaggedQs = Object.keys(flagged).map(k => QUESTION_BANK.find(q => qKey(q) === k)).filter(Boolean)
             startRetry(flaggedQs)
           }} style={{ ...S.retryPoolBtn, background: dk ? '#1a1a2e' : '#ede9fe', borderColor: '#8b5cf6', color: '#4c1d95' }}>
-            🚩 Flagged Questions — {fCount} question{fCount !== 1 ? 's' : ''} you marked as confusing
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}>
+              <IconFlag size={14} filled color="#8b5cf6" /> Flagged Questions &mdash; {fCount} question{fCount !== 1 ? 's' : ''} you marked as confusing
+            </span>
           </button>
         )}
 
@@ -150,7 +161,7 @@ export function HomeScreen({
 
         <div style={{ ...S.bankStatus, color: subText }}>
           <span style={{ ...S.bankDot, background: '#10b981' }} />
-          {BANK_SIZE} questions ready · no account required
+          {BANK_SIZE} questions ready &middot; no account required
         </div>
 
       </div>

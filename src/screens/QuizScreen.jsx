@@ -2,6 +2,7 @@ import { CHAPTER_COLORS, DIFF_COLORS } from '../data/chapters.js'
 import { qKey } from '../hooks/useStorage.js'
 import { S } from '../styles.js'
 import { DarkToggle } from '../components/DarkToggle.jsx'
+import { IconFlag } from '../components/Icons.jsx'
 
 const fmt = s => `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`
 
@@ -13,11 +14,11 @@ export function QuizScreen({
   answeredAll, prog, setScreen,
 }) {
   const { dk, bg, cardBg, text, subText, border, pillSel } = theme
-  const q        = questions[curIdx]
-  const isExam   = mode === 'exam'
-  const isRev    = revealed[curIdx]
-  const chosen   = answers[curIdx]
-  const tw       = timeLeft !== null && timeLeft < 120
+  const q         = questions[curIdx]
+  const isExam    = mode === 'exam'
+  const isRev     = revealed[curIdx]
+  const chosen    = answers[curIdx]
+  const tw        = timeLeft !== null && timeLeft < 120
   const isFlagged = q && flagged[qKey(q)]
 
   return (
@@ -26,7 +27,7 @@ export function QuizScreen({
       <div style={S.container}>
 
         <div style={S.topBar}>
-          <button onClick={() => { setScreen('home') }} style={{ ...S.backBtn, color: subText }}>← Back</button>
+          <button onClick={() => setScreen('home')} style={{ ...S.backBtn, color: subText }}>&larr; Back</button>
           <div style={S.progWrap}>
             <div style={{ ...S.progTrack, background: dk ? '#334155' : '#e2e8f0' }}>
               <div style={{ ...S.progFill, width: `${prog}%` }} />
@@ -34,7 +35,7 @@ export function QuizScreen({
             <span style={{ ...S.progText, color: subText }}>{Object.keys(answers).length}/{questions.length}</span>
           </div>
           {isExam && timeLeft !== null && (
-            <div style={{ ...S.timerBadge, background: tw ? '#ef4444' : (dk ? '#334155' : '#1e293b') }}>⏱ {fmt(timeLeft)}</div>
+            <div style={{ ...S.timerBadge, background: tw ? '#ef4444' : (dk ? '#334155' : '#1e293b') }}>{fmt(timeLeft)}</div>
           )}
           <button onClick={finishQuiz} disabled={!answeredAll} style={{ ...S.finishBtn, opacity: answeredAll ? 1 : 0.4 }}>
             {isExam ? 'Submit' : 'Finish'}
@@ -60,8 +61,12 @@ export function QuizScreen({
               {q.type === 'tf' && <span style={{ ...S.diffTag, background: '#f0f9ff', color: '#0369a1' }}>T/F</span>}
               <span style={{ ...S.qNum, color: subText }}>Q{curIdx + 1}/{questions.length}</span>
             </div>
-            <button onClick={() => toggleFlag(q)} title="Flag as confusing (F key)" style={{ flexShrink: 0, background: isFlagged ? '#ede9fe' : 'none', border: `1px solid ${isFlagged ? '#8b5cf6' : border}`, borderRadius: 6, padding: '3px 9px', cursor: 'pointer', fontSize: 13, color: isFlagged ? '#7c3aed' : subText, marginLeft: 8 }}>
-              🚩
+            <button
+              onClick={() => toggleFlag(q)}
+              title="Flag as confusing (F key)"
+              style={{ flexShrink: 0, background: isFlagged ? '#ede9fe' : 'none', border: `1px solid ${isFlagged ? '#8b5cf6' : border}`, borderRadius: 6, padding: '5px 9px', cursor: 'pointer', display: 'flex', alignItems: 'center', marginLeft: 8 }}
+            >
+              <IconFlag size={14} filled={isFlagged} color={isFlagged ? '#7c3aed' : subText} />
             </button>
           </div>
 
@@ -81,8 +86,8 @@ export function QuizScreen({
                   style={{ ...S.optBtn, ...(isTF ? { flex: 1, justifyContent: 'center', fontSize: 15, fontWeight: 700, padding: '16px 0' } : {}), background: bg2, border: `1.5px solid ${bdr}`, color: col }}>
                   {!isTF && <span style={S.optLetter}>{letter}</span>}
                   <span>{opt.slice(3)}</span>
-                  {!isExam && isRev && isCorrect  && <span style={S.checkmark}>✓</span>}
-                  {!isExam && isRev && isChosen && !isCorrect && <span style={S.cross}>✗</span>}
+                  {!isExam && isRev && isCorrect           && <span style={S.checkmark}>&#10003;</span>}
+                  {!isExam && isRev && isChosen && !isCorrect && <span style={S.cross}>&#10007;</span>}
                 </button>
               )
             })}
@@ -99,11 +104,11 @@ export function QuizScreen({
         </div>
 
         <div style={{ ...S.navRow, marginBottom: 6 }}>
-          <button onClick={() => setCurIdx(Math.max(0, curIdx - 1))} disabled={curIdx === 0} style={{ ...S.navBtn, background: cardBg, border: `1.5px solid ${border}`, color: text, opacity: curIdx === 0 ? 0.3 : 1 }}>← Prev</button>
-          <button onClick={() => setCurIdx(Math.min(questions.length - 1, curIdx + 1))} disabled={curIdx === questions.length - 1} style={{ ...S.navBtn, background: cardBg, border: `1.5px solid ${border}`, color: text, opacity: curIdx === questions.length - 1 ? 0.3 : 1 }}>Next →</button>
+          <button onClick={() => setCurIdx(Math.max(0, curIdx - 1))} disabled={curIdx === 0} style={{ ...S.navBtn, background: cardBg, border: `1.5px solid ${border}`, color: text, opacity: curIdx === 0 ? 0.3 : 1 }}>&larr; Prev</button>
+          <button onClick={() => setCurIdx(Math.min(questions.length - 1, curIdx + 1))} disabled={curIdx === questions.length - 1} style={{ ...S.navBtn, background: cardBg, border: `1.5px solid ${border}`, color: text, opacity: curIdx === questions.length - 1 ? 0.3 : 1 }}>Next &rarr;</button>
         </div>
         <div style={{ textAlign: 'center', fontSize: 10, color: subText, fontFamily: 'monospace', paddingBottom: 4 }}>
-          ← → navigate · A/B/C/D select · Space reveal · F flag
+          &larr; &rarr; navigate &middot; A/B/C/D select &middot; Space reveal &middot; F flag
         </div>
 
       </div>
