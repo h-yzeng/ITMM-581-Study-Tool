@@ -28,9 +28,10 @@ export function HomeScreen({
   const pill  = active => ({ ...S.pill,     background: active ? pillSel : cardBg, color: active ? '#fff' : text, border: `1.5px solid ${active ? pillSel : border}` })
   const count = active => ({ ...S.countBtn, background: active ? pillSel : cardBg, color: active ? '#fff' : text, border: `1.5px solid ${active ? pillSel : border}` })
 
-  const wCount = wrongBank ? Object.keys(wrongBank).length : 0
-  const fCount = flagged   ? Object.keys(flagged).length   : 0
-  const total  = stats?.totalAnswered || 0
+  const wCount   = wrongBank ? Object.keys(wrongBank).length : 0
+  const fCount   = flagged   ? Object.keys(flagged).length   : 0
+  const total    = stats?.totalAnswered || 0
+  const qByChap  = QUESTION_BANK.reduce((a, q) => { a[q.chapter] = (a[q.chapter] || 0) + 1; return a }, {})
 
   return (
     <div style={{ ...S.page, background: bg }}>
@@ -82,7 +83,10 @@ export function HomeScreen({
           <label style={{ ...S.label, color: subText }}>CHAPTER FOCUS</label>
           <div style={S.pills}>
             {CHAPTERS.map(c => (
-              <button key={c.id} onClick={() => setSelChapter(c.id)} style={pill(selChapter === c.id)}>{c.label}</button>
+              <button key={c.id} onClick={() => setSelChapter(c.id)} style={pill(selChapter === c.id)}>
+                {c.label}
+                {c.id !== 'all' && <span style={{ fontSize: 10, opacity: 0.65, marginLeft: 5 }}>({qByChap[parseInt(c.id)] || 0})</span>}
+              </button>
             ))}
           </div>
         </div>

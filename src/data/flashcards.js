@@ -65,6 +65,56 @@ export const FLASHCARDS = [
     front: '5 Types of Angel Investors',
     back: '1. Corporate Angels — former executives; want active advisory role\n2. Entrepreneurial Angels — successful entrepreneurs; hands-on, most valuable mentors\n3. Enthusiast Angels — wealthy hobbyists; invest for fun, not very active\n4. Micromanagement Angels — want control; can be difficult when company struggles\n5. Professional Angels — doctors, lawyers; passive investors, small checks\n\nAngels invest in 20–30x more companies than VCs.',
   },
+  {
+    ch: 8, topic: 'Debt Financing',
+    front: 'SBA Loan Programs — key types',
+    back: 'SBA (Small Business Administration) guarantees loans made by approved lenders:\n• SBA 7(a) — most common; up to $5M; general business purposes\n• SBA 504 — for fixed assets (real estate, equipment); up to $5.5M\n• SBA Microloan — up to $50K; for very small businesses/startups\n• SBA SBIC — investment capital through licensed investors\n\nSBA does NOT lend directly — it reduces lender risk to increase access to capital.',
+  },
+  {
+    ch: 8, topic: 'Equity Financing',
+    front: 'Pre-money vs Post-money Valuation',
+    back: 'Pre-money: company value BEFORE new investment\nPost-money: company value AFTER new investment\n\nFormula: Post-money = Pre-money + Investment\n\nExample:\n• Pre-money: $4M\n• Investment: $1M\n• Post-money: $5M\n• Investor owns: $1M ÷ $5M = 20%\n\nFounders lose 20% equity. Knowing this prevents founder undervaluation at the negotiating table.',
+  },
+  {
+    ch: 8, topic: 'IPOs and SPACs',
+    front: 'Regulation A+ (Mini-IPO) — key facts',
+    back: '• Allows raising up to $75M/year from the public without full SEC registration\n• Two tiers: Tier 1 (up to $20M), Tier 2 (up to $75M)\n• Open to non-accredited (retail) investors — unlike Reg D\n• Requires an offering circular (less than full S-1)\n• Faster and cheaper than a traditional IPO\n• Sometimes called a "mini-IPO"',
+  },
+  {
+    ch: 8, topic: 'Crowdfunding',
+    front: 'JOBS Act & Regulation CF — key rules',
+    back: 'JOBS Act (2012) legalized equity crowdfunding for non-accredited investors.\n\nRegulation CF rules:\n• Companies can raise up to $5M/year (raised from $1.07M in 2021)\n• Must use an SEC-registered intermediary (funding portal or broker-dealer)\n• Investor limits based on income/net worth for non-accredited investors\n• Must disclose financials, business plan, and use of funds\n• 12-month lock-up period on securities before resale',
+  },
+  {
+    ch: 8, topic: 'Venture Capital',
+    front: 'VC Term Sheet — key provisions',
+    back: 'A term sheet outlines proposed investment terms before definitive documents:\n• Valuation (pre-money)\n• Investment amount and % ownership\n• Liquidation preference (1x non-participating = founder-friendly; participating = investor-friendly)\n• Anti-dilution (broad-based weighted average = most founder-friendly)\n• Board composition\n• Vesting schedule (4 years, 1-year cliff is standard)\n• Pro rata rights — right to invest in future rounds\n• Information rights\n\nTerm sheets are non-binding but set the negotiating framework.',
+  },
+  {
+    ch: 8, topic: 'Angel Financing',
+    front: 'Angel Investor Due Diligence Process',
+    back: 'Typical angel due diligence steps:\n1. Initial screen — pitch deck review, fit with investment thesis\n2. Management meeting — founders\' passion, coachability, domain expertise\n3. Reference checks — customers, former colleagues, prior investors\n4. Legal review — IP ownership, cap table, existing agreements\n5. Financial review — burn rate, runway, unit economics\n6. Market validation — independent customer discovery\n7. Term negotiation — SAFE or convertible note most common at angel stage\n\nAngels invest personal capital; process is less formal than VC but increasingly rigorous.',
+  },
+  {
+    ch: 8, topic: 'Private Placements',
+    front: 'Regulation D — Rules 504, 506(b), 506(c)',
+    back: 'Rule 504: Up to $10M; any investors; state securities laws still apply\n\nRule 506(b): Unlimited amount; up to 35 non-accredited + unlimited accredited investors; NO general solicitation\n\nRule 506(c): Unlimited amount; ONLY accredited investors; general solicitation and advertising ALLOWED (post-JOBS Act)\n\nAccredited Investor definition: net worth >$1M (excl. primary home) OR income >$200K ($300K joint) for 2+ years',
+  },
+  {
+    ch: 8, topic: 'Crowdfunding',
+    front: 'Rewards Crowdfunding — success factors (Kickstarter/Indiegogo)',
+    back: '• Compelling video — campaigns with video raise ~85% more on average\n• Tiered rewards — early-bird discounts create urgency\n• Realistic all-or-nothing goal — builds backer trust\n• Pre-launch audience — email list and social following before launch\n• Frequent updates — transparency builds community trust\n• Strong PR push in first 48 hours — most campaigns are front-loaded\n\nAverage Kickstarter success rate: ~38%\nDesign and tech categories outperform average.',
+  },
+  {
+    ch: 8, topic: 'Angel Financing',
+    front: 'Angel Networks and Platforms',
+    back: '• Angel groups: investors co-invest and share due diligence (e.g., Tech Coast Angels, Golden Seeds)\n• AngelList: online platform connecting startups with angels; enables syndicates\n• Syndicate: lead angel negotiates deal; others co-invest for carried interest\n• Angels invest in 20–30x more companies than VCs\n• Average angel deal: $25K–$100K; groups can pool $500K+\n• Most active sectors: software, healthcare, consumer goods\n\nAngels provide not just capital but mentorship, introductions, and credibility.',
+  },
+  {
+    ch: 8, topic: 'Bootstrapping',
+    front: 'SAFE Note — what it is and why startups use it',
+    back: 'SAFE (Simple Agreement for Future Equity) — converts to equity at a future priced round.\n• Created by Y Combinator in 2013\n• NOT a loan — no interest, no maturity date\n• Simpler and cheaper than a convertible note\n• Investor receives equity later at a discount OR via a valuation cap (whichever is more favorable)\n• Increasingly dominant at pre-seed/seed stage\n\nVs. convertible note: SAFE has no debt obligation; convertible note accrues interest and has a maturity date.',
+  },
   // ── Chapter 9: Legal Challenges ───────────────────────────────────────────
   {
     ch: 9, topic: 'Patents',
@@ -106,6 +156,66 @@ export const FLASHCARDS = [
     front: 'Chapter 7 vs Chapter 11 vs Chapter 13 Bankruptcy',
     back: 'Chapter 7 (Liquidation):\n• Assets sold by trustee; debts discharged\n• Business ceases operations\n\nChapter 11 (Reorganization):\n• Debtor continues operating under court-approved restructuring plan\n• Most complex; used by businesses and individuals with large debts\n• Debtor-in-possession manages the business\n\nChapter 13 (Adjustment of Debts):\n• For individuals with regular income\n• 3-5 year repayment plan',
   },
+  {
+    ch: 9, topic: 'B Corps and L3Cs',
+    front: 'What is a Benefit Corporation (B Corp)?',
+    back: 'A for-profit corporation legally required to consider social and environmental impact alongside profit.\n• Available in 35+ states; legally distinct from a regular C-Corp\n• Directors have fiduciary duty to BOTH shareholders AND all stakeholders\n• B Lab certification: third-party certification requiring 80+ point B Impact Assessment\n• Examples: Patagonia, Ben & Jerry\'s, Warby Parker\n\nKey distinction:\n• Benefit Corporation = legal entity structure\n• Certified B Corp (B Lab) = third-party certification any entity can earn',
+  },
+  {
+    ch: 9, topic: 'B Corps and L3Cs',
+    front: 'What is an L3C (Low-Profit LLC)?',
+    back: 'A hybrid between a nonprofit and a for-profit LLC; designed to attract philanthropic investments (PRIs).\n• Primary purpose must be social/charitable; profit is secondary\n• Designed to qualify for Program-Related Investments (PRIs) from foundations (which must deploy 5% of assets annually)\n• Available in limited states (less common than B Corps)\n• Less popular than Benefit Corporations due to unclear tax treatment\n• Key advantage: can accept both charitable and commercial investment',
+  },
+  {
+    ch: 9, topic: 'B Corps and L3Cs',
+    front: 'Social Enterprise Forms Comparison',
+    back: 'Nonprofit 501(c)(3): no profit distribution; tax-exempt; donations deductible; mission-driven\n\nCooperative: owned by members; profits as patronage dividends; democratic voting\n\nL3C: hybrid LLC; primary purpose is charitable; can receive PRIs from foundations\n\nBenefit Corporation: for-profit; legally required to consider all stakeholders\n\nCertified B Corp: any legal entity; scoring 80+ on B Impact Assessment; annual recertification required',
+  },
+  {
+    ch: 9, topic: 'Patents',
+    front: 'Provisional Patent Application — purpose and limits',
+    back: '• Establishes "patent pending" status for 12 months\n• Less expensive and detailed than a full utility patent application\n• Does NOT become a patent on its own — must file full application within 12 months\n• Useful for: testing market before committing to full filing costs ($10K–$15K+)\n• Sets priority date — critical if another inventor files a similar patent\n• Cannot be extended; if full application not filed in 12 months, provisional expires\n\nStrategy: file provisional to secure priority date, then use 12 months to refine and fundraise.',
+  },
+  {
+    ch: 9, topic: 'Patents',
+    front: 'Patent vs Trade Secret — when to choose each',
+    back: 'Choose Patent when:\n• Innovation can be reverse-engineered by competitors\n• You want 20 years of legal exclusivity\n• Strong market position justifies mandatory public disclosure\n\nChoose Trade Secret when:\n• Innovation is very difficult to reverse-engineer (formulas, algorithms)\n• Protection needed beyond 20 years\n• Cost of patent prosecution outweighs benefits\n• Perpetual protection is preferable\n\nClassic example: Coca-Cola chose trade secret over patent — formula kept secret for 130+ years vs. only a 20-year patent window.',
+  },
+  {
+    ch: 9, topic: 'Trademarks and Trade Secrets',
+    front: 'Trademark Dilution vs Trademark Infringement',
+    back: 'Infringement: unauthorized use that causes CONSUMER CONFUSION about the source or sponsorship of goods.\n\nDilution: weakening of a FAMOUS mark\'s distinctiveness even WITHOUT confusion:\n• Blurring — using a similar mark on unrelated goods (e.g., "Kodak" toothpaste)\n• Tarnishment — associating famous mark with inferior or unseemly products\n\nFederal Trademark Dilution Act (1995) + Dilution Revision Act (2006) protect famous marks.\nKey difference: dilution claims require fame but NOT proof of consumer confusion.',
+  },
+  {
+    ch: 9, topic: 'Trademarks and Trade Secrets',
+    front: 'USPTO Trademark Registration — Principal vs Supplemental Register',
+    back: 'Principal Register (stronger):\n• Nationwide constructive notice of ownership\n• Presumption of validity in infringement suits\n• Can become "incontestable" after 5 years of continuous use\n• Basis for foreign filing\n\nSupplemental Register (weaker):\n• For marks not yet distinctive enough for Principal Register\n• Descriptive marks can register here first\n• Cannot sue for infringement in federal court\n\n™ = common law / intent-to-use\n® = federally registered on Principal Register only',
+  },
+  {
+    ch: 9, topic: 'Corporations',
+    front: 'S-Corporation — eligibility requirements',
+    back: 'To qualify for S-Corp election (IRS Form 2553):\n• Maximum 100 shareholders\n• Shareholders must be U.S. citizens or permanent residents\n• Only ONE class of stock (voting vs. non-voting ok, but identical economic rights)\n• Cannot be owned by C-Corps, most LLCs, or non-qualifying trusts\n\nBenefits:\n• Pass-through taxation — no double tax\n• Shareholders can reduce self-employment tax by taking a reasonable salary\n\nVs. LLC: S-Corp is more rigid but better for SE-tax planning; LLC allows more flexible ownership.',
+  },
+  {
+    ch: 9, topic: 'LLCs and S-Corps',
+    front: 'LLC Formation and Operating Agreement',
+    back: 'Formation: File Articles of Organization with state + pay filing fee ($50–$500)\n\nOperating Agreement (not always required by state but critical):\n• Member-managed vs. manager-managed structure\n• Capital contributions and ownership percentages\n• Profit distribution rules (can differ from ownership %)\n• Voting thresholds for major decisions\n• Membership transfer restrictions\n• Dissolution procedures\n\nLLCs offer maximum flexibility — operating agreement can customize almost any aspect of governance unlike corporations bound by state default statutes.',
+  },
+  {
+    ch: 9, topic: 'Partnerships',
+    front: 'Key Contents of a Partnership Agreement',
+    back: 'A partnership agreement should address:\n1. Capital contributions — who puts in what\n2. Profit/loss distribution — equally or by contribution %\n3. Management authority and voting rights\n4. Salaries and draws for working partners\n5. Admission of new partners\n6. Buyout/exit provisions (buy-sell agreement)\n7. Death or disability of a partner\n8. Dispute resolution mechanism\n9. Non-compete and confidentiality clauses\n10. Duration of partnership\n\nWithout an agreement, default rules of RUPA (Revised Uniform Partnership Act) govern — often unfavorable.',
+  },
+  {
+    ch: 9, topic: 'Copyrights',
+    front: 'Work-for-Hire Doctrine',
+    back: 'Work created by an employee within the scope of employment automatically belongs to the EMPLOYER, not the creator.\n\nAlso applies to commissioned works under written agreement when the work falls in 9 statutory categories (e.g., contribution to collective work, translation, instructional text).\n\nCritical for entrepreneurs:\n• Always use written work-for-hire or IP assignment agreements with contractors\n• Without them, freelancers may own IP they created for you\n• Especially critical for: software, logos, marketing materials, product designs\n\nVerify IP ownership before pitching investors — undisclosed ownership gaps kill deals in due diligence.',
+  },
+  {
+    ch: 9, topic: 'Bankruptcy',
+    front: 'Automatic Stay and Exempt Assets in Bankruptcy',
+    back: 'Automatic Stay (§362): immediate halt on ALL collection actions upon filing\n• Stops: lawsuits, foreclosures, wage garnishments, creditor calls\n• Gives debtor breathing room to reorganize\n\nExempt Assets in Chapter 7 (vary by state):\n• Homestead (unlimited in TX and FL; capped in other states)\n• Retirement accounts (401k, IRA generally fully protected)\n• Vehicle up to a value threshold\n• Tools of the trade\n• Basic household goods\n\nNon-exempt assets are liquidated by the trustee to pay creditors.',
+  },
   // ── Chapter 10: Marketing Challenges ──────────────────────────────────────
   {
     ch: 10, topic: 'Entrepreneurial Marketing',
@@ -142,6 +252,66 @@ export const FLASHCARDS = [
     front: 'Components of an Entrepreneurial Marketing Plan',
     back: '1. Current marketing research — sales analysis, market share analysis, cost analysis\n2. Customer analysis — demographics, needs, buying behavior\n3. Competitive analysis — direct and indirect competitors, market positioning\n4. Marketing goals — quantified targets (revenue, market share, units)\n5. Marketing strategies — 4Ps customized for target segments\n6. Financial projections — marketing budget, ROI expectations',
   },
+  {
+    ch: 10, topic: '4Cs Marketing Framework',
+    front: '4Cs Marketing Framework vs 4Ps — what they are',
+    back: '4Ps (seller perspective):\n• Product, Price, Place, Promotion\n\n4Cs (customer perspective):\n• Customer Solution — what need does it solve? (replaces Product)\n• Customer Cost — total cost of ownership, not just price (replaces Price)\n• Convenience — ease of purchase and use (replaces Place)\n• Communication — two-way dialogue, not just ads (replaces Promotion)\n\nEntrepreneurs prefer 4Cs because it forces a customer-centric view before designing the offering.',
+  },
+  {
+    ch: 10, topic: '4Cs Marketing Framework',
+    front: '4Cs — applying each element for a startup',
+    back: 'Customer Solution: validate the problem before building; start with customer pain points, not product features\n\nCustomer Cost: price is only one component; include switching costs, time, and learning curve; use value-based pricing\n\nConvenience: reduce friction at every step — discovery, trial, purchase, usage; match channels to customer behavior\n\nCommunication: social media enables two-way conversations at low cost; word-of-mouth and referrals are most cost-effective for early-stage ventures',
+  },
+  {
+    ch: 10, topic: 'Market Research',
+    front: 'Primary vs Secondary Market Research',
+    back: 'Primary Research (firsthand collection):\n• Surveys — quantitative, scalable\n• Focus groups — qualitative group insights\n• Interviews — deep individual insights; best for complex B2B\n• Observation — watching behavior in context\n• A/B testing — direct behavioral data\n\nSecondary Research (existing data):\n• Government sources (Census, Bureau of Labor, SBA)\n• Trade associations and industry reports\n• Academic journals\n• Nielsen, Forrester, IBISWorld (paid)\n\nRule: Start with secondary (cheap), then validate with primary.',
+  },
+  {
+    ch: 10, topic: 'Market Research',
+    front: 'TAM, SAM, SOM — Market Sizing Definitions',
+    back: 'TAM (Total Addressable Market): total global revenue if you captured 100% market share\n\nSAM (Serviceable Addressable Market): portion of TAM you can realistically serve given geography, product fit, and channel constraints\n\nSOM (Serviceable Obtainable Market): realistic share you can capture in 3–5 years given competition and resources\n\nInvestors care most about SOM — the credible near-term target.\n\nExample (fitness app):\n• TAM: global fitness industry = $96B\n• SAM: U.S. app users = $12B\n• SOM: Year-1 realistic target = $5M',
+  },
+  {
+    ch: 10, topic: 'Social Media Marketing',
+    front: 'Social Media Platforms — best uses for entrepreneurs',
+    back: 'Instagram: visual products, B2C, lifestyle; Stories/Reels for organic reach; influencer partnerships\n\nLinkedIn: B2B, professional services, thought leadership content\n\nTikTok: highest organic reach currently; short-form video; Gen Z/Millennial audiences\n\nFacebook: older demographics; highly targeted paid ads; Groups for community building\n\nYouTube: long-form tutorials and demos; strong SEO value; high purchase intent searches\n\nKey principle: be where your customers already are — not where you want to be.',
+  },
+  {
+    ch: 10, topic: 'Social Media Marketing',
+    front: 'Viral Marketing and Word-of-Mouth — STEPPS Framework',
+    back: 'Word-of-mouth is the most trusted and cost-effective marketing channel (92% of consumers trust peer recommendations over ads).\n\nContagious (Jonah Berger) STEPPS framework — 6 triggers of viral content:\n1. Social Currency — makes the sharer look good\n2. Triggers — environmental cues that remind people of the product\n3. Emotion — high-arousal emotions (awe, humor, anger) drive sharing\n4. Public — visible behavior is imitated\n5. Practical Value — useful content people share to help others\n6. Stories — narratives that naturally carry the brand message',
+  },
+  {
+    ch: 10, topic: 'Consumer Behavior',
+    front: '5-Stage Consumer Decision-Making Process',
+    back: '1. Problem Recognition — consumer identifies a need or desire\n2. Information Search — internal memory first, then external (reviews, friends, search)\n3. Evaluation of Alternatives — comparing options on key criteria (price, features, trust)\n4. Purchase Decision — selecting the product; can be disrupted by negative reviews or stock-outs\n5. Post-Purchase Evaluation — satisfaction → loyalty → positive WOM; dissatisfaction → returns/complaints\n\nMarketing application:\n• Stage 1: trigger awareness\n• Stage 2: strong SEO and review presence\n• Stage 3: comparison advantages\n• Stage 5: follow-up emails drive repeat purchase and referrals',
+  },
+  {
+    ch: 10, topic: 'Pricing Strategies',
+    front: 'Price Skimming vs Penetration Pricing',
+    back: 'Price Skimming:\n• Launch HIGH; lower gradually over time\n• Best for: innovative products, early adopters willing to pay premium\n• Risk: attracts competition; alienates price-sensitive mainstream customers\n• Examples: new iPhone models, video game consoles at launch\n\nPenetration Pricing:\n• Launch LOW to build market share; raise later\n• Best for: price-sensitive markets, high fixed-cost businesses needing volume\n• Risk: signals low quality; hard to raise prices later; can start price wars\n• Examples: Netflix initial subscription, Kindle Fire\n\nEntrepreneurs usually choose penetration when competing against established incumbents.',
+  },
+  {
+    ch: 10, topic: 'Entrepreneurial Marketing',
+    front: 'AIDA Framework — buyer journey stages',
+    back: 'AIDA = four stages a buyer moves through before purchase:\n\n1. Attention (Awareness) — prospect learns the brand exists\n   Tactics: paid ads, PR, viral content, SEO\n\n2. Interest — prospect engages and wants to know more\n   Tactics: website content, demos, email nurturing\n\n3. Desire — prospect wants this specific product\n   Tactics: testimonials, free trials, comparison tools\n\n4. Action — prospect makes the purchase\n   Tactics: strong CTA, easy checkout, limited-time offers\n\nEntrepreneurs often skip to "Action" too quickly. Building awareness and interest first is critical for sustainable growth.',
+  },
+  {
+    ch: 10, topic: 'Distribution Channels',
+    front: 'Direct vs Indirect Distribution — trade-offs',
+    back: 'Direct (manufacturer → consumer):\n• Higher margins — no intermediary markup\n• Direct customer relationship and data ownership\n• Requires investment in sales and fulfillment infrastructure\n• Examples: Tesla, Warby Parker, Dell\n\nIndirect (via wholesalers/distributors/retailers):\n• Faster market penetration — leverage existing networks\n• Lower upfront investment\n• Less control over pricing, shelf placement, and customer experience\n• Examples: Coca-Cola, Procter & Gamble\n\nStartup pattern: start direct to learn, then add indirect channels as volume grows.',
+  },
+  {
+    ch: 10, topic: 'Market Segmentation',
+    front: 'Undifferentiated vs Differentiated vs Concentrated Marketing',
+    back: 'Undifferentiated (mass marketing):\n• One offer to entire market; only viable for commodities (salt, gasoline)\n\nDifferentiated:\n• Separate offers for multiple segments\n• Higher cost but reduces over-reliance on one group\n\nConcentrated (niche):\n• Focus entirely on ONE segment; become the best option for that group\n• Best for resource-constrained entrepreneurs\n• Risk: vulnerable if the niche shrinks or is disrupted\n\nMicromarketing:\n• Hyper-personalized to individuals or micro-geographies\n• Enabled by big data and programmatic advertising',
+  },
+  {
+    ch: 10, topic: 'Marketing Plan',
+    front: 'Customer Acquisition Cost (CAC) vs Customer Lifetime Value (CLV)',
+    back: 'CAC: total cost to acquire one customer\nCAC = Total Marketing & Sales Spend ÷ New Customers Acquired\n\nCLV (Customer Lifetime Value): total revenue a customer generates over the relationship\nSimple CLV = Average Purchase Value × Purchase Frequency × Customer Lifespan\n\nThe fundamental rule of sustainable growth:\nCLV must be GREATER than CAC (ideally CLV:CAC ≥ 3:1)\n\nPayback period: months to recover CAC from gross margin\n\nImplication: a business that acquires customers for $100 but each customer only generates $80 lifetime is structurally losing money no matter how fast it grows.',
+  },
   // ── Chapter 12: Business Plan ──────────────────────────────────────────────
   {
     ch: 12, topic: 'Business Model Canvas',
@@ -177,5 +347,65 @@ export const FLASHCARDS = [
     ch: 12, topic: 'Pitching the Plan',
     front: 'Elevator Pitch vs Investor Pitch Deck',
     back: 'Elevator Pitch (30–60 seconds):\n• Hook → Problem → Solution → Value Proposition → Ask\n• Must work without slides or props\n\nInvestor Pitch Deck (10–12 slides):\n1. Problem\n2. Solution\n3. Market size\n4. Business model\n5. Traction/evidence\n6. Competition\n7. Marketing strategy\n8. Team\n9. Financial projections\n10. Funding ask\n\nDue diligence follows a successful pitch.',
+  },
+  {
+    ch: 12, topic: 'Planning Pitfalls',
+    front: '10 Common Business Plan Mistakes',
+    back: '1. No clear value proposition or differentiation\n2. Unrealistic "hockey stick" financial projections with no basis\n3. Ignoring or underestimating the competition\n4. Vague target market ("everyone is our customer")\n5. Weak or incomplete management team\n6. No clear use of funds\n7. Plan is too long, dense, or poorly formatted\n8. No exit strategy or liquidity event for investors\n9. Outdated or unverified market data\n10. Inconsistencies between sections (e.g., financials don\'t match the strategy)\n\nThe plan forces you to confront weaknesses before spending money. Failing to plan = planning to fail.',
+  },
+  {
+    ch: 12, topic: 'Planning Pitfalls',
+    front: 'Why Business Plans Fail to Attract Investors',
+    back: 'Most common investor rejections:\n• Management team is weak, incomplete, or lacks relevant experience\n• Market is too small (<$50M) or not growing\n• No defensible competitive advantage or moat\n• Financial projections not credible (assumptions not shown)\n• No evidence of customer validation or traction\n• Founder overvalues idea vs. execution capability\n• No specific ask — plan doesn\'t state how much is needed or why\n\nInvestors evaluate: people first, market second, product third.\n"Show me you understand this problem better than anyone else in the room."',
+  },
+  {
+    ch: 12, topic: 'Milestone Schedule',
+    front: 'Milestone Schedule — purpose and key milestones to include',
+    back: 'A milestone schedule translates the business plan into a timeline of measurable achievements.\n\nPurpose:\n• Demonstrates founders have thought through execution, not just strategy\n• Provides accountability benchmarks for the team\n• Identifies critical dependencies and resource needs\n\nTypical milestones:\n• Prototype/product completion\n• First customer or first revenue\n• Key management hires\n• Regulatory approvals (if applicable)\n• Break-even point\n• Next funding round\n• Key partnership agreements signed\n\nBest format: Gantt chart or milestone table with owner and target date.',
+  },
+  {
+    ch: 12, topic: 'Updating the Business Plan',
+    front: 'When and How to Update a Business Plan',
+    back: 'A business plan is a living document — update it when:\n• Market conditions change significantly\n• A major competitor enters or exits\n• Financial projections prove wrong (revise; never hide)\n• You pivot product or target market\n• A new funding round is being pursued\n• Management team changes significantly\n\nBest practices:\n• Review quarterly; formal update annually\n• Tie updates to milestone achievement or failure\n• Compare actual results to projections and explain variances\n• Keep version history to track strategic evolution\n\nUpdating = learning. A plan that never changes shows a founder isn\'t listening to the market.',
+  },
+  {
+    ch: 12, topic: 'Market and Competitor Analysis',
+    front: 'SWOT Analysis — framework and business plan application',
+    back: 'Internal factors:\n• Strengths — what you do better than competitors (tech, team, brand)\n• Weaknesses — gaps in resources, experience, or execution capacity\n\nExternal factors:\n• Opportunities — market trends, regulatory changes, competitor gaps\n• Threats — competitive responses, macro risks, substitute products\n\nStrategy links:\n• Strength + Opportunity → offensive growth strategy\n• Weakness + Threat → defensive mitigation strategy\n\nRule: every SWOT item must be specific and backed by data. Generic SWOTs ("our weakness is lack of brand awareness") add no value to investors.',
+  },
+  {
+    ch: 12, topic: 'Benefits of a Business Plan',
+    front: 'Standard Business Plan Sections in Order',
+    back: 'I. Executive Summary (written last, placed first)\nII. Business Description (mission, vision, value proposition)\nIII. Product/Service Description (features, IP, prototype status)\nIV. Management Team (bios, org chart, advisory board)\nV. Market Analysis (TAM/SAM/SOM, segmentation, trends)\nVI. Competitor Analysis (direct and indirect; differentiation)\nVII. Marketing Plan (4Cs, channels, pricing, promotion)\nVIII. Operations Plan (location, technology, supply chain)\nIX. Financial Plan (pro formas, break-even, funding ask)\nX. Appendix (supporting docs, letters of intent, patents)\n\nLength: 15–30 pages + appendix. Professional formatting is non-negotiable.',
+  },
+  {
+    ch: 12, topic: 'Financial Segment',
+    front: 'Break-Even Analysis — formula and interpretation',
+    back: 'Break-Even (units) = Fixed Costs ÷ Contribution Margin per Unit\nContribution Margin = Price per Unit − Variable Cost per Unit\n\nBreak-Even (revenue) = Fixed Costs ÷ Contribution Margin Ratio\nCM Ratio = (Price − Variable Cost) ÷ Price\n\nExample:\n• Fixed costs: $100,000\n• Price: $50/unit, Variable cost: $30/unit\n• CM per unit: $20\n• Break-even: 100,000 ÷ 20 = 5,000 units\n\nInvestors expect you to know your break-even and have a credible timeline to reach it.',
+  },
+  {
+    ch: 12, topic: 'Financial Segment',
+    front: 'Pro Forma Financial Statements — 3 required statements',
+    back: '1. Income Statement (P&L):\n   Revenue → COGS → Gross Profit → Operating Expenses → EBITDA → Net Income\n   Show monthly for Year 1, quarterly for Years 2–3\n\n2. Balance Sheet:\n   Assets = Liabilities + Equity at end of each projected year\n   Validates capital structure and solvency\n\n3. Cash Flow Statement:\n   Tracks actual cash in/out by month\n   MOST IMPORTANT — many profitable businesses fail from cash-flow timing gaps\n\nKey rule: always show your assumptions explicitly. If revenue grows 25% YoY, explain why with data.\n\nRed flag: projections with no bad months, no receivables delay, no customer churn.',
+  },
+  {
+    ch: 12, topic: 'Executive Summary',
+    front: 'Elevator Pitch formula for the Executive Summary hook',
+    back: 'The opening paragraph must immediately answer:\n• FOR WHOM — specific target customer\n• THE PROBLEM — pain point that exists today\n• OUR SOLUTION — specific product or service\n• THE BENEFIT — measurable improvement over status quo\n• THE ASK — how much capital and for what purpose\n\nFormula:\n"For [specific customer] who [has problem X], [company] provides [solution] that [delivers measurable benefit], unlike [alternatives] which [fail in specific way]."\n\nWeak hooks to avoid:\n• "We are disrupting the $50B market..."\n• "Our patent-pending technology will revolutionize..."\n\nStrong hooks are specific, brief, and jargon-free.',
+  },
+  {
+    ch: 12, topic: 'Market and Competitor Analysis',
+    front: 'Porter\'s Five Forces — competitive analysis framework',
+    back: '1. Competitive Rivalry: intensity among existing firms; high rivalry → price wars, low margins\n\n2. Threat of New Entrants: ease for new competitors to enter; high barriers protect position (patents, brand loyalty, scale economies)\n\n3. Threat of Substitutes: alternative ways to solve the same problem; limits pricing power\n\n4. Bargaining Power of Suppliers: few suppliers = they can raise prices or reduce quality\n\n5. Bargaining Power of Buyers: concentrated or price-sensitive buyers erode margins\n\nBusiness plan use: Five Forces analysis shows investors you understand the structural attractiveness of the industry. Weak position requires explicit mitigation strategy.',
+  },
+  {
+    ch: 12, topic: 'Operations and Management Segments',
+    front: 'Advisory Board vs Board of Directors',
+    back: 'Board of Directors:\n• Fiduciary legal responsibility to shareholders\n• Approves major decisions (equity raises, acquisitions, executive compensation)\n• Required for C-Corps; optional for LLCs\n• Investors typically receive board seats in exchange for funding\n• Legal liability exists\n\nAdvisory Board:\n• No fiduciary duty, no voting rights\n• Provides domain expertise, introductions, and credibility\n• Compensated with small equity (0.1–0.5%) or honoraria\n• No legal liability; easier to recruit and dismiss\n\nFor a startup plan: advisory board demonstrates access to expertise and industry credibility without diluting founder control.',
+  },
+  {
+    ch: 12, topic: 'Pitching the Plan',
+    front: 'Due Diligence Process — what happens after a successful pitch',
+    back: 'Investor due diligence is the comprehensive investigation before finalizing the investment:\n\n1. Management interviews (deep founder assessment)\n2. Market validation (independent customer calls)\n3. Legal review (IP ownership, contracts, litigation history)\n4. Financial audit (reconcile projections with actuals)\n5. Reference checks (customers, ex-employees, co-investors)\n6. Cap table review (clean ownership structure)\n7. Technical diligence (for software/deep-tech)\n\nDuration: 30–90 days (angel/seed); 3–6 months (Series A+)\n\nDeal-killers in DD: undisclosed litigation, inconsistent financials, IP not owned by company, key-person dependencies with no succession plan.',
   },
 ]

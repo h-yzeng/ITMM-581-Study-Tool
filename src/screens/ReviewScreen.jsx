@@ -1,21 +1,42 @@
+import { useState } from 'react'
 import { CHAPTER_COLORS } from '../data/chapters.js'
 import { S } from '../styles.js'
 import { DarkToggle } from '../components/DarkToggle.jsx'
 
 export function ReviewScreen({ theme, toggleDark, questions, answers, setScreen }) {
   const { dk, bg, cardBg, text, subText, border } = theme
+  const [wrongOnly, setWrongOnly] = useState(false)
+
+  const wrongCount  = questions.filter((q, i) => answers[i] !== q.answer).length
+  const displayList = wrongOnly
+    ? questions.map((q, i) => ({ q, i })).filter(({ q, i }) => answers[i] !== q.answer)
+    : questions.map((q, i) => ({ q, i }))
 
   return (
     <div style={{ ...S.page, background: bg }}>
       <DarkToggle onClick={toggleDark} dk={dk} border={border} cardBg={cardBg} />
       <div style={S.container}>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20, flexWrap: 'wrap' }}>
           <button onClick={() => setScreen('results')} style={{ ...S.backBtn, color: subText }}>&larr; Results</button>
           <h2 style={{ margin: 0, fontSize: 18, fontWeight: 700, color: text }}>Full Review</h2>
+          <div style={{ marginLeft: 'auto', display: 'flex', gap: 6 }}>
+            <button
+              onClick={() => setWrongOnly(false)}
+              style={{ ...S.pill, fontSize: 11, padding: '4px 12px', background: !wrongOnly ? '#6366f1' : cardBg, color: !wrongOnly ? '#fff' : subText, border: `1px solid ${!wrongOnly ? '#6366f1' : border}` }}
+            >
+              All ({questions.length})
+            </button>
+            <button
+              onClick={() => setWrongOnly(true)}
+              style={{ ...S.pill, fontSize: 11, padding: '4px 12px', background: wrongOnly ? '#ef4444' : cardBg, color: wrongOnly ? '#fff' : '#ef4444', border: `1px solid #ef4444` }}
+            >
+              &#10007; Wrong ({wrongCount})
+            </button>
+          </div>
         </div>
 
-        {questions.map((q, i) => {
+        {displayList.map(({ q, i }) => {
           const ok = answers[i] === q.answer
           return (
             <div key={i} style={{ ...S.reviewCard, background: cardBg, border: dk ? `1px solid ${border}` : 'none', borderLeft: `4px solid ${ok ? '#10b981' : '#ef4444'}` }}>

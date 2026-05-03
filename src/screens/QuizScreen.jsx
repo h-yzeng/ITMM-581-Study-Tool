@@ -96,8 +96,8 @@ export function QuizScreen({
                   style={{ ...S.optBtn, ...(isTF ? { flex: 1, justifyContent: 'center', fontSize: 15, fontWeight: 700, padding: '16px 0' } : {}), background: bg2, border: `1.5px solid ${bdr}`, color: col }}>
                   {!isTF && <span style={S.optLetter}>{letter}</span>}
                   <span>{opt.slice(3)}</span>
-                  {!isExam && isRev && isCorrect           && <span style={S.checkmark}>&#10003;</span>}
-                  {!isExam && isRev && isChosen && !isCorrect && <span style={S.cross}>&#10007;</span>}
+                  {!isExam && isRev && isCorrect           && <span style={{ ...S.checkmark, fontSize: 11 }}>&#10003; Correct</span>}
+                  {!isExam && isRev && isChosen && !isCorrect && <span style={{ ...S.cross, fontSize: 11 }}>&#10007; Wrong</span>}
                 </button>
               )
             })}

@@ -1,3 +1,4 @@
+import { FLASHCARDS } from '../data/flashcards.js'
 import { CHAPTER_IDS, CHAPTER_COLORS } from '../data/chapters.js'
 import { fcCardKey } from '../utils/quiz.js'
 import { saveStore } from '../hooks/useStorage.js'
@@ -15,6 +16,7 @@ export function FlashcardsScreen({
   doMarkCard, setScreen,
 }) {
   const { dk, bg, border, cardBg, text, subText } = theme
+  const fcByChap = FLASHCARDS.reduce((a, c) => { a[c.ch] = (a[c.ch] || 0) + 1; return a }, {})
 
   const fcProg           = fcCards.length > 0 ? Math.round((fcIdx + 1) / fcCards.length * 100) : 0
   const isKnown          = fcCard ? fcKnown[fcCardKey(fcCard)] : undefined
@@ -93,6 +95,7 @@ export function FlashcardsScreen({
               style={{ ...S.pill, background: fcCh === c.id ? '#6366f1' : cardBg, color: fcCh === c.id ? '#fff' : subText, border: `1px solid ${fcCh === c.id ? '#6366f1' : border}`, fontSize: 11, padding: '4px 10px' }}
             >
               {c.lbl}
+              {c.id !== 'all' && <span style={{ fontSize: 9, opacity: 0.65, marginLeft: 4 }}>({fcByChap[parseInt(c.id)] || 0})</span>}
             </button>
           ))}
         </div>
