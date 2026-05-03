@@ -278,6 +278,12 @@ export default function App() {
   const pill  = active => ({ ...S.pill,     background: active ? pillSel : cardBg, color: active ? '#fff' : text, border: `1.5px solid ${active ? pillSel : border}` })
   const count = active => ({ ...S.countBtn, background: active ? pillSel : cardBg, color: active ? '#fff' : text, border: `1.5px solid ${active ? pillSel : border}` })
 
+  const DarkToggle = (
+    <button onClick={toggleDark} style={{ ...S.darkToggle, background: cardBg, border: `1.5px solid ${border}` }}>
+      {dk ? '☀️' : '🌙'}
+    </button>
+  )
+
   // ── Session history SVG chart ─────────────────────────────────────────────
   const SChart = () => {
     const pts = sessionHistory
@@ -330,14 +336,10 @@ export default function App() {
     const weakQs = computeWeakDrill()
     return (
       <div style={{ ...S.page, background: bg }}>
+        {DarkToggle}
         <div style={S.container}>
           <div style={S.header}>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 10, marginBottom: 10 }}>
-              <div style={S.badge}>EXAM PREP</div>
-              <button onClick={toggleDark} style={{ background: 'none', border: `1px solid ${border}`, borderRadius: 20, padding: '3px 11px', cursor: 'pointer', fontSize: 11, color: subText, fontFamily: 'monospace' }}>
-                {dk ? '☀ Light' : '🌙 Dark'}
-              </button>
-            </div>
+            <div style={S.badge}>EXAM PREP</div>
             <h1 style={{ ...S.title, color: dk ? '#f1f5f9' : '#0f172a' }}>IT Entrepreneurship</h1>
             <p style={{ ...S.subtitle, color: subText }}>Kuratko 12e · Chapters 8, 9, 10 & 12</p>
           </div>
@@ -471,6 +473,7 @@ export default function App() {
     const isFlagged = q && flagged[qKey(q)]
     return (
       <div style={{ ...S.page, background: bg }}>
+        {DarkToggle}
         <div style={S.container}>
           <div style={S.topBar}>
             <button onClick={() => { clearTimeout(timerRef.current); setScreen('home') }} style={{ ...S.backBtn, color: subText }}>← Back</button>
@@ -566,6 +569,7 @@ export default function App() {
     const wrongQs = questions.filter((_, i) => answers[i] !== questions[i].answer)
     return (
       <div style={{ ...S.page, background: bg }}>
+        {DarkToggle}
         <div style={S.container}>
           <div style={{ ...S.resultsCard, background: cardBg, border: dk ? `1px solid ${border}` : 'none' }}>
             <div style={{ textAlign: 'center', marginBottom: 20 }}>
@@ -605,6 +609,7 @@ export default function App() {
   if (screen === 'review') {
     return (
       <div style={{ ...S.page, background: bg }}>
+        {DarkToggle}
         <div style={S.container}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
             <button onClick={() => setScreen('results')} style={{ ...S.backBtn, color: subText }}>← Results</button>
@@ -647,6 +652,7 @@ export default function App() {
     const rCount  = Object.keys(rightBank || {}).length
     const fCount  = Object.keys(flagged  || {}).length
     const heatmap = CHAPTER_IDS.map(ch => ({
+
       ch,
       topics: TOPICS_BY_CHAPTER[ch].map(tp => {
         const d   = byTopic[`${ch}:${tp}`] || { right: 0, wrong: 0 }
@@ -658,6 +664,7 @@ export default function App() {
     const hText  = r => r === null ? (dk ? '#475569' : '#94a3b8') : r === 0 ? '#065f46' : r < 0.3 ? '#713f12' : r < 0.6 ? '#9a3412' : '#991b1b'
     return (
       <div style={{ ...S.page, background: bg }}>
+        {DarkToggle}
         <div style={S.container}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
             <button onClick={() => setScreen('home')} style={{ ...S.backBtn, color: subText }}>← Home</button>
@@ -795,7 +802,8 @@ export default function App() {
     const goPrev = () => { setFcFlipped(false); setTimeout(() => setFcIdx(i => Math.max(0, i - 1)), 100) }
 
     return (
-      <div style={{ background: '#0f172a', minHeight: '100vh', padding: '20px 16px 48px', fontFamily: S.page.fontFamily }}>
+      <div style={{ background: '#0f172a', minHeight: '100vh', padding: '32px 20px 60px', fontFamily: S.page.fontFamily }}>
+        {DarkToggle}
         <div style={S.container}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
             <button onClick={() => setScreen('home')} style={{ ...S.backBtn, color: '#94a3b8' }}>← Back</button>
