@@ -2,36 +2,88 @@
 html, body { margin: 0; padding: 0; font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; }
 
 :focus { outline: none; }
-:focus-visible {
-  outline: 2px solid #6366f1;
-  outline-offset: 3px;
-  border-radius: 4px;
-}
+:focus-visible { outline: 2px solid #6366f1; outline-offset: 3px; border-radius: 4px; }
 
-/* Hide number input spinners */
 input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
+input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
 input[type="number"] { -moz-appearance: textfield; appearance: textfield; }
 
-/* Two-column home layout */
-.home-layout {
+/* ── Desktop: fixed sidebar + full-height main ── */
+.home-wrap {
+  height: 100vh;
+  overflow: hidden;
   display: flex;
-  gap: 20px;
-  align-items: flex-start;
+  flex-direction: column;
+  padding-right: 260px;
 }
-.main-controls {
+.home-sections {
   flex: 1;
-  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 28px 14px;
+  min-height: 0;
+  overflow: hidden;
 }
-.chapter-sidebar {
-  width: 252px;
-  flex-shrink: 0;
+/* Study-mode card area grows to fill spare height */
+.mode-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 72px;
 }
+/* Q-type + Difficulty side by side */
+.qtype-diff { display: flex; gap: 12px; }
+.qtype-diff > div { flex: 1; min-width: 0; }
 
+/* Fixed chapter-topics panel */
+.sidebar-panel {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 260px;
+  height: 100vh;
+  overflow-y: auto;
+  z-index: 50;
+  padding: 68px 12px 20px;
+  scrollbar-width: thin;
+}
+/* Mobile toggle shown only on small screens */
+.sidebar-mobile-toggle { display: none; }
+
+/* ── Mobile overrides ── */
 @media (max-width: 780px) {
-  .home-layout { flex-direction: column; }
-  .chapter-sidebar { width: 100%; }
+  .home-wrap {
+    height: auto;
+    overflow: visible;
+    padding-right: 0;
+  }
+  .home-sections {
+    overflow: visible;
+    gap: 12px;
+  }
+  .mode-section { flex: 0 0 auto; }
+  .qtype-diff { flex-direction: column; gap: 10px; }
+
+  /* Sidebar becomes static collapsible panel */
+  .sidebar-panel {
+    position: static;
+    width: 100%;
+    height: auto;
+    padding: 14px 16px 16px;
+  }
+  .sidebar-panel.hidden { display: none; }
+  .sidebar-mobile-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    padding: 10px;
+    margin: 0 0 4px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+  }
 }
