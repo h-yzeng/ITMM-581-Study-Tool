@@ -59,6 +59,16 @@ export function HomeScreen({
     return count
   })()
 
+  const poolSize = (() => {
+    let p = QUESTION_BANK
+    if (selChapter !== 'all') p = p.filter(q => String(q.chapter) === selChapter)
+    if (qType === 'mcq')       p = p.filter(q => q.type === 'mcq')
+    if (qType === 'tf')        p = p.filter(q => q.type === 'tf')
+    if (selDiff !== 'all')     p = p.filter(q => q.difficulty === selDiff)
+    if (selTopics.length > 0)  p = p.filter(q => selTopics.includes(q.topic))
+    return p.length
+  })()
+
   return (
     <div className="home-wrap" style={{ background: bg }}>
 
@@ -101,6 +111,60 @@ export function HomeScreen({
           </button>
         </div>
       )}
+
+      {/* ── Last session chip ── */}
+      {sessionHistory?.length > 0 && (() => {
+        const last = sessionHistory[sessionHistory.length - 1]
+        return (
+          <div style={{ padding: '0 28px 6px', display: 'flex', justifyContent: 'center' }}>
+            <div style={{ background: cardBg, border: `1px solid ${border}`, borderRadius: 20, padding: '4px 14px', fontSize: 11, color: subText, display: 'inline-flex', gap: 10, alignItems: 'center' }}>
+              <span style={{ fontWeight: 700, color: subText }}>Last session:</span>
+              <span style={{ color: text }}>{last.date}</span>
+              <span style={{ fontWeight: 800, fontFamily: 'monospace', color: last.pct >= 70 ? '#10b981' : '#ef4444' }}>{last.pct}%</span>
+              <span>{last.correct}/{last.total} correct</span>
+            </div>
+          </div>
+        )
+      })()}
+
+      {/* ── Per-chapter accuracy row ── */}
+      {stats?.totalAnswered > 0 && (() => {
+        const chapStats = CHAPTER_IDS.reduce((acc, ch) => {
+          const keys = Object.keys(stats.byTopic || {}).filter(k => k.startsWith(`${ch}:`))
+          const right = keys.reduce((s, k) => s + (stats.byTopic[k].right || 0), 0)
+          const wrong = keys.reduce((s, k) => s + (stats.byTopic[k].wrong || 0), 0)
+          const total = right + wrong
+          acc[ch] = { total, pct: total > 0 ? Math.round(right / total * 100) : null }
+          return acc
+        }, {})
+        return (
+          <div style={{ padding: '0 28px 8px', display: 'flex', gap: 8 }}>
+            {CHAPTER_IDS.map(ch => {
+              const cs = chapStats[ch]
+              const pct = cs.pct
+              return (
+                <div key={ch}
+                  onClick={() => { setSelChapter(String(ch)); setSelTopics([]) }}
+                  onMouseEnter={hov} onMouseLeave={unhov}
+                  style={{ flex: 1, background: cardBg, border: `1px solid ${selChapter === String(ch) ? CHAPTER_COLORS[ch] : border}`, borderRadius: 8, padding: '8px 10px', textAlign: 'center', cursor: 'pointer', transition: 'opacity 0.15s' }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, color: CHAPTER_COLORS[ch], marginBottom: 2 }}>Ch.{ch}</div>
+                  {pct !== null ? (
+                    <>
+                      <div style={{ fontSize: 16, fontWeight: 800, fontFamily: 'monospace', color: pct >= 70 ? '#10b981' : pct >= 50 ? '#f59e0b' : '#ef4444' }}>{pct}%</div>
+                      <div style={{ height: 3, background: dk ? '#334155' : '#e2e8f0', borderRadius: 2, marginTop: 3, marginBottom: 2 }}>
+                        <div style={{ height: '100%', width: `${pct}%`, background: CHAPTER_COLORS[ch], borderRadius: 2, transition: 'width 0.4s' }} />
+                      </div>
+                      <div style={{ fontSize: 9, color: subText, fontFamily: 'monospace' }}>{cs.total}q</div>
+                    </>
+                  ) : (
+                    <div style={{ fontSize: 11, color: subText, marginTop: 4 }}>—</div>
+                  )}
+                </div>
+              )
+            })}
+          </div>
+        )
+      })()}
 
       {/* ── Main sections ── */}
       <div className="home-sections">
@@ -215,7 +279,15 @@ export function HomeScreen({
                   <span style={{ fontSize: 13, fontWeight: 800, color: CHAPTER_COLORS[item.ch] }}>{item.title}</span>
                   <span style={{ fontSize: 10, color: subText }}>{item.sub}</span>
                 </div>
-                {item.topics.map(t => <div key={t} style={{ ...S.topicItem, color: subText }}>&middot; {t}</div>)}
+                {TOPICS_BY_CHAPTER[item.ch].map(t => (
+                  <div key={t}
+                    onClick={() => { setSelChapter(String(item.ch)); setSelTopics([t]) }}
+                    onMouseEnter={e => { e.currentTarget.style.color = CHAPTER_COLORS[item.ch] }}
+                    onMouseLeave={e => { e.currentTarget.style.color = subText }}
+                    style={{ ...S.topicItem, color: subText, cursor: 'pointer' }}>
+                    &middot; {t}
+                  </div>
+                ))}
               </div>
             ))}
           </div>
@@ -229,7 +301,7 @@ export function HomeScreen({
           )}
           {mode === 'cram' && (
             <div style={{ ...S.examBanner, background: dk ? '#1a1a3e' : '#ede9fe', border: '1px solid #8b5cf6', color: '#4c1d95', marginBottom: 8 }}>
-              <strong>Cram Mode:</strong> every question matching your filters, shuffled &middot; no timer, reveal as you go
+              <strong>Cram Mode:</strong> {poolSize > 0 ? `${poolSize} question${poolSize !== 1 ? 's' : ''} queued` : 'No questions match'} &middot; shuffled &middot; no timer, reveal as you go
             </div>
           )}
 
@@ -265,22 +337,13 @@ export function HomeScreen({
             </div>
           )}
 
-          {mode !== 'flashcards' && (() => {
-            let pool = QUESTION_BANK
-            if (selChapter !== 'all')    pool = pool.filter(q => String(q.chapter) === selChapter)
-            if (qType === 'mcq')         pool = pool.filter(q => q.type === 'mcq')
-            if (qType === 'tf')          pool = pool.filter(q => q.type === 'tf')
-            if (selDiff !== 'all')       pool = pool.filter(q => q.difficulty === selDiff)
-            if (selTopics.length > 0)    pool = pool.filter(q => selTopics.includes(q.topic))
-            const poolSize = pool.length
-            return (
-              <div style={{ textAlign: 'center', fontSize: 12, color: poolSize > 0 ? '#10b981' : '#ef4444', marginBottom: 8 }}>
-                {poolSize > 0
-                  ? `${poolSize} question${poolSize !== 1 ? 's' : ''} match your filters${mode === 'cram' ? '' : ` - drawing ${Math.min(qCount, poolSize)}`}`
-                  : 'No questions match these filters - try adjusting Chapter, Type, or Difficulty'}
-              </div>
-            )
-          })()}
+          {mode !== 'flashcards' && (
+            <div style={{ textAlign: 'center', fontSize: 12, color: poolSize > 0 ? '#10b981' : '#ef4444', marginBottom: 8 }}>
+              {poolSize > 0
+                ? `${poolSize} question${poolSize !== 1 ? 's' : ''} match your filters${mode === 'cram' ? '' : ` - drawing ${Math.min(qCount, poolSize)}`}`
+                : 'No questions match these filters - try adjusting Chapter, Type, or Difficulty'}
+            </div>
+          )}
 
           <button onClick={startSession} onMouseEnter={hov} onMouseLeave={unhov}
             style={{ ...S.startBtn, background: pillSel, transition: 'opacity 0.15s' }}>

@@ -82,8 +82,6 @@ export function FlashcardsScreen({
     padding: '52px 32px 36px',
     display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
     gap: 16,
-    backfaceVisibility: 'hidden',
-    WebkitBackfaceVisibility: 'hidden',
     transition: 'border-color 0.2s',
     overflow: 'hidden',
   }
@@ -214,17 +212,12 @@ export function FlashcardsScreen({
             tabIndex={0}
             aria-label={fcFlipped ? 'Answer side. Press Enter or Space to see question.' : 'Question side. Press Enter or Space to flip to answer.'}
             onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setFcFlipped(f => !f) } }}
-            style={{ position: 'relative', minHeight: 280, perspective: '1200px', marginBottom: 14, cursor: 'pointer' }}
+            style={{ position: 'relative', minHeight: 280, perspective: '900px', marginBottom: 14, cursor: 'pointer' }}
           >
-            <div style={{
-              position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
-              transformStyle: 'preserve-3d',
-              transition: 'transform 0.45s cubic-bezier(0.4, 0, 0.2, 1)',
-              transform: fcFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
-            }}>
+            <div className="fc-inner" style={{ transform: fcFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)' }}>
 
               {/* FRONT - question */}
-              <div style={{ ...faceStyle, background: cardBg }}>
+              <div className="fc-face" style={{ ...faceStyle, background: cardBg }}>
                 <div style={{ position: 'absolute', top: 12, left: 14, right: 14, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <span style={{ fontSize: 10, fontFamily: 'monospace', color: subText }}>QUESTION &middot; tap or Space</span>
                   {lastSeenBadge}
@@ -238,7 +231,7 @@ export function FlashcardsScreen({
               </div>
 
               {/* BACK - answer */}
-              <div style={{ ...faceStyle, background: dk ? '#0f172a' : '#f1f5f9', transform: 'rotateY(180deg)' }}>
+              <div className="fc-face" style={{ ...faceStyle, background: dk ? '#0f172a' : '#f1f5f9', transform: 'rotateY(180deg)' }}>
                 <div style={{ position: 'absolute', top: 12, left: 14, right: 14, display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 6 }}>
                   <span style={{ fontSize: 10, fontFamily: 'monospace', color: subText }}>ANSWER &middot; tap or Space</span>
                   <div style={{ display: 'flex', gap: 4 }}>{lastSeenBadge}{nextReviewBadge}</div>

@@ -9,10 +9,17 @@ export function SChart({ sessionHistory, dk, cardBg, subText }) {
   const maxX = pts.length - 1
   const sx = i => PL + (i / maxX) * (W - PL - PR)
   const sy = p => PT + ((100 - p.pct) / 100) * (H - PT - PB)
-  const pathD = pts.map((p, i) => `${i === 0 ? 'M' : 'L'} ${sx(i).toFixed(1)} ${sy(p).toFixed(1)}`).join(' ')
+  const pathD  = pts.map((p, i) => `${i === 0 ? 'M' : 'L'} ${sx(i).toFixed(1)} ${sy(p).toFixed(1)}`).join(' ')
+  const fillD  = pathD + ` L ${sx(maxX).toFixed(1)} ${(H - PB).toFixed(1)} L ${PL.toFixed(1)} ${(H - PB).toFixed(1)} Z`
   return (
     <div style={{ overflowX: 'auto' }}>
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ display: 'block', width: '100%', height: 'auto', minWidth: 240 }}>
+        <defs>
+          <linearGradient id="schart-fill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#6366f1" stopOpacity="0.22" />
+            <stop offset="100%" stopColor="#6366f1" stopOpacity="0.02" />
+          </linearGradient>
+        </defs>
         {[0, 25, 50, 70, 90, 100].map(v => {
           const yv = sy({ pct: v })
           return (
@@ -22,6 +29,7 @@ export function SChart({ sessionHistory, dk, cardBg, subText }) {
             </g>
           )
         })}
+        <path d={fillD} fill="url(#schart-fill)" />
         <path d={pathD} fill="none" stroke="#6366f1" strokeWidth={2.5} strokeLinejoin="round" strokeLinecap="round" />
         {pts.map((p, i) => (
           <g key={i}>

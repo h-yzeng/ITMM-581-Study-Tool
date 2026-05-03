@@ -34,3 +34,14 @@ input[type="number"] { -moz-appearance: textfield; appearance: textfield; }
   .home-sections { overflow: visible; gap: 12px; }
   .qtype-diff { flex-direction: column; gap: 10px; }
 }
+
+/* ── Flashcard 3D flip ── */
+.fc-inner {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  transform-style: preserve-3d;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.fc-face {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
