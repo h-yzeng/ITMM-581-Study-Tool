@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { CHAPTERS, TOPIC_CARDS, CHAPTER_COLORS, TOPICS_BY_CHAPTER } from '../data/chapters.js'
 import { QUESTION_BANK } from '../data/questionBank.js'
 import { qKey } from '../hooks/useStorage.js'
@@ -26,6 +27,7 @@ export function HomeScreen({
   setScreen,
 }) {
   const { dk, bg, cardBg, text, subText, border, pillSel } = theme
+  const [topicsOpen, setTopicsOpen] = useState(false)
 
   const fBtn = active => ({
     ...S.filterBtn,
@@ -273,10 +275,20 @@ export function HomeScreen({
           </div>
         )}
 
-        {/* Chapter Topics — flex:1 fills remaining space */}
+        {/* Chapter Topics — flex:1 fills remaining space; collapsible on mobile */}
         <div style={{ flex: 1, minHeight: 0, overflow: 'hidden' }}>
-          <label style={lbl}>CHAPTER TOPICS</label>
-          <div style={{ ...S.topicsGrid, marginBottom: 0, marginTop: 6 }}>
+          <div className="topics-header">
+            <label style={{ ...lbl, marginBottom: 0 }}>CHAPTER TOPICS</label>
+            <button
+              className="topics-toggle"
+              onClick={() => setTopicsOpen(o => !o)}
+              style={{ color: subText, border: `1px solid ${border}`, background: cardBg }}
+            >
+              {topicsOpen ? '▲ Hide' : '▼ Show'}
+            </button>
+          </div>
+          <div className={topicsOpen ? '' : 'topics-closed'} style={{ marginTop: 6 }}>
+          <div style={{ ...S.topicsGrid, marginBottom: 0 }}>
             {TOPIC_CARDS.map(item => (
               <div key={item.ch} style={{ ...S.topicCard, background: cardBg, borderTop: `3px solid ${CHAPTER_COLORS[item.ch]}` }}>
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, marginBottom: 6 }}>
@@ -294,6 +306,7 @@ export function HomeScreen({
                 ))}
               </div>
             ))}
+          </div>
           </div>
         </div>
 

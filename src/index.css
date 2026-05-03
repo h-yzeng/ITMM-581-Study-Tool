@@ -20,19 +20,42 @@ input[type="number"] { -moz-appearance: textfield; appearance: textfield; }
   min-height: 0;
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  padding: 0 28px 16px;
+  gap: 20px;
+  padding: 0 40px 20px;
   overflow-y: auto;
 }
 /* Q-type + Difficulty side by side */
-.qtype-diff { display: flex; gap: 12px; }
+.qtype-diff { display: flex; gap: 16px; }
 .qtype-diff > div { flex: 1; min-width: 0; }
+
+/* ── Chapter topics mobile collapse ── */
+.topics-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 7px;
+}
+.topics-toggle { display: none; }
 
 /* ── Mobile overrides ── */
 @media (max-width: 780px) {
   .home-wrap { height: auto; overflow: visible; }
-  .home-sections { overflow: visible; gap: 12px; }
+  .home-sections { overflow: visible; gap: 16px; padding: 0 20px 20px; }
   .qtype-diff { flex-direction: column; gap: 10px; }
+  .topics-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 4px 10px;
+    border-radius: 6px;
+    letter-spacing: 0.3px;
+  }
+  .topics-closed { display: none !important; }
 }
 
 /* ── Flashcard 3D flip ── */
