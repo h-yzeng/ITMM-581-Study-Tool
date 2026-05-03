@@ -1,4 +1,4 @@
-// Static question bank — no API key required.
+// Static question bank - no API key required.
 // 201 questions across Chapters 8, 9, 10, 12 (MCQ + True/False)
 
 export const QUESTION_BANK = [
@@ -19,7 +19,7 @@ export const QUESTION_BANK = [
   { chapter:8, topic:"Bootstrapping", type:"mcq", difficulty:"medium",
     question:"Which of the following is listed as an ADVANTAGE of bootstrapping?",
     options:["A. Access to large amounts of external capital","B. Reduced personal financial risk","C. Full concentration on core business activities without raising external finance","D. Guaranteed mentorship from experienced investors"],
-    answer:"C", explanation:"A key advantage of bootstrapping is concentration — entrepreneurs can focus entirely on sales and product development without the distraction of fundraising." },
+    answer:"C", explanation:"A key advantage of bootstrapping is concentration - entrepreneurs can focus entirely on sales and product development without the distraction of fundraising." },
 
   { chapter:8, topic:"Bootstrapping", type:"tf", difficulty:"easy",
     question:"Dell Computers, Apple, and Meta (formerly Facebook) all had humble beginnings as bootstrapped enterprises.",
@@ -40,7 +40,7 @@ export const QUESTION_BANK = [
   { chapter:8, topic:"Debt Financing", type:"mcq", difficulty:"easy",
     question:"Which of the following is an advantage of debt financing over equity financing?",
     options:["A. No repayment obligation exists","B. No relinquishment of ownership is required","C. Lenders share in the business risk","D. Monthly payments are optional"],
-    answer:"B", explanation:"With debt financing, the entrepreneur retains full ownership. The lender simply receives interest payments and repayment of principal — they do not receive equity." },
+    answer:"B", explanation:"With debt financing, the entrepreneur retains full ownership. The lender simply receives interest payments and repayment of principal - they do not receive equity." },
 
   { chapter:8, topic:"Debt Financing", type:"mcq", difficulty:"medium",
     question:"According to the textbook, what is the MOST important question a bank asks an entrepreneur seeking a loan?",
@@ -92,7 +92,7 @@ export const QUESTION_BANK = [
   { chapter:8, topic:"IPOs and SPACs", type:"mcq", difficulty:"easy",
     question:"What does IPO stand for?",
     options:["A. Internal Profit Operation","B. Initial Public Offering","C. Institutional Private Offering","D. Integrated Portfolio Option"],
-    answer:"B", explanation:"IPO stands for Initial Public Offering — the first time a company sells its shares to the general public on a stock exchange." },
+    answer:"B", explanation:"IPO stands for Initial Public Offering - the first time a company sells its shares to the general public on a stock exchange." },
 
   { chapter:8, topic:"IPOs and SPACs", type:"mcq", difficulty:"medium",
     question:"What is a SPAC (Special Purpose Acquisition Company)?",
@@ -102,7 +102,7 @@ export const QUESTION_BANK = [
   { chapter:8, topic:"IPOs and SPACs", type:"mcq", difficulty:"medium",
     question:"Which of the following is a DISADVANTAGE of going public through an IPO?",
     options:["A. Raises significant capital for the venture","B. Provides liquidity for founders and early investors","C. Financial affairs must be made public and reported to the SEC","D. Increases brand credibility and visibility"],
-    answer:"C", explanation:"A major disadvantage of an IPO is the loss of privacy — the company must disclose financial information publicly, which many ventures prefer to keep private. It also creates ongoing SEC reporting obligations." },
+    answer:"C", explanation:"A major disadvantage of an IPO is the loss of privacy - the company must disclose financial information publicly, which many ventures prefer to keep private. It also creates ongoing SEC reporting obligations." },
 
   { chapter:8, topic:"IPOs and SPACs", type:"tf", difficulty:"medium",
     question:"In 2020, approximately 247 SPACs were created, raising about $80 billion.",
@@ -132,7 +132,7 @@ export const QUESTION_BANK = [
     answer:"C", explanation:"Regulation CF caps equity crowdfunding raises at $5 million per year and requires financial disclosures from the issuing company." },
 
   { chapter:8, topic:"Crowdfunding", type:"tf", difficulty:"easy",
-    question:"In rewards crowdfunding, entrepreneurs raise capital without incurring debt or sacrificing equity — backers receive a product or perk instead.",
+    question:"In rewards crowdfunding, entrepreneurs raise capital without incurring debt or sacrificing equity - backers receive a product or perk instead.",
     options:["A. True","B. False"], answer:"A",
     explanation:"Rewards crowdfunding (e.g., Kickstarter, Indiegogo) allows entrepreneurs to pre-sell products or offer perks in exchange for funding, with no debt or equity given to backers." },
 
@@ -140,12 +140,12 @@ export const QUESTION_BANK = [
   { chapter:8, topic:"Venture Capital", type:"mcq", difficulty:"medium",
     question:"According to Table 8.2, what return on investment do venture capitalists typically seek for a seed-stage investment?",
     options:["A. 10–20%","B. 20–30%","C. 30–50%","D. 50–100% or more"],
-    answer:"D", explanation:"Table 8.2 shows that seed-stage investments carry the highest risk and therefore VCs expect the highest returns — 50 to 100 percent or more — to compensate for the high failure rate." },
+    answer:"D", explanation:"Table 8.2 shows that seed-stage investments carry the highest risk and therefore VCs expect the highest returns - 50 to 100 percent or more - to compensate for the high failure rate." },
 
   { chapter:8, topic:"Venture Capital", type:"mcq", difficulty:"medium",
     question:"Which factor do venture capitalists consider MOST important when evaluating a new venture?",
     options:["A. The entrepreneur's credit score","B. The strength and experience of the management team","C. The geographic location of the venture","D. The age of the entrepreneur"],
-    answer:"B", explanation:"The textbook states that VCs place the management team at the top of their evaluation criteria — they are investing in the people as much as the idea." },
+    answer:"B", explanation:"The textbook states that VCs place the management team at the top of their evaluation criteria - they are investing in the people as much as the idea." },
 
   { chapter:8, topic:"Venture Capital", type:"tf", difficulty:"medium",
     question:"Venture capital investments dramatically dropped in 2023 compared to the post-pandemic peak.",
@@ -155,7 +155,7 @@ export const QUESTION_BANK = [
   { chapter:8, topic:"Venture Capital", type:"mcq", difficulty:"hard",
     question:"A venture capitalist investing at the 'bridge/IPO' stage would typically seek which level of return?",
     options:["A. 50–100%+","B. 30–50%","C. 20–30%","D. 10–15%"],
-    answer:"C", explanation:"According to Table 8.2, bridge/IPO stage investors accept lower returns (20–30%) because the risk is lower — the company is already mature and preparing to go public." },
+    answer:"C", explanation:"According to Table 8.2, bridge/IPO stage investors accept lower returns (20–30%) because the risk is lower - the company is already mature and preparing to go public." },
 
   // Angel Financing
   { chapter:8, topic:"Angel Financing", type:"mcq", difficulty:"medium",
@@ -231,12 +231,12 @@ export const QUESTION_BANK = [
   { chapter:9, topic:"Trademarks and Trade Secrets", type:"mcq", difficulty:"medium",
     question:"The Federal Trademark Dilution Act and Trademark Dilution Revision Act protect famous marks from which of the following?",
     options:["A. Dilution of distinctiveness even without direct competition or consumer confusion","B. Only direct counterfeiting by competitors","C. Use in other countries outside the U.S.","D. Infringement only if the marks are identical"],
-    answer:"A", explanation:"These acts protect famous trademarks from dilution — actions that blur or tarnish the mark's distinctiveness — even when there is no direct competition or likelihood of confusion." },
+    answer:"A", explanation:"These acts protect famous trademarks from dilution - actions that blur or tarnish the mark's distinctiveness - even when there is no direct competition or likelihood of confusion." },
 
   { chapter:9, topic:"Trademarks and Trade Secrets", type:"mcq", difficulty:"medium",
     question:"Which of the following is the classic textbook example of a trade secret?",
     options:["A. Microsoft's Windows source code patent","B. The Coca-Cola formula","C. Apple's iPhone design trademark","D. Amazon's one-click purchasing copyright"],
-    answer:"B", explanation:"The Coca-Cola formula is the classic example of a trade secret — it has never been patented (which would require disclosure) and is instead protected as a confidential trade secret through strict internal controls." },
+    answer:"B", explanation:"The Coca-Cola formula is the classic example of a trade secret - it has never been patented (which would require disclosure) and is instead protected as a confidential trade secret through strict internal controls." },
 
   { chapter:9, topic:"Trademarks and Trade Secrets", type:"tf", difficulty:"easy",
     question:"Trade secrets require formal registration with the USPTO to receive legal protection.",
@@ -271,7 +271,7 @@ export const QUESTION_BANK = [
 
   { chapter:9, topic:"Corporations", type:"mcq", difficulty:"medium",
     question:"What is the primary tax disadvantage of a C-Corporation?",
-    options:["A. Losses cannot be deducted from taxes","B. Double taxation — corporate income is taxed, then dividends are taxed again","C. Shareholders must pay self-employment tax","D. The corporation cannot deduct employee salaries"],
+    options:["A. Losses cannot be deducted from taxes","B. Double taxation - corporate income is taxed, then dividends are taxed again","C. Shareholders must pay self-employment tax","D. The corporation cannot deduct employee salaries"],
     answer:"B", explanation:"C-Corps face double taxation: the corporation pays corporate income tax on profits, and then shareholders pay personal income tax on dividends received. This is a significant disadvantage compared to pass-through entities." },
 
   { chapter:9, topic:"Corporations", type:"mcq", difficulty:"medium",
@@ -293,7 +293,7 @@ export const QUESTION_BANK = [
   { chapter:9, topic:"Bankruptcy", type:"mcq", difficulty:"medium",
     question:"Which chapter of the U.S. Bankruptcy Code deals with liquidation, where assets are sold and debts are discharged?",
     options:["A. Chapter 7","B. Chapter 11","C. Chapter 13","D. Chapter 3"],
-    answer:"A", explanation:"Chapter 7 is liquidation bankruptcy — a trustee sells the debtor's non-exempt assets and distributes the proceeds to creditors. The remaining eligible debts are discharged." },
+    answer:"A", explanation:"Chapter 7 is liquidation bankruptcy - a trustee sells the debtor's non-exempt assets and distributes the proceeds to creditors. The remaining eligible debts are discharged." },
 
   { chapter:9, topic:"Bankruptcy", type:"mcq", difficulty:"medium",
     question:"Which bankruptcy chapter allows a business to continue operating while restructuring its debts under a court-approved plan?",
@@ -330,12 +330,12 @@ export const QUESTION_BANK = [
   { chapter:10, topic:"Market Research", type:"mcq", difficulty:"medium",
     question:"Which of the following is an example of PRIMARY market research?",
     options:["A. Reading industry reports from trade publications","B. Analyzing census data","C. Conducting customer interviews and focus groups","D. Reviewing competitors' annual reports"],
-    answer:"C", explanation:"Primary research involves collecting new data firsthand — surveys, interviews, focus groups, observation. Secondary research uses existing data already collected by others." },
+    answer:"C", explanation:"Primary research involves collecting new data firsthand - surveys, interviews, focus groups, observation. Secondary research uses existing data already collected by others." },
 
   { chapter:10, topic:"Market Research", type:"tf", difficulty:"easy",
     question:"Secondary market research involves collecting new data directly from customers through surveys and interviews.",
     options:["A. True","B. False"], answer:"B",
-    explanation:"Secondary research uses existing data — industry reports, census data, trade publications, competitor filings. Primary research is what involves direct data collection from customers." },
+    explanation:"Secondary research uses existing data - industry reports, census data, trade publications, competitor filings. Primary research is what involves direct data collection from customers." },
 
   { chapter:10, topic:"Market Segmentation", type:"mcq", difficulty:"easy",
     question:"Dividing a market into subgroups based on age, gender, income, and education is an example of which type of segmentation?",
@@ -345,22 +345,22 @@ export const QUESTION_BANK = [
   { chapter:10, topic:"Market Segmentation", type:"mcq", difficulty:"medium",
     question:"Segmenting a market based on consumers' lifestyle, values, and personality traits is called:",
     options:["A. Behavioral segmentation","B. Demographic segmentation","C. Psychographic segmentation","D. Geographic segmentation"],
-    answer:"C", explanation:"Psychographic segmentation groups consumers based on psychological characteristics including lifestyle, values, personality, social class, and attitudes — factors that go beyond basic demographics." },
+    answer:"C", explanation:"Psychographic segmentation groups consumers based on psychological characteristics including lifestyle, values, personality, social class, and attitudes - factors that go beyond basic demographics." },
 
   { chapter:10, topic:"Market Segmentation", type:"mcq", difficulty:"medium",
     question:"Which segmentation type groups consumers based on usage rate, brand loyalty, and purchase occasion?",
     options:["A. Geographic","B. Demographic","C. Psychographic","D. Behavioral"],
-    answer:"D", explanation:"Behavioral segmentation categorizes consumers based on their actual behavior toward products — usage rate, loyalty status, purchase occasion, and benefits sought." },
+    answer:"D", explanation:"Behavioral segmentation categorizes consumers based on their actual behavior toward products - usage rate, loyalty status, purchase occasion, and benefits sought." },
 
   { chapter:10, topic:"Consumer Behavior", type:"mcq", difficulty:"medium",
     question:"Which category of factors influencing consumer behavior includes motivation, perception, and learning?",
     options:["A. Social factors","B. Cultural factors","C. Psychological factors","D. Personal factors"],
-    answer:"C", explanation:"Psychological factors — including motivation, perception, learning, beliefs, and attitudes — are internal mental influences on consumer decision-making." },
+    answer:"C", explanation:"Psychological factors - including motivation, perception, learning, beliefs, and attitudes - are internal mental influences on consumer decision-making." },
 
   { chapter:10, topic:"Consumer Behavior", type:"tf", difficulty:"medium",
     question:"Reference groups, family influence, and social roles are examples of SOCIAL factors that affect consumer behavior.",
     options:["A. True","B. False"], answer:"A",
-    explanation:"Social factors — including reference groups (friends, colleagues), family influence, and social roles/status — are key external influences on how consumers make purchasing decisions." },
+    explanation:"Social factors - including reference groups (friends, colleagues), family influence, and social roles/status - are key external influences on how consumers make purchasing decisions." },
 
   { chapter:10, topic:"Distribution Channels", type:"mcq", difficulty:"easy",
     question:"A distribution channel where the manufacturer sells directly to the end consumer without intermediaries is called:",
@@ -375,7 +375,7 @@ export const QUESTION_BANK = [
   { chapter:10, topic:"Distribution Channels", type:"mcq", difficulty:"medium",
     question:"Which distribution intensity level is most appropriate for convenience goods that consumers buy frequently and want to find everywhere?",
     options:["A. Selective distribution","B. Exclusive distribution","C. Intensive distribution","D. Direct-only distribution"],
-    answer:"C", explanation:"Intensive distribution places products in as many outlets as possible — appropriate for convenience goods (gum, soda, etc.) where maximum availability drives sales." },
+    answer:"C", explanation:"Intensive distribution places products in as many outlets as possible - appropriate for convenience goods (gum, soda, etc.) where maximum availability drives sales." },
 
   { chapter:10, topic:"Distribution Channels", type:"tf", difficulty:"easy",
     question:"Indirect distribution channels involve the use of intermediaries such as wholesalers, distributors, and retailers between the manufacturer and the consumer.",
@@ -400,7 +400,7 @@ export const QUESTION_BANK = [
   { chapter:10, topic:"Social Media Marketing", type:"mcq", difficulty:"medium",
     question:"Pricing in the social media age includes which of the following models NOT common in traditional marketing?",
     options:["A. Cost-plus pricing","B. Freemium pricing models","C. Geographic pricing","D. Administered pricing"],
-    answer:"B", explanation:"The social media age introduced new pricing models like freemium (free basic service, paid premium features), dynamic pricing, and referral pricing — strategies that leverage digital distribution and network effects." },
+    answer:"B", explanation:"The social media age introduced new pricing models like freemium (free basic service, paid premium features), dynamic pricing, and referral pricing - strategies that leverage digital distribution and network effects." },
 
   { chapter:10, topic:"Marketing Plan", type:"mcq", difficulty:"medium",
     question:"Which component of the marketing plan involves analyzing sales volume, gross sales dollars, and market share trends?",
@@ -410,7 +410,7 @@ export const QUESTION_BANK = [
   { chapter:10, topic:"Marketing Plan", type:"tf", difficulty:"medium",
     question:"A marketing plan should include quantified goals such as target revenue, market share, and unit sales.",
     options:["A. True","B. False"], answer:"A",
-    explanation:"Marketing goals must be specific and measurable — they should quantify targets like revenue growth, market share percentage, and unit sales so performance can be objectively evaluated." },
+    explanation:"Marketing goals must be specific and measurable - they should quantify targets like revenue growth, market share percentage, and unit sales so performance can be objectively evaluated." },
 
   // ── CHAPTER 12: Business Plan ──────────────────────────────────────────────
 
@@ -422,12 +422,12 @@ export const QUESTION_BANK = [
   { chapter:12, topic:"Business Model Canvas", type:"mcq", difficulty:"medium",
     question:"Which building block of the Business Model Canvas addresses how a company proposes to generate income?",
     options:["A. Key Activities","B. Value Propositions","C. Revenue Streams","D. Key Resources"],
-    answer:"C", explanation:"Revenue Streams describe how the company makes money from each customer segment — through sales, subscriptions, licensing, advertising, or other mechanisms." },
+    answer:"C", explanation:"Revenue Streams describe how the company makes money from each customer segment - through sales, subscriptions, licensing, advertising, or other mechanisms." },
 
   { chapter:12, topic:"Business Model Canvas", type:"mcq", difficulty:"medium",
     question:"The Business Model Canvas building block that describes the problem a company solves for its customers is:",
     options:["A. Customer Segments","B. Revenue Streams","C. Value Propositions","D. Key Partnerships"],
-    answer:"C", explanation:"The Value Proposition building block describes the specific problem being solved or need being satisfied for each customer segment — it is the core reason customers choose this company." },
+    answer:"C", explanation:"The Value Proposition building block describes the specific problem being solved or need being satisfied for each customer segment - it is the core reason customers choose this company." },
 
   { chapter:12, topic:"Business Model Canvas", type:"tf", difficulty:"easy",
     question:"The Business Model Canvas is a one-page visual tool used to design or describe a business model before writing a full business plan.",
@@ -457,7 +457,7 @@ export const QUESTION_BANK = [
   { chapter:12, topic:"Executive Summary", type:"mcq", difficulty:"medium",
     question:"What is the recommended length of the Executive Summary in a business plan?",
     options:["A. Half a page","B. 2 to 3 pages","C. 5 to 7 pages","D. 10 to 15 pages"],
-    answer:"B", explanation:"The Executive Summary should be 2 to 3 pages. It must stand alone — if an investor reads nothing else, the summary should give them a complete picture of the opportunity." },
+    answer:"B", explanation:"The Executive Summary should be 2 to 3 pages. It must stand alone - if an investor reads nothing else, the summary should give them a complete picture of the opportunity." },
 
   { chapter:12, topic:"Executive Summary", type:"tf", difficulty:"medium",
     question:"The Executive Summary is placed first in the business plan but is written last because it summarizes the entire document.",
@@ -467,12 +467,12 @@ export const QUESTION_BANK = [
   { chapter:12, topic:"Market and Competitor Analysis", type:"mcq", difficulty:"medium",
     question:"According to Table 12.1, what does the common business plan phrase 'No competition exists' actually signal to investors?",
     options:["A. A genuinely novel market opportunity with no rivals","B. Insufficient competitive research by the entrepreneur","C. A large untapped market with huge potential","D. Government-protected monopoly status"],
-    answer:"B", explanation:"Table 12.1 reveals that 'no competition exists' is a red flag signaling inadequate research. Every opportunity has competition — direct, indirect, or substitute products. Investors know this and will distrust the plan." },
+    answer:"B", explanation:"Table 12.1 reveals that 'no competition exists' is a red flag signaling inadequate research. Every opportunity has competition - direct, indirect, or substitute products. Investors know this and will distrust the plan." },
 
   { chapter:12, topic:"Market and Competitor Analysis", type:"mcq", difficulty:"medium",
     question:"Which business plan mistake from Table 12.1 involves claiming only a tiny percentage of a huge market is needed for success?",
     options:["A. Ignoring competition","B. Weak management team section","C. 'We only need 1% of the market' fallacy","D. Unrealistic financial projections"],
-    answer:"C", explanation:"The '1% of the market' fallacy is flagged in Table 12.1 — it demonstrates no real understanding of how to acquire customers. Investors want to see a credible customer acquisition strategy, not market-share arithmetic." },
+    answer:"C", explanation:"The '1% of the market' fallacy is flagged in Table 12.1 - it demonstrates no real understanding of how to acquire customers. Investors want to see a credible customer acquisition strategy, not market-share arithmetic." },
 
   { chapter:12, topic:"Market and Competitor Analysis", type:"tf", difficulty:"medium",
     question:"A competitive analysis in a business plan must identify both direct and indirect competitors.",
@@ -502,7 +502,7 @@ export const QUESTION_BANK = [
   { chapter:12, topic:"Financial Segment", type:"mcq", difficulty:"medium",
     question:"What is an exit strategy in the context of a business plan's Financial Segment?",
     options:["A. A plan for shutting down the business if it fails","B. A plan for how investors will eventually realize a return, such as through acquisition or IPO","C. A strategy for exiting a foreign market","D. A contingency plan for product recalls"],
-    answer:"B", explanation:"An exit strategy outlines how investors (and founders) will eventually realize their return — through acquisition by a larger company, an IPO, or a management buyout. Investors require this to understand their potential liquidity event." },
+    answer:"B", explanation:"An exit strategy outlines how investors (and founders) will eventually realize their return - through acquisition by a larger company, an IPO, or a management buyout. Investors require this to understand their potential liquidity event." },
 
   { chapter:12, topic:"Financial Segment", type:"tf", difficulty:"medium",
     question:"Financial projections in a business plan should clearly state the assumptions used to prepare the figures.",
@@ -512,7 +512,7 @@ export const QUESTION_BANK = [
   { chapter:12, topic:"Pitching the Plan", type:"mcq", difficulty:"easy",
     question:"How long should an elevator pitch typically be?",
     options:["A. 5 to 10 minutes","B. 30 to 60 seconds","C. 3 to 5 minutes","D. 10 to 15 minutes"],
-    answer:"B", explanation:"An elevator pitch should be 30 to 60 seconds — short enough to deliver in an elevator ride. It must hook the listener, convey the value proposition, and include a clear ask." },
+    answer:"B", explanation:"An elevator pitch should be 30 to 60 seconds - short enough to deliver in an elevator ride. It must hook the listener, convey the value proposition, and include a clear ask." },
 
   { chapter:12, topic:"Pitching the Plan", type:"mcq", difficulty:"medium",
     question:"How many slides does a standard investor pitch deck typically contain?",
@@ -537,7 +537,7 @@ export const QUESTION_BANK = [
   { chapter:12, topic:"Market and Competitor Analysis", type:"mcq", difficulty:"hard",
     question:"Table 12.2 lists the Complete Outline of a Business Plan. What is listed as Section I?",
     options:["A. Market Analysis","B. Financial Segment","C. Executive Summary","D. Operations"],
-    answer:"C", explanation:"According to Table 12.2, Section I is the Executive Summary — it is the first section of the plan even though it is written last. The complete outline runs through Section X (Appendix/Bibliography)." },
+    answer:"C", explanation:"According to Table 12.2, Section I is the Executive Summary - it is the first section of the plan even though it is written last. The complete outline runs through Section X (Appendix/Bibliography)." },
 
   { chapter:12, topic:"Benefits of a Business Plan", type:"mcq", difficulty:"hard",
     question:"Table 12.4 in the textbook provides a Business Plan Assessment Tool. How many components does it evaluate?",
@@ -555,12 +555,12 @@ export const QUESTION_BANK = [
   { chapter:8, topic:"Venture Capital", type:"tf", difficulty:"medium",
     question:"Most venture capital firms invest in fewer than 1% of the business plans submitted to them.",
     options:["A. True","B. False"], answer:"A",
-    explanation:"VCs are extremely selective. A typical firm receives thousands of proposals annually but invests in only a handful — they reject more than 99% of plans submitted." },
+    explanation:"VCs are extremely selective. A typical firm receives thousands of proposals annually but invests in only a handful - they reject more than 99% of plans submitted." },
 
   { chapter:8, topic:"Venture Capital", type:"mcq", difficulty:"medium",
     question:"Which of the following is a myth about how venture capitalists evaluate entrepreneurs?",
     options:["A. VCs are primarily interested in the quality and experience of the management team","B. VCs invest in the person as much as the idea","C. A brilliant business plan alone is usually sufficient to secure VC funding","D. VCs prefer entrepreneurs with relevant industry experience"],
-    answer:"C", explanation:"It is a myth that an outstanding plan guarantees VC funding. VCs invest most heavily in the management team's track record and character — a plan is a means, not an end." },
+    answer:"C", explanation:"It is a myth that an outstanding plan guarantees VC funding. VCs invest most heavily in the management team's track record and character - a plan is a means, not an end." },
 
   // VC Evaluation Process
   { chapter:8, topic:"Venture Capital", type:"mcq", difficulty:"medium",
@@ -576,13 +576,13 @@ export const QUESTION_BANK = [
   { chapter:8, topic:"Venture Capital", type:"mcq", difficulty:"medium",
     question:"According to the textbook, which factor do venture capitalists rank as MOST important when screening potential investments?",
     options:["A. The novelty of the technology","B. The size of the patent portfolio","C. The quality and experience of the management team","D. The geographic location of the startup"],
-    answer:"C", explanation:"VCs consistently identify the management team as their top evaluation criterion — they believe the right team can navigate problems and pivot, while a weak team will fail even with a great idea." },
+    answer:"C", explanation:"VCs consistently identify the management team as their top evaluation criterion - they believe the right team can navigate problems and pivot, while a weak team will fail even with a great idea." },
 
   // Regulation A/A+
   { chapter:8, topic:"Private Placements", type:"mcq", difficulty:"hard",
     question:"Under Regulation A+ (Tier 2), what is the maximum amount a company can raise annually without full SEC registration?",
     options:["A. $5 million","B. $20 million","C. $75 million","D. $1 billion"],
-    answer:"C", explanation:"Regulation A+ Tier 2 (updated by the JOBS Act) allows companies to raise up to $75 million per year from both accredited and non-accredited investors with streamlined SEC review — making it a 'mini-IPO' option." },
+    answer:"C", explanation:"Regulation A+ Tier 2 (updated by the JOBS Act) allows companies to raise up to $75 million per year from both accredited and non-accredited investors with streamlined SEC review - making it a 'mini-IPO' option." },
 
   // Financing Continuum
   { chapter:8, topic:"Bootstrapping", type:"mcq", difficulty:"medium",
@@ -615,7 +615,7 @@ export const QUESTION_BANK = [
 
   { chapter:8, topic:"Angel Financing", type:"mcq", difficulty:"medium",
     question:"Collectively, angel investors invest how much annually in the United States compared to institutional venture capitalists?",
-    options:["A. Far less — about 10% of the VC total","B. About the same as VCs","C. More than VCs — angels collectively invest more annually than institutional VCs","D. About 25% as much as VCs"],
+    options:["A. Far less - about 10% of the VC total","B. About the same as VCs","C. More than VCs - angels collectively invest more annually than institutional VCs","D. About 25% as much as VCs"],
     answer:"C", explanation:"The textbook states that angel investors collectively invest more capital annually than institutional venture capitalists. Angels invest at earlier stages with smaller check sizes but in far greater volume of deals." },
 
   // SBA Loans
@@ -630,7 +630,7 @@ export const QUESTION_BANK = [
   { chapter:9, topic:"B Corps and L3Cs", type:"mcq", difficulty:"medium",
     question:"What is a Benefit Corporation (B-Corp)?",
     options:["A. A nonprofit organization that cannot distribute profits to owners","B. A for-profit business legally required to consider social and environmental impact alongside profit maximization","C. A corporation limited to 100 shareholders with pass-through taxation","D. A government-chartered corporation serving a public mission"],
-    answer:"B", explanation:"A Benefit Corporation is a legal business structure requiring the company to consider the impact on all stakeholders — employees, communities, environment — not just shareholders, while still operating for profit." },
+    answer:"B", explanation:"A Benefit Corporation is a legal business structure requiring the company to consider the impact on all stakeholders - employees, communities, environment - not just shareholders, while still operating for profit." },
 
   { chapter:9, topic:"B Corps and L3Cs", type:"tf", difficulty:"medium",
     question:"B Corp certification from B Lab and the Benefit Corporation legal status are the same thing.",
@@ -646,12 +646,12 @@ export const QUESTION_BANK = [
   { chapter:9, topic:"Trademarks and Trade Secrets", type:"mcq", difficulty:"medium",
     question:"Which of the following can cause a trademark to be invalidated through 'abandonment'?",
     options:["A. Using the trademark in a foreign country without permission","B. Failure to use the mark in commerce for an extended period (typically 3 years)","C. Applying for a patent that covers the same product as the trademark","D. Selling the trademark to a competitor"],
-    answer:"B", explanation:"Trademark abandonment occurs when the owner stops using the mark in commerce for an extended period — three or more consecutive years raises a legal presumption of abandonment under U.S. trademark law." },
+    answer:"B", explanation:"Trademark abandonment occurs when the owner stops using the mark in commerce for an extended period - three or more consecutive years raises a legal presumption of abandonment under U.S. trademark law." },
 
   { chapter:9, topic:"Trademarks and Trade Secrets", type:"mcq", difficulty:"medium",
     question:"'Genericide' occurs when a trademark becomes invalid because:",
     options:["A. A competitor deliberately copies the mark","B. The owner fails to renew the trademark registration","C. The brand name becomes the generic name for an entire product category","D. The trademark is used in an offensive manner"],
-    answer:"C", explanation:"Genericide is when a trademark becomes so widely used to describe a product category that it loses distinctiveness. Historical examples include aspirin, escalator, and zipper — all lost trademark protection by becoming generic terms." },
+    answer:"C", explanation:"Genericide is when a trademark becomes so widely used to describe a product category that it loses distinctiveness. Historical examples include aspirin, escalator, and zipper - all lost trademark protection by becoming generic terms." },
 
   // Cybersquatting
   { chapter:9, topic:"Trademarks and Trade Secrets", type:"mcq", difficulty:"medium",
@@ -674,7 +674,7 @@ export const QUESTION_BANK = [
   { chapter:9, topic:"Patents", type:"mcq", difficulty:"hard",
     question:"According to the textbook, before pursuing a patent, an entrepreneur should determine which of the following?",
     options:["A. Whether a competitor has patented a similar invention, which automatically invalidates their application","B. Whether the patent will provide sufficient commercial value to justify the significant time and legal costs","C. Whether the invention was disclosed publicly more than five years ago","D. Whether a patent attorney has already rejected the application once"],
-    answer:"B", explanation:"The textbook advises that before spending substantial time and legal fees on a patent, entrepreneurs should evaluate whether the patent will actually provide commercially valuable protection — it must be worth the investment." },
+    answer:"B", explanation:"The textbook advises that before spending substantial time and legal fees on a patent, entrepreneurs should evaluate whether the patent will actually provide commercially valuable protection - it must be worth the investment." },
 
   { chapter:9, topic:"Patents", type:"tf", difficulty:"medium",
     question:"A provisional patent application grants full patent rights for 12 months before a complete application must be filed.",
@@ -689,19 +689,19 @@ export const QUESTION_BANK = [
 
   { chapter:9, topic:"Trademarks and Trade Secrets", type:"mcq", difficulty:"medium",
     question:"For a proprietary manufacturing process a company wants to protect indefinitely, which IP form is MOST appropriate?",
-    options:["A. Patent — because it provides 20 years of exclusive rights","B. Copyright — because it protects the written documentation of the process","C. Trade secret — because it can last indefinitely as long as secrecy is maintained","D. Trademark — because it identifies the source of goods"],
-    answer:"C", explanation:"For a process that should remain secret indefinitely, trade secret protection is superior to a patent — patents expire after 20 years and require full public disclosure, which permanently destroys the secrecy." },
+    options:["A. Patent - because it provides 20 years of exclusive rights","B. Copyright - because it protects the written documentation of the process","C. Trade secret - because it can last indefinitely as long as secrecy is maintained","D. Trademark - because it identifies the source of goods"],
+    answer:"C", explanation:"For a process that should remain secret indefinitely, trade secret protection is superior to a patent - patents expire after 20 years and require full public disclosure, which permanently destroys the secrecy." },
 
   // Business Forms Additional
   { chapter:9, topic:"LLCs and S-Corps", type:"mcq", difficulty:"medium",
     question:"A single-member LLC is taxed by default as:",
     options:["A. A C-Corporation","B. An S-Corporation","C. A sole proprietorship (disregarded entity)","D. A general partnership"],
-    answer:"C", explanation:"By default, a single-member LLC is treated as a 'disregarded entity' by the IRS — it is taxed exactly like a sole proprietorship. The LLC can elect to be taxed as a corporation if desired." },
+    answer:"C", explanation:"By default, a single-member LLC is treated as a 'disregarded entity' by the IRS - it is taxed exactly like a sole proprietorship. The LLC can elect to be taxed as a corporation if desired." },
 
   { chapter:9, topic:"Corporations", type:"tf", difficulty:"easy",
-    question:"Shareholders of a C-Corporation have limited liability, meaning they can only lose the amount they invested — not their personal assets.",
+    question:"Shareholders of a C-Corporation have limited liability, meaning they can only lose the amount they invested - not their personal assets.",
     options:["A. True","B. False"], answer:"A",
-    explanation:"A fundamental advantage of the corporate form is limited liability — shareholders can only lose their investment. Unlike sole proprietors or general partners, they are not personally responsible for corporate debts." },
+    explanation:"A fundamental advantage of the corporate form is limited liability - shareholders can only lose their investment. Unlike sole proprietors or general partners, they are not personally responsible for corporate debts." },
 
   { chapter:9, topic:"B Corps and L3Cs", type:"tf", difficulty:"medium",
     question:"In a traditional C-Corporation, directors are legally required to prioritize profit maximization for shareholders above all other considerations.",
@@ -711,7 +711,7 @@ export const QUESTION_BANK = [
   { chapter:9, topic:"LLCs and S-Corps", type:"mcq", difficulty:"hard",
     question:"Which business form offers the GREATEST flexibility in management structure while also providing limited liability for all owners?",
     options:["A. General Partnership","B. Limited Partnership","C. S-Corporation","D. Limited Liability Company (LLC)"],
-    answer:"D", explanation:"LLCs offer maximum flexibility — members can choose any management structure, profit-sharing arrangement, and tax treatment. They provide limited liability for all members without the restrictions of S-Corps (100 shareholder limit, one class of stock)." },
+    answer:"D", explanation:"LLCs offer maximum flexibility - members can choose any management structure, profit-sharing arrangement, and tax treatment. They provide limited liability for all members without the restrictions of S-Corps (100 shareholder limit, one class of stock)." },
 
   { chapter:9, topic:"Bankruptcy", type:"mcq", difficulty:"medium",
     question:"The 'automatic stay' in bankruptcy law refers to:",
@@ -749,13 +749,13 @@ export const QUESTION_BANK = [
   { chapter:10, topic:"4Cs Marketing Framework", type:"mcq", difficulty:"medium",
     question:"Which of the following best describes the purpose of replacing 'Promotion' with 'Communication' in the 4Cs framework?",
     options:["A. It emphasizes one-way mass advertising over two-way dialogue","B. It acknowledges that modern marketing is interactive and relationship-based, not just one-way broadcast","C. It reduces the budget for promotional activities","D. It focuses only on digital communication channels"],
-    answer:"B", explanation:"Replacing Promotion with Communication reflects the shift from one-way advertising broadcasts to two-way, interactive dialogue with customers — driven by social media and digital channels." },
+    answer:"B", explanation:"Replacing Promotion with Communication reflects the shift from one-way advertising broadcasts to two-way, interactive dialogue with customers - driven by social media and digital channels." },
 
   // Social Media Marketing
   { chapter:10, topic:"Social Media Marketing", type:"mcq", difficulty:"medium",
     question:"According to the textbook, the FIRST step in a social media marketing plan is:",
     options:["A. Post content across all platforms immediately","B. Hire a social media manager and set a budget","C. Listen and monitor what customers and prospects are already saying online","D. Create a company blog"],
-    answer:"C", explanation:"The textbook's social media marketing plan begins with Listen — monitoring conversations to understand what your audience is already saying about your brand, competitors, and industry before creating content." },
+    answer:"C", explanation:"The textbook's social media marketing plan begins with Listen - monitoring conversations to understand what your audience is already saying about your brand, competitors, and industry before creating content." },
 
   { chapter:10, topic:"Social Media Marketing", type:"tf", difficulty:"easy",
     question:"Social media marketing is only effective for business-to-consumer (B2C) companies and has little value for B2B businesses.",
@@ -765,7 +765,7 @@ export const QUESTION_BANK = [
   { chapter:10, topic:"Social Media Marketing", type:"mcq", difficulty:"hard",
     question:"After 'listening' to the online conversation, what is the NEXT step in the social media marketing plan?",
     options:["A. Create a viral video campaign","B. Identify the platforms and communities where your target customers are most active","C. Immediately respond to all negative reviews","D. Hire influencers to promote the brand"],
-    answer:"B", explanation:"After Listen comes Identify — determining which social platforms, communities, and influencers are most relevant to your target customers before investing resources in content creation and engagement." },
+    answer:"B", explanation:"After Listen comes Identify - determining which social platforms, communities, and influencers are most relevant to your target customers before investing resources in content creation and engagement." },
 
   // Market Research Inhibitors
   { chapter:10, topic:"Market Research", type:"mcq", difficulty:"medium",
@@ -776,7 +776,7 @@ export const QUESTION_BANK = [
   { chapter:10, topic:"Market Research", type:"tf", difficulty:"medium",
     question:"One reason entrepreneurs avoid market research is the belief that by the time results are ready, the strategic decision has already been made.",
     options:["A. True","B. False"], answer:"A",
-    explanation:"The textbook identifies 'strategic decisions don't seem to require it' as a key inhibitor — entrepreneurs often feel their decisions are already made or that the business moves too fast for formal research cycles." },
+    explanation:"The textbook identifies 'strategic decisions don't seem to require it' as a key inhibitor - entrepreneurs often feel their decisions are already made or that the business moves too fast for formal research cycles." },
 
   // Omnichannel
   { chapter:10, topic:"Distribution Channels", type:"mcq", difficulty:"medium",
@@ -787,13 +787,13 @@ export const QUESTION_BANK = [
   { chapter:10, topic:"Distribution Channels", type:"tf", difficulty:"easy",
     question:"In an omnichannel strategy, a customer can start a purchase on a mobile app and complete it in a physical store without losing cart contents or purchase history.",
     options:["A. True","B. False"], answer:"A",
-    explanation:"This is a defining feature of omnichannel retailing — all touchpoints are integrated so customer data, cart contents, and purchase history are shared seamlessly across all channels." },
+    explanation:"This is a defining feature of omnichannel retailing - all touchpoints are integrated so customer data, cart contents, and purchase history are shared seamlessly across all channels." },
 
   // Marketing Plan Development
   { chapter:10, topic:"Marketing Plan", type:"mcq", difficulty:"medium",
     question:"What is the FIRST step in developing a marketing plan?",
     options:["A. Setting a promotional budget","B. Choosing distribution channels","C. Conducting a situation analysis (including a SWOT analysis)","D. Designing the sales force structure"],
-    answer:"C", explanation:"A marketing plan begins with a situation analysis — assessing the internal environment (strengths, weaknesses) and external environment (opportunities, threats) to establish the strategic foundation for all marketing decisions." },
+    answer:"C", explanation:"A marketing plan begins with a situation analysis - assessing the internal environment (strengths, weaknesses) and external environment (opportunities, threats) to establish the strategic foundation for all marketing decisions." },
 
   { chapter:10, topic:"Marketing Plan", type:"mcq", difficulty:"medium",
     question:"In the marketing planning process, after identifying the target market, the next step is typically:",
@@ -809,7 +809,7 @@ export const QUESTION_BANK = [
   { chapter:10, topic:"Pricing Strategies", type:"mcq", difficulty:"medium",
     question:"Which pricing strategy sets price based on the value customers PERCEIVE they are receiving, rather than the cost of production?",
     options:["A. Cost-plus pricing","B. Competitive pricing","C. Penetration pricing","D. Value-based pricing"],
-    answer:"D", explanation:"Value-based pricing sets price based on customers' perceived value of the product — what they believe it is worth. Premium brands like Apple use value-based pricing, charging far more than cost-plus would suggest." },
+    answer:"D", explanation:"Value-based pricing sets price based on customers' perceived value of the product - what they believe it is worth. Premium brands like Apple use value-based pricing, charging far more than cost-plus would suggest." },
 
   // Distribution Additional
   { chapter:10, topic:"Distribution Channels", type:"mcq", difficulty:"medium",
@@ -826,13 +826,13 @@ export const QUESTION_BANK = [
   { chapter:10, topic:"Consumer Behavior", type:"mcq", difficulty:"medium",
     question:"The 'reference group' influence on consumer behavior falls under which category of factors?",
     options:["A. Psychological factors","B. Social factors","C. Cultural factors","D. Personal factors"],
-    answer:"B", explanation:"Reference groups are social influences — groups whose values, attitudes, and behaviors individuals use as a reference point for their own decisions. Friends, colleagues, and celebrities can all serve as reference groups." },
+    answer:"B", explanation:"Reference groups are social influences - groups whose values, attitudes, and behaviors individuals use as a reference point for their own decisions. Friends, colleagues, and celebrities can all serve as reference groups." },
 
   // Market Segmentation Additional
   { chapter:10, topic:"Market Segmentation", type:"mcq", difficulty:"medium",
     question:"A clothing retailer targeting teenage girls ages 13–17 with median household income under $75,000 is using which type of segmentation?",
     options:["A. Psychographic only","B. Geographic only","C. Demographic segmentation (age, gender, income)","D. Behavioral segmentation"],
-    answer:"C", explanation:"Segmenting by age, gender, and income level are all demographic variables. This is demographic segmentation — the most commonly used segmentation approach due to its measurability." },
+    answer:"C", explanation:"Segmenting by age, gender, and income level are all demographic variables. This is demographic segmentation - the most commonly used segmentation approach due to its measurability." },
 
   { chapter:10, topic:"Market Segmentation", type:"tf", difficulty:"easy",
     question:"Geographic segmentation involves dividing the market by region, city size, climate, or urban/suburban/rural distinctions.",
@@ -860,14 +860,14 @@ export const QUESTION_BANK = [
   { chapter:10, topic:"Market Research", type:"mcq", difficulty:"medium",
     question:"Which research technique involves observing customer behavior in a natural setting to capture behavior that customers might not accurately report in surveys?",
     options:["A. Focus group","B. Online survey","C. Ethnographic/observational research","D. Expert interview"],
-    answer:"C", explanation:"Ethnographic or observational research involves watching customers in their natural environment — shopping, using products, etc. — to understand actual behavior, which often differs from what customers say they do." },
+    answer:"C", explanation:"Ethnographic or observational research involves watching customers in their natural environment - shopping, using products, etc. - to understand actual behavior, which often differs from what customers say they do." },
 
   // ── CHAPTER 12: Additional Questions ──────────────────────────────────────
 
   // Planning Pitfalls
   { chapter:12, topic:"Planning Pitfalls", type:"mcq", difficulty:"medium",
     question:"Which of the following is identified as a major planning pitfall?",
-    options:["A. Creating too detailed a financial model","B. The plan was written but never used as a management tool — it sat in a file drawer","C. Including too many visuals and charts in the document","D. Asking outside attorneys to review the legal sections"],
+    options:["A. Creating too detailed a financial model","B. The plan was written but never used as a management tool - it sat in a file drawer","C. Including too many visuals and charts in the document","D. Asking outside attorneys to review the legal sections"],
     answer:"B", explanation:"One of the most cited planning pitfalls is creating a plan for fundraising purposes only, then filing it away. A business plan must be a living management tool reviewed and used regularly." },
 
   { chapter:12, topic:"Planning Pitfalls", type:"mcq", difficulty:"medium",
@@ -883,34 +883,34 @@ export const QUESTION_BANK = [
   { chapter:12, topic:"Planning Pitfalls", type:"mcq", difficulty:"hard",
     question:"Which planning pitfall involves the entrepreneur assuming the venture will face no serious competitive responses after launch?",
     options:["A. No marketing plan","B. No contingency planning for competitive reactions","C. Weak management team section","D. Insufficient financial detail"],
-    answer:"B", explanation:"Failing to plan for competitive reactions is a critical pitfall. Established players will respond to new market entrants through price cuts, product improvements, or marketing campaigns — a credible plan addresses how the venture will respond." },
+    answer:"B", explanation:"Failing to plan for competitive reactions is a critical pitfall. Established players will respond to new market entrants through price cuts, product improvements, or marketing campaigns - a credible plan addresses how the venture will respond." },
 
   { chapter:12, topic:"Planning Pitfalls", type:"tf", difficulty:"medium",
     question:"One planning pitfall is basing financial projections on 'hockey stick' growth curves that show explosive growth with no credible explanation of how it will be achieved.",
     options:["A. True","B. False"], answer:"A",
-    explanation:"Hockey stick projections — flat for a period then suddenly exploding — are a red flag for investors. They signal the entrepreneur worked backward from a desired outcome rather than building projections from realistic assumptions." },
+    explanation:"Hockey stick projections - flat for a period then suddenly exploding - are a red flag for investors. They signal the entrepreneur worked backward from a desired outcome rather than building projections from realistic assumptions." },
 
   // VC Reading Process
   { chapter:12, topic:"Pitching the Plan", type:"mcq", difficulty:"medium",
     question:"According to the textbook, how long does a venture capitalist typically spend on an initial read-through of a business plan during screening?",
     options:["A. 5 to 10 minutes","B. 30 to 60 minutes","C. 3 to 4 hours","D. Multiple days for a complete review"],
-    answer:"A", explanation:"The textbook describes a VC's 'five-minute reading' process — VCs initially skim a plan quickly, starting with the executive summary, to decide whether to invest more time. Plans that don't pass the quick skim rarely get further attention." },
+    answer:"A", explanation:"The textbook describes a VC's 'five-minute reading' process - VCs initially skim a plan quickly, starting with the executive summary, to decide whether to invest more time. Plans that don't pass the quick skim rarely get further attention." },
 
   { chapter:12, topic:"Pitching the Plan", type:"mcq", difficulty:"hard",
-    question:"According to the textbook's description of how VCs read business plans, what section is typically reviewed LAST — and only if earlier sections are compelling?",
+    question:"According to the textbook's description of how VCs read business plans, what section is typically reviewed LAST - and only if earlier sections are compelling?",
     options:["A. Executive Summary","B. Detailed financial projections","C. Market analysis","D. Management bios"],
     answer:"B", explanation:"VCs read in a specific order: Executive Summary → Management Team → Market Opportunity → Product/Service → then Financials. They reach the detailed financial projections only if the earlier sections are compelling enough to continue." },
 
   { chapter:12, topic:"Pitching the Plan", type:"tf", difficulty:"medium",
     question:"If the Executive Summary fails to capture a venture capitalist's interest, the VC will typically read the entire plan anyway to make a fully informed decision.",
     options:["A. True","B. False"], answer:"B",
-    explanation:"If the Executive Summary doesn't immediately capture interest, VCs typically stop reading. The Executive Summary must hook the reader — it is the plan's most critical section in terms of getting any further attention." },
+    explanation:"If the Executive Summary doesn't immediately capture interest, VCs typically stop reading. The Executive Summary must hook the reader - it is the plan's most critical section in terms of getting any further attention." },
 
   // Milestone Schedule
   { chapter:12, topic:"Milestone Schedule", type:"mcq", difficulty:"medium",
     question:"What is the primary purpose of the milestone schedule in a business plan?",
     options:["A. To list the entrepreneur's personal achievements and credentials","B. To establish specific, time-bound targets for key operational, financial, and market development events","C. To summarize the financial projections for investors","D. To outline the company's organizational chart"],
-    answer:"B", explanation:"The milestone schedule translates the business plan into a timeline of specific, measurable events — product launch, first sale, first hire, break-even date — giving investors and management concrete benchmarks to track execution." },
+    answer:"B", explanation:"The milestone schedule translates the business plan into a timeline of specific, measurable events - product launch, first sale, first hire, break-even date - giving investors and management concrete benchmarks to track execution." },
 
   { chapter:12, topic:"Milestone Schedule", type:"tf", difficulty:"easy",
     question:"The milestone schedule is a management accountability tool that allows the entrepreneur and investors to track whether the venture is executing according to plan.",
@@ -926,7 +926,7 @@ export const QUESTION_BANK = [
   { chapter:12, topic:"Market and Competitor Analysis", type:"mcq", difficulty:"medium",
     question:"According to Table 12.1, what does the common phrase 'We have a first-mover advantage' typically signal to a skeptical investor?",
     options:["A. The company has secured patents protecting its position","B. The entrepreneur may be overestimating the defensibility of simply being first to market","C. The company has already captured significant market share","D. The entrepreneur has conducted thorough competitive analysis"],
-    answer:"B", explanation:"First-mover advantage is frequently overstated. Research shows that being first to market doesn't guarantee success — being BEST at execution does. Investors probe for sustainable competitive advantages beyond timing alone." },
+    answer:"B", explanation:"First-mover advantage is frequently overstated. Research shows that being first to market doesn't guarantee success - being BEST at execution does. Investors probe for sustainable competitive advantages beyond timing alone." },
 
   { chapter:12, topic:"Benefits of a Business Plan", type:"tf", difficulty:"easy",
     question:"The business plan's appendix may include supporting documents such as detailed resumes, letters of intent from customers, and market research data.",
@@ -937,7 +937,7 @@ export const QUESTION_BANK = [
   { chapter:12, topic:"Pitching the Plan", type:"mcq", difficulty:"medium",
     question:"In the investment process, 'due diligence' refers to:",
     options:["A. The entrepreneur's obligation to be honest in the business plan","B. A thorough investigation by investors into all aspects of the venture before committing funds","C. The process of registering securities with the SEC","D. A background check on the founding team only"],
-    answer:"B", explanation:"Due diligence is the comprehensive investigation conducted by potential investors after a positive initial review — examining financial records, legal status, technology claims, customer references, market assumptions, and team backgrounds." },
+    answer:"B", explanation:"Due diligence is the comprehensive investigation conducted by potential investors after a positive initial review - examining financial records, legal status, technology claims, customer references, market assumptions, and team backgrounds." },
 
   // Business Plan Sections
   { chapter:12, topic:"Market and Competitor Analysis", type:"mcq", difficulty:"medium",
@@ -946,7 +946,7 @@ export const QUESTION_BANK = [
     answer:"C", explanation:"The Industry and Market Analysis section examines macro-environmental trends (PEST factors) and the competitive landscape to establish the market context and opportunity size for the venture." },
 
   { chapter:12, topic:"Benefits of a Business Plan", type:"tf", difficulty:"medium",
-    question:"A business plan should be tailored to its audience — the version shown to investors may emphasize different elements than an internal operational plan.",
+    question:"A business plan should be tailored to its audience - the version shown to investors may emphasize different elements than an internal operational plan.",
     options:["A. True","B. False"], answer:"A",
     explanation:"Different audiences focus on different elements. Investors want market opportunity, management team, and financials front and center. Internally, an operational plan might emphasize execution milestones, processes, and management responsibilities." },
 
@@ -963,7 +963,7 @@ export const QUESTION_BANK = [
   { chapter:12, topic:"Benefits of a Business Plan", type:"mcq", difficulty:"medium",
     question:"Beyond fundraising, what internal benefit does the business planning PROCESS provide to the entrepreneur?",
     options:["A. It qualifies the entrepreneur for government grants","B. It forces a thorough analysis of the venture's feasibility and surfaces potential problems before they become crises","C. It provides legal protection against future lawsuits","D. It guarantees that the venture will succeed if followed precisely"],
-    answer:"B", explanation:"The process of writing the plan is often as valuable as the plan itself. Thinking through every aspect of the venture forces the entrepreneur to identify weaknesses, unrealistic assumptions, and potential obstacles — all before committing significant capital." },
+    answer:"B", explanation:"The process of writing the plan is often as valuable as the plan itself. Thinking through every aspect of the venture forces the entrepreneur to identify weaknesses, unrealistic assumptions, and potential obstacles - all before committing significant capital." },
 
   // ── Gap-fill: thin topics brought to ≥ 5 questions each ──────────────────
 
@@ -980,7 +980,7 @@ export const QUESTION_BANK = [
 
   // Crowdfunding (+2)
   { chapter:8, topic:"Crowdfunding", type:"mcq", difficulty:"easy",
-    question:"Which type of crowdfunding involves backers pledging money in exchange for a tangible reward or early product — without receiving equity or debt?",
+    question:"Which type of crowdfunding involves backers pledging money in exchange for a tangible reward or early product - without receiving equity or debt?",
     options:["A. Equity crowdfunding","B. Debt-based crowdfunding","C. Rewards-based crowdfunding","D. Revenue-based crowdfunding"],
     answer:"C", explanation:"In rewards-based crowdfunding (e.g., Kickstarter, Indiegogo), backers pledge funds in exchange for a product, perk, or experience. No ownership stake is given and no debt is created, making it a non-dilutive funding source." },
 
@@ -993,7 +993,7 @@ export const QUESTION_BANK = [
   { chapter:9, topic:"Sole Proprietorships", type:"mcq", difficulty:"easy",
     question:"Which of the following is the most significant ADVANTAGE of a sole proprietorship over other business forms?",
     options:["A. Limited personal liability for all business debts","B. Complete owner control over all business decisions without partners or shareholders","C. Ease of raising large amounts of external capital","D. Perpetual existence that continues beyond the owner's lifetime"],
-    answer:"B", explanation:"The sole proprietor has absolute decision-making authority — no board approvals, no partner disputes, no shareholder votes. This total control is the primary management advantage of the sole proprietorship form." },
+    answer:"B", explanation:"The sole proprietor has absolute decision-making authority - no board approvals, no partner disputes, no shareholder votes. This total control is the primary management advantage of the sole proprietorship form." },
 
   { chapter:9, topic:"Sole Proprietorships", type:"mcq", difficulty:"medium",
     question:"A sole proprietorship automatically terminates upon which of the following events?",
@@ -1003,13 +1003,13 @@ export const QUESTION_BANK = [
   { chapter:9, topic:"Sole Proprietorships", type:"tf", difficulty:"easy",
     question:"A sole proprietor can protect personal assets from business debts by filing a Certificate of Sole Proprietorship with the state.",
     options:["A. True","B. False"], answer:"B",
-    explanation:"No state filing protects a sole proprietor's personal assets from business liabilities. Unlimited personal liability is an inherent characteristic of the sole proprietorship — the only way to achieve liability protection is to reorganize as an LLC or corporation." },
+    explanation:"No state filing protects a sole proprietor's personal assets from business liabilities. Unlimited personal liability is an inherent characteristic of the sole proprietorship - the only way to achieve liability protection is to reorganize as an LLC or corporation." },
 
   // Corporations (+2)
   { chapter:9, topic:"Corporations", type:"mcq", difficulty:"medium",
     question:"What is the primary governance document that establishes a corporation's internal rules for management, meetings, and officer roles?",
     options:["A. Articles of Incorporation","B. Operating Agreement","C. Corporate Bylaws","D. Partnership Agreement"],
-    answer:"C", explanation:"Corporate bylaws are the internal rules governing how the corporation operates — board election procedures, officer duties, meeting requirements, and voting rights. The Articles of Incorporation create the corporation with the state; bylaws govern its internal operations." },
+    answer:"C", explanation:"Corporate bylaws are the internal rules governing how the corporation operates - board election procedures, officer duties, meeting requirements, and voting rights. The Articles of Incorporation create the corporation with the state; bylaws govern its internal operations." },
 
   { chapter:9, topic:"Corporations", type:"mcq", difficulty:"hard",
     question:"'Piercing the corporate veil' occurs when a court:",
@@ -1020,7 +1020,7 @@ export const QUESTION_BANK = [
   { chapter:10, topic:"4Cs Marketing Framework", type:"mcq", difficulty:"medium",
     question:"In the 4Cs framework, 'Customer cost' is broader than 'Price' in the 4Ps because it includes:",
     options:["A. Only the manufacturer's cost to produce the product","B. Government taxes and import tariffs","C. The full cost to the buyer including time, effort, switching costs, and psychological burden beyond the monetary price","D. The cost of the company's marketing and advertising spend"],
-    answer:"C", explanation:"'Customer cost' captures everything the buyer gives up — not just money, but also the time spent shopping, the effort of switching from a current provider, and the psychological anxiety of a significant purchase decision. This broader view centers the marketer on the customer's total experience." },
+    answer:"C", explanation:"'Customer cost' captures everything the buyer gives up - not just money, but also the time spent shopping, the effort of switching from a current provider, and the psychological anxiety of a significant purchase decision. This broader view centers the marketer on the customer's total experience." },
 
   { chapter:10, topic:"4Cs Marketing Framework", type:"tf", difficulty:"medium",
     question:"The 4Cs framework was developed as a seller-centric replacement for the 4Ps to help companies focus on production efficiency.",
@@ -1029,9 +1029,9 @@ export const QUESTION_BANK = [
 
   // Consumer Behavior (+2)
   { chapter:10, topic:"Consumer Behavior", type:"mcq", difficulty:"medium",
-    question:"The first stage in the consumer decision-making process — where the buyer perceives a gap between their current state and a desired state — is called:",
+    question:"The first stage in the consumer decision-making process - where the buyer perceives a gap between their current state and a desired state - is called:",
     options:["A. Information search","B. Evaluation of alternatives","C. Problem/need recognition","D. Post-purchase evaluation"],
-    answer:"C", explanation:"The consumer decision process begins with problem or need recognition — the buyer perceives a difference between where they are and where they want to be. This gap triggers the search for information and evaluation of possible solutions." },
+    answer:"C", explanation:"The consumer decision process begins with problem or need recognition - the buyer perceives a difference between where they are and where they want to be. This gap triggers the search for information and evaluation of possible solutions." },
 
   { chapter:10, topic:"Consumer Behavior", type:"mcq", difficulty:"medium",
     question:"'Cognitive dissonance' in the context of consumer behavior refers to:",
@@ -1053,7 +1053,7 @@ export const QUESTION_BANK = [
   { chapter:12, topic:"Updating the Business Plan", type:"mcq", difficulty:"medium",
     question:"Which of the following events should trigger a revision to the business plan?",
     options:["A. Only when seeking a new round of investor funding","B. After major milestones such as a product launch, significant market shift, or reaching breakeven","C. Only when the original plan is more than five years old","D. Only when the management team changes completely"],
-    answer:"B", explanation:"The business plan should be reviewed and updated whenever significant events occur — hitting or missing milestones, entering new markets, losing key team members, or facing major competitive changes. It is a living document, not a static archive." },
+    answer:"B", explanation:"The business plan should be reviewed and updated whenever significant events occur - hitting or missing milestones, entering new markets, losing key team members, or facing major competitive changes. It is a living document, not a static archive." },
 
   { chapter:12, topic:"Updating the Business Plan", type:"tf", difficulty:"easy",
     question:"A business plan that was accurate at launch never needs to be updated if the venture is performing as expected.",
@@ -1069,15 +1069,15 @@ export const QUESTION_BANK = [
   { chapter:12, topic:"Milestone Schedule", type:"mcq", difficulty:"medium",
     question:"Which of the following would NOT typically appear in a business plan's milestone schedule?",
     options:["A. Target date for the product launch","B. Projected date for reaching breakeven","C. The entrepreneur's personal five-year financial plan","D. Date of first significant customer acquisition"],
-    answer:"C", explanation:"A milestone schedule contains venture-specific operational targets — product launches, customer acquisition goals, key hires, revenue milestones, and financing events. The entrepreneur's personal financial goals belong in personal financial planning, not the venture's milestone schedule." },
+    answer:"C", explanation:"A milestone schedule contains venture-specific operational targets - product launches, customer acquisition goals, key hires, revenue milestones, and financing events. The entrepreneur's personal financial goals belong in personal financial planning, not the venture's milestone schedule." },
 
   { chapter:12, topic:"Milestone Schedule", type:"mcq", difficulty:"medium",
     question:"The milestone schedule primarily serves which function in the business plan?",
     options:["A. Convincing investors about the size of the market opportunity","B. Demonstrating the management team's academic credentials","C. Translating the plan into an actionable timeline with measurable accountability checkpoints","D. Presenting three-year financial projections in chart form"],
-    answer:"C", explanation:"The milestone schedule converts strategic intent into an operational timeline — specific, measurable targets tied to dates. It is the accountability mechanism that links the plan's vision to day-to-day execution and gives investors benchmarks to track progress." },
+    answer:"C", explanation:"The milestone schedule converts strategic intent into an operational timeline - specific, measurable targets tied to dates. It is the accountability mechanism that links the plan's vision to day-to-day execution and gives investors benchmarks to track progress." },
 
   { chapter:12, topic:"Milestone Schedule", type:"tf", difficulty:"medium",
     question:"Missing a milestone in the schedule is always a sign of terminal business failure and should never be disclosed to investors.",
     options:["A. True","B. False"], answer:"B",
-    explanation:"Missing milestones signals execution challenges that need to be addressed — but they must be communicated transparently to investors. Experienced investors expect some slippage; what matters is that the entrepreneur acknowledges the issue, analyzes the cause, and adjusts the plan accordingly." },
+    explanation:"Missing milestones signals execution challenges that need to be addressed - but they must be communicated transparently to investors. Experienced investors expect some slippage; what matters is that the entrepreneur acknowledges the issue, analyzes the cause, and adjusts the plan accordingly." },
 ]

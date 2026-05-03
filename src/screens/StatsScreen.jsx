@@ -102,13 +102,13 @@ export function StatsScreen({
                     <button
                       key={tp}
                       onClick={() => topicQs.length > 0 && startRetry(topicQs)}
-                      title={topicQs.length > 0 ? `Drill ${tp} — ${topicQs.length} questions` : 'No questions for this topic'}
+                      title={topicQs.length > 0 ? `Drill ${tp} - ${topicQs.length} questions` : 'No questions for this topic'}
                       style={{ background: hColor(rate), color: hText(rate), borderRadius: 8, padding: '8px 11px', fontSize: 11, fontFamily: 'sans-serif', fontWeight: rate !== null && rate >= 0.3 ? 700 : 400, minWidth: 90, border: 'none', cursor: topicQs.length > 0 ? 'pointer' : 'default', textAlign: 'left', transition: 'opacity 0.15s', opacity: 1 }}
                       onMouseEnter={e => { if (topicQs.length > 0) e.currentTarget.style.opacity = '0.8' }}
                       onMouseLeave={e => { e.currentTarget.style.opacity = '1' }}
                     >
                       <div style={{ fontWeight: 700, marginBottom: 3, fontSize: 11 }}>{tp}</div>
-                      <div style={{ fontSize: 10, opacity: 0.85 }}>{tot > 0 ? `${wrong}✗ / ${right}✓` : '— no data'}</div>
+                      <div style={{ fontSize: 10, opacity: 0.85 }}>{tot > 0 ? `${wrong}✗ / ${right}✓` : '- no data'}</div>
                       {rate !== null && <div style={{ fontSize: 10, fontWeight: 700, marginTop: 2 }}>{Math.round(rate * 100)}% miss</div>}
                       {topicQs.length > 0 && <div style={{ fontSize: 9, marginTop: 4, opacity: 0.7 }}>&#9654; Drill {topicQs.length}q</div>}
                     </button>

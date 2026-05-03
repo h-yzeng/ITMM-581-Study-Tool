@@ -109,12 +109,12 @@ export default function App() {
 
   const toggleDark = useCallback(() => setDarkMode(d => { saveStore('darkMode', !d); return !d }), [])
 
-  // Sync body background to match dark mode — prevents white border from browser body margin
+  // Sync body background to match dark mode - prevents white border from browser body margin
   useEffect(() => {
     document.body.style.background = darkMode ? '#0f172a' : '#f1f5f9'
   }, [darkMode])
 
-  // Exam timer — ref pattern keeps finishQuiz fresh without adding it to deps
+  // Exam timer - ref pattern keeps finishQuiz fresh without adding it to deps
   useEffect(() => {
     if (screen === 'quiz' && mode === 'exam' && timeLeft !== null && timeLeft > 0) {
       timerRef.current = setTimeout(() => setTimeLeft(t => t - 1), 1000)
@@ -262,7 +262,7 @@ export default function App() {
     a.click(); URL.revokeObjectURL(url)
   }, [stats, wrongBank, rightBank, flagged, sessionHistory])
 
-  // ── Theme (memoized — only recomputes when darkMode flips) ───────────────────
+  // ── Theme (memoized - only recomputes when darkMode flips) ───────────────────
   const theme = useMemo(() => {
     const dk      = darkMode
     const bg      = dk ? '#0f172a' : '#f1f5f9'

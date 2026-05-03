@@ -8,7 +8,7 @@ export const FLASHCARDS = [
   {
     ch: 8, topic: 'Bootstrapping',
     front: 'Advantages and Disadvantages of Bootstrapping',
-    back: 'Advantages:\n• Cost — lean model, super-efficiency required\n• Control — no dilution, founders are own bosses\n• Concentration — full focus on sales and product\n\nDisadvantages:\n• Cash — lack of capital can stall development\n• Equity — tension between co-founders\n• Risk — higher failure rate without capital buffer\n• Stress — especially when family/friends invest',
+    back: 'Advantages:\n• Cost - lean model, super-efficiency required\n• Control - no dilution, founders are own bosses\n• Concentration - full focus on sales and product\n\nDisadvantages:\n• Cash - lack of capital can stall development\n• Equity - tension between co-founders\n• Risk - higher failure rate without capital buffer\n• Stress - especially when family/friends invest',
   },
   {
     ch: 8, topic: 'Debt Financing',
@@ -18,27 +18,27 @@ export const FLASHCARDS = [
   {
     ch: 8, topic: 'Debt Financing',
     front: '5 Questions Banks Ask Before Granting a Loan',
-    back: '1. What will you do with the money?\n2. How much do you need? (be precise)\n3. When do you need it?\n4. How long will you need it? (shorter = better)\n5. How will you repay it? (most important — must show repayment plan)',
+    back: '1. What will you do with the money?\n2. How much do you need? (be precise)\n3. When do you need it?\n4. How long will you need it? (shorter = better)\n5. How will you repay it? (most important - must show repayment plan)',
   },
   {
     ch: 8, topic: 'Debt Financing',
-    front: 'Peer-to-Peer (P2P) Lending — key facts',
+    front: 'Peer-to-Peer (P2P) Lending - key facts',
     back: '• Also called debt-based crowdfunding or crowdlending\n• Average loan ~$25,000; rates 5.9–29.9%\n• Default rates 1.5–10% depending on borrower risk\n• First sites appeared 2005; regulated by SEC since 2008\n• Lending Club = largest U.S. P2P platform\n• Risks: low funding success rate, public disclosure of business plan, no counseling, tax implications',
   },
   {
     ch: 8, topic: 'Equity Financing',
     front: 'Types of Equity Securities',
-    back: '• Common Stock — voting rights, residual claim on assets\n• Preferred Stock — priority dividends, often convertible to common; no or limited voting rights\n• Convertible Debentures — debt that converts to equity at a set price; attractive to investors as downside protection',
+    back: '• Common Stock - voting rights, residual claim on assets\n• Preferred Stock - priority dividends, often convertible to common; no or limited voting rights\n• Convertible Debentures - debt that converts to equity at a set price; attractive to investors as downside protection',
   },
   {
     ch: 8, topic: 'IPOs and SPACs',
     front: 'What is an IPO? What are its advantages and disadvantages?',
-    back: 'IPO = Initial Public Offering — first time a company sells shares to the public.\n\nAdvantages: raises large capital, liquidity for founders/investors, enhanced credibility\n\nDisadvantages: loss of privacy (financials must be public), major SEC reporting obligations, drains time and energy, investor scrutiny, loss of some control',
+    back: 'IPO = Initial Public Offering - first time a company sells shares to the public.\n\nAdvantages: raises large capital, liquidity for founders/investors, enhanced credibility\n\nDisadvantages: loss of privacy (financials must be public), major SEC reporting obligations, drains time and energy, investor scrutiny, loss of some control',
   },
   {
     ch: 8, topic: 'IPOs and SPACs',
     front: 'What is a SPAC?',
-    back: 'Special Purpose Acquisition Company — a blank-check company that raises capital through an IPO for the sole purpose of acquiring an existing private company.\n• IPO investors do not know the acquisition target (hence "blank check")\n• Funds held in trust until acquisition\n• 247 SPACs created in 2020, raising ~$80B\n• Allows companies to go public faster with fewer disclosures than traditional IPO',
+    back: 'Special Purpose Acquisition Company - a blank-check company that raises capital through an IPO for the sole purpose of acquiring an existing private company.\n• IPO investors do not know the acquisition target (hence "blank check")\n• Funds held in trust until acquisition\n• 247 SPACs created in 2020, raising ~$80B\n• Allows companies to go public faster with fewer disclosures than traditional IPO',
   },
   {
     ch: 8, topic: 'Private Placements',
@@ -48,7 +48,7 @@ export const FLASHCARDS = [
   {
     ch: 8, topic: 'Crowdfunding',
     front: '3 Types of Crowdfunding',
-    back: '1. Rewards Crowdfunding — backers receive a product/perk, no equity (Kickstarter, Indiegogo)\n2. Equity Crowdfunding — investors receive equity stake; governed by Regulation CF (max $5M/year); financial disclosures required\n3. Donation Crowdfunding — donors give with no financial return (GoFundMe)',
+    back: '1. Rewards Crowdfunding - backers receive a product/perk, no equity (Kickstarter, Indiegogo)\n2. Equity Crowdfunding - investors receive equity stake; governed by Regulation CF (max $5M/year); financial disclosures required\n3. Donation Crowdfunding - donors give with no financial return (GoFundMe)',
   },
   {
     ch: 8, topic: 'Venture Capital',
@@ -63,12 +63,12 @@ export const FLASHCARDS = [
   {
     ch: 8, topic: 'Angel Financing',
     front: '5 Types of Angel Investors',
-    back: '1. Corporate Angels — former executives; want active advisory role\n2. Entrepreneurial Angels — successful entrepreneurs; hands-on, most valuable mentors\n3. Enthusiast Angels — wealthy hobbyists; invest for fun, not very active\n4. Micromanagement Angels — want control; can be difficult when company struggles\n5. Professional Angels — doctors, lawyers; passive investors, small checks\n\nAngels invest in 20–30x more companies than VCs.',
+    back: '1. Corporate Angels - former executives; want active advisory role\n2. Entrepreneurial Angels - successful entrepreneurs; hands-on, most valuable mentors\n3. Enthusiast Angels - wealthy hobbyists; invest for fun, not very active\n4. Micromanagement Angels - want control; can be difficult when company struggles\n5. Professional Angels - doctors, lawyers; passive investors, small checks\n\nAngels invest in 20–30x more companies than VCs.',
   },
   {
     ch: 8, topic: 'Debt Financing',
-    front: 'SBA Loan Programs — key types',
-    back: 'SBA (Small Business Administration) guarantees loans made by approved lenders:\n• SBA 7(a) — most common; up to $5M; general business purposes\n• SBA 504 — for fixed assets (real estate, equipment); up to $5.5M\n• SBA Microloan — up to $50K; for very small businesses/startups\n• SBA SBIC — investment capital through licensed investors\n\nSBA does NOT lend directly — it reduces lender risk to increase access to capital.',
+    front: 'SBA Loan Programs - key types',
+    back: 'SBA (Small Business Administration) guarantees loans made by approved lenders:\n• SBA 7(a) - most common; up to $5M; general business purposes\n• SBA 504 - for fixed assets (real estate, equipment); up to $5.5M\n• SBA Microloan - up to $50K; for very small businesses/startups\n• SBA SBIC - investment capital through licensed investors\n\nSBA does NOT lend directly - it reduces lender risk to increase access to capital.',
   },
   {
     ch: 8, topic: 'Equity Financing',
@@ -77,33 +77,33 @@ export const FLASHCARDS = [
   },
   {
     ch: 8, topic: 'IPOs and SPACs',
-    front: 'Regulation A+ (Mini-IPO) — key facts',
-    back: '• Allows raising up to $75M/year from the public without full SEC registration\n• Two tiers: Tier 1 (up to $20M), Tier 2 (up to $75M)\n• Open to non-accredited (retail) investors — unlike Reg D\n• Requires an offering circular (less than full S-1)\n• Faster and cheaper than a traditional IPO\n• Sometimes called a "mini-IPO"',
+    front: 'Regulation A+ (Mini-IPO) - key facts',
+    back: '• Allows raising up to $75M/year from the public without full SEC registration\n• Two tiers: Tier 1 (up to $20M), Tier 2 (up to $75M)\n• Open to non-accredited (retail) investors - unlike Reg D\n• Requires an offering circular (less than full S-1)\n• Faster and cheaper than a traditional IPO\n• Sometimes called a "mini-IPO"',
   },
   {
     ch: 8, topic: 'Crowdfunding',
-    front: 'JOBS Act & Regulation CF — key rules',
+    front: 'JOBS Act & Regulation CF - key rules',
     back: 'JOBS Act (2012) legalized equity crowdfunding for non-accredited investors.\n\nRegulation CF rules:\n• Companies can raise up to $5M/year (raised from $1.07M in 2021)\n• Must use an SEC-registered intermediary (funding portal or broker-dealer)\n• Investor limits based on income/net worth for non-accredited investors\n• Must disclose financials, business plan, and use of funds\n• 12-month lock-up period on securities before resale',
   },
   {
     ch: 8, topic: 'Venture Capital',
-    front: 'VC Term Sheet — key provisions',
-    back: 'A term sheet outlines proposed investment terms before definitive documents:\n• Valuation (pre-money)\n• Investment amount and % ownership\n• Liquidation preference (1x non-participating = founder-friendly; participating = investor-friendly)\n• Anti-dilution (broad-based weighted average = most founder-friendly)\n• Board composition\n• Vesting schedule (4 years, 1-year cliff is standard)\n• Pro rata rights — right to invest in future rounds\n• Information rights\n\nTerm sheets are non-binding but set the negotiating framework.',
+    front: 'VC Term Sheet - key provisions',
+    back: 'A term sheet outlines proposed investment terms before definitive documents:\n• Valuation (pre-money)\n• Investment amount and % ownership\n• Liquidation preference (1x non-participating = founder-friendly; participating = investor-friendly)\n• Anti-dilution (broad-based weighted average = most founder-friendly)\n• Board composition\n• Vesting schedule (4 years, 1-year cliff is standard)\n• Pro rata rights - right to invest in future rounds\n• Information rights\n\nTerm sheets are non-binding but set the negotiating framework.',
   },
   {
     ch: 8, topic: 'Angel Financing',
     front: 'Angel Investor Due Diligence Process',
-    back: 'Typical angel due diligence steps:\n1. Initial screen — pitch deck review, fit with investment thesis\n2. Management meeting — founders\' passion, coachability, domain expertise\n3. Reference checks — customers, former colleagues, prior investors\n4. Legal review — IP ownership, cap table, existing agreements\n5. Financial review — burn rate, runway, unit economics\n6. Market validation — independent customer discovery\n7. Term negotiation — SAFE or convertible note most common at angel stage\n\nAngels invest personal capital; process is less formal than VC but increasingly rigorous.',
+    back: 'Typical angel due diligence steps:\n1. Initial screen - pitch deck review, fit with investment thesis\n2. Management meeting - founders\' passion, coachability, domain expertise\n3. Reference checks - customers, former colleagues, prior investors\n4. Legal review - IP ownership, cap table, existing agreements\n5. Financial review - burn rate, runway, unit economics\n6. Market validation - independent customer discovery\n7. Term negotiation - SAFE or convertible note most common at angel stage\n\nAngels invest personal capital; process is less formal than VC but increasingly rigorous.',
   },
   {
     ch: 8, topic: 'Private Placements',
-    front: 'Regulation D — Rules 504, 506(b), 506(c)',
+    front: 'Regulation D - Rules 504, 506(b), 506(c)',
     back: 'Rule 504: Up to $10M; any investors; state securities laws still apply\n\nRule 506(b): Unlimited amount; up to 35 non-accredited + unlimited accredited investors; NO general solicitation\n\nRule 506(c): Unlimited amount; ONLY accredited investors; general solicitation and advertising ALLOWED (post-JOBS Act)\n\nAccredited Investor definition: net worth >$1M (excl. primary home) OR income >$200K ($300K joint) for 2+ years',
   },
   {
     ch: 8, topic: 'Crowdfunding',
-    front: 'Rewards Crowdfunding — success factors (Kickstarter/Indiegogo)',
-    back: '• Compelling video — campaigns with video raise ~85% more on average\n• Tiered rewards — early-bird discounts create urgency\n• Realistic all-or-nothing goal — builds backer trust\n• Pre-launch audience — email list and social following before launch\n• Frequent updates — transparency builds community trust\n• Strong PR push in first 48 hours — most campaigns are front-loaded\n\nAverage Kickstarter success rate: ~38%\nDesign and tech categories outperform average.',
+    front: 'Rewards Crowdfunding - success factors (Kickstarter/Indiegogo)',
+    back: '• Compelling video - campaigns with video raise ~85% more on average\n• Tiered rewards - early-bird discounts create urgency\n• Realistic all-or-nothing goal - builds backer trust\n• Pre-launch audience - email list and social following before launch\n• Frequent updates - transparency builds community trust\n• Strong PR push in first 48 hours - most campaigns are front-loaded\n\nAverage Kickstarter success rate: ~38%\nDesign and tech categories outperform average.',
   },
   {
     ch: 8, topic: 'Angel Financing',
@@ -112,19 +112,19 @@ export const FLASHCARDS = [
   },
   {
     ch: 8, topic: 'Bootstrapping',
-    front: 'SAFE Note — what it is and why startups use it',
-    back: 'SAFE (Simple Agreement for Future Equity) — converts to equity at a future priced round.\n• Created by Y Combinator in 2013\n• NOT a loan — no interest, no maturity date\n• Simpler and cheaper than a convertible note\n• Investor receives equity later at a discount OR via a valuation cap (whichever is more favorable)\n• Increasingly dominant at pre-seed/seed stage\n\nVs. convertible note: SAFE has no debt obligation; convertible note accrues interest and has a maturity date.',
+    front: 'SAFE Note - what it is and why startups use it',
+    back: 'SAFE (Simple Agreement for Future Equity) - converts to equity at a future priced round.\n• Created by Y Combinator in 2013\n• NOT a loan - no interest, no maturity date\n• Simpler and cheaper than a convertible note\n• Investor receives equity later at a discount OR via a valuation cap (whichever is more favorable)\n• Increasingly dominant at pre-seed/seed stage\n\nVs. convertible note: SAFE has no debt obligation; convertible note accrues interest and has a maturity date.',
   },
   // ── Chapter 9: Legal Challenges ───────────────────────────────────────────
   {
     ch: 9, topic: 'Patents',
     front: '3 Types of Patents and Requirements',
-    back: '3 Types:\n1. Utility Patent — new processes, machines, compositions of matter (most common, 20 years)\n2. Design Patent — ornamental/aesthetic appearance of a product\n3. Plant Patent — new asexually reproduced plant varieties\n\nRequirements (all three): Novelty + Non-obviousness + Usefulness\nCannot patent: laws of nature, abstract ideas, natural phenomena',
+    back: '3 Types:\n1. Utility Patent - new processes, machines, compositions of matter (most common, 20 years)\n2. Design Patent - ornamental/aesthetic appearance of a product\n3. Plant Patent - new asexually reproduced plant varieties\n\nRequirements (all three): Novelty + Non-obviousness + Usefulness\nCannot patent: laws of nature, abstract ideas, natural phenomena',
   },
   {
     ch: 9, topic: 'Copyrights',
-    front: 'Copyright — key facts and the Fair Use Doctrine',
-    back: '• Protects original creative works (literary, artistic, musical)\n• Arises automatically upon creation — no registration required\n• Registration with Copyright Office provides legal standing to sue\n• Duration: life of author + 70 years (corporate: 95 years from publication)\n• Cannot copyright an IDEA — only the expression of it\n\nFair Use: allows limited use without permission for education, commentary, criticism, news reporting. Courts weigh 4 factors.',
+    front: 'Copyright - key facts and the Fair Use Doctrine',
+    back: '• Protects original creative works (literary, artistic, musical)\n• Arises automatically upon creation - no registration required\n• Registration with Copyright Office provides legal standing to sue\n• Duration: life of author + 70 years (corporate: 95 years from publication)\n• Cannot copyright an IDEA - only the expression of it\n\nFair Use: allows limited use without permission for education, commentary, criticism, news reporting. Courts weigh 4 factors.',
   },
   {
     ch: 9, topic: 'Trademarks and Trade Secrets',
@@ -133,22 +133,22 @@ export const FLASHCARDS = [
   },
   {
     ch: 9, topic: 'Sole Proprietorships',
-    front: 'Sole Proprietorship — advantages and disadvantages',
-    back: 'Advantages:\n• Simplest and cheapest to form\n• Complete owner control\n• No double taxation — profits taxed once as personal income\n• Relative freedom from government regulation\n\nDisadvantages:\n• Unlimited personal liability — owner personally responsible for ALL business debts\n• Difficult to raise capital\n• Business ends if owner dies or withdraws',
+    front: 'Sole Proprietorship - advantages and disadvantages',
+    back: 'Advantages:\n• Simplest and cheapest to form\n• Complete owner control\n• No double taxation - profits taxed once as personal income\n• Relative freedom from government regulation\n\nDisadvantages:\n• Unlimited personal liability - owner personally responsible for ALL business debts\n• Difficult to raise capital\n• Business ends if owner dies or withdraws',
   },
   {
     ch: 9, topic: 'Partnerships',
     front: '4 Forms of Partnerships',
-    back: '1. General Partnership (RUPA) — all partners share unlimited liability for all debts\n2. Limited Partnership (LP) — general partners have unlimited liability; limited partners\' liability = their investment only\n3. Limited Liability Partnership (LLP) — all partners have limited liability for OTHER partners\' misconduct/malpractice\n4. Limited Liability Limited Partnership (LLLP) — combines LP and LLP protections',
+    back: '1. General Partnership (RUPA) - all partners share unlimited liability for all debts\n2. Limited Partnership (LP) - general partners have unlimited liability; limited partners\' liability = their investment only\n3. Limited Liability Partnership (LLP) - all partners have limited liability for OTHER partners\' misconduct/malpractice\n4. Limited Liability Limited Partnership (LLLP) - combines LP and LLP protections',
   },
   {
     ch: 9, topic: 'Corporations',
-    front: 'C-Corporation — advantages and disadvantages',
-    back: 'Advantages:\n• Limited liability for shareholders\n• Unlimited life (continues beyond owners)\n• Easy transfer of ownership\n• Best structure for raising VC and doing an IPO\n• Can issue multiple classes of stock\n\nDisadvantages:\n• Double taxation — corporate income taxed, then dividends taxed again\n• Most complex and costly to form\n• Heavy SEC and state regulatory requirements',
+    front: 'C-Corporation - advantages and disadvantages',
+    back: 'Advantages:\n• Limited liability for shareholders\n• Unlimited life (continues beyond owners)\n• Easy transfer of ownership\n• Best structure for raising VC and doing an IPO\n• Can issue multiple classes of stock\n\nDisadvantages:\n• Double taxation - corporate income taxed, then dividends taxed again\n• Most complex and costly to form\n• Heavy SEC and state regulatory requirements',
   },
   {
     ch: 9, topic: 'LLCs and S-Corps',
-    front: 'LLC vs S-Corporation — key differences',
+    front: 'LLC vs S-Corporation - key differences',
     back: 'LLC:\n• Pass-through taxation\n• No limit on number/type of members\n• Flexible management structure (member-managed or manager-managed)\n• Governed by operating agreement\n\nS-Corporation:\n• Pass-through taxation (no corporate income tax)\n• Max 100 shareholders\n• Shareholders must be U.S. citizens/residents\n• Only ONE class of stock allowed\n• Must elect S-Corp status with IRS',
   },
   {
@@ -173,43 +173,43 @@ export const FLASHCARDS = [
   },
   {
     ch: 9, topic: 'Patents',
-    front: 'Provisional Patent Application — purpose and limits',
-    back: '• Establishes "patent pending" status for 12 months\n• Less expensive and detailed than a full utility patent application\n• Does NOT become a patent on its own — must file full application within 12 months\n• Useful for: testing market before committing to full filing costs ($10K–$15K+)\n• Sets priority date — critical if another inventor files a similar patent\n• Cannot be extended; if full application not filed in 12 months, provisional expires\n\nStrategy: file provisional to secure priority date, then use 12 months to refine and fundraise.',
+    front: 'Provisional Patent Application - purpose and limits',
+    back: '• Establishes "patent pending" status for 12 months\n• Less expensive and detailed than a full utility patent application\n• Does NOT become a patent on its own - must file full application within 12 months\n• Useful for: testing market before committing to full filing costs ($10K–$15K+)\n• Sets priority date - critical if another inventor files a similar patent\n• Cannot be extended; if full application not filed in 12 months, provisional expires\n\nStrategy: file provisional to secure priority date, then use 12 months to refine and fundraise.',
   },
   {
     ch: 9, topic: 'Patents',
-    front: 'Patent vs Trade Secret — when to choose each',
-    back: 'Choose Patent when:\n• Innovation can be reverse-engineered by competitors\n• You want 20 years of legal exclusivity\n• Strong market position justifies mandatory public disclosure\n\nChoose Trade Secret when:\n• Innovation is very difficult to reverse-engineer (formulas, algorithms)\n• Protection needed beyond 20 years\n• Cost of patent prosecution outweighs benefits\n• Perpetual protection is preferable\n\nClassic example: Coca-Cola chose trade secret over patent — formula kept secret for 130+ years vs. only a 20-year patent window.',
+    front: 'Patent vs Trade Secret - when to choose each',
+    back: 'Choose Patent when:\n• Innovation can be reverse-engineered by competitors\n• You want 20 years of legal exclusivity\n• Strong market position justifies mandatory public disclosure\n\nChoose Trade Secret when:\n• Innovation is very difficult to reverse-engineer (formulas, algorithms)\n• Protection needed beyond 20 years\n• Cost of patent prosecution outweighs benefits\n• Perpetual protection is preferable\n\nClassic example: Coca-Cola chose trade secret over patent - formula kept secret for 130+ years vs. only a 20-year patent window.',
   },
   {
     ch: 9, topic: 'Trademarks and Trade Secrets',
     front: 'Trademark Dilution vs Trademark Infringement',
-    back: 'Infringement: unauthorized use that causes CONSUMER CONFUSION about the source or sponsorship of goods.\n\nDilution: weakening of a FAMOUS mark\'s distinctiveness even WITHOUT confusion:\n• Blurring — using a similar mark on unrelated goods (e.g., "Kodak" toothpaste)\n• Tarnishment — associating famous mark with inferior or unseemly products\n\nFederal Trademark Dilution Act (1995) + Dilution Revision Act (2006) protect famous marks.\nKey difference: dilution claims require fame but NOT proof of consumer confusion.',
+    back: 'Infringement: unauthorized use that causes CONSUMER CONFUSION about the source or sponsorship of goods.\n\nDilution: weakening of a FAMOUS mark\'s distinctiveness even WITHOUT confusion:\n• Blurring - using a similar mark on unrelated goods (e.g., "Kodak" toothpaste)\n• Tarnishment - associating famous mark with inferior or unseemly products\n\nFederal Trademark Dilution Act (1995) + Dilution Revision Act (2006) protect famous marks.\nKey difference: dilution claims require fame but NOT proof of consumer confusion.',
   },
   {
     ch: 9, topic: 'Trademarks and Trade Secrets',
-    front: 'USPTO Trademark Registration — Principal vs Supplemental Register',
+    front: 'USPTO Trademark Registration - Principal vs Supplemental Register',
     back: 'Principal Register (stronger):\n• Nationwide constructive notice of ownership\n• Presumption of validity in infringement suits\n• Can become "incontestable" after 5 years of continuous use\n• Basis for foreign filing\n\nSupplemental Register (weaker):\n• For marks not yet distinctive enough for Principal Register\n• Descriptive marks can register here first\n• Cannot sue for infringement in federal court\n\n™ = common law / intent-to-use\n® = federally registered on Principal Register only',
   },
   {
     ch: 9, topic: 'Corporations',
-    front: 'S-Corporation — eligibility requirements',
-    back: 'To qualify for S-Corp election (IRS Form 2553):\n• Maximum 100 shareholders\n• Shareholders must be U.S. citizens or permanent residents\n• Only ONE class of stock (voting vs. non-voting ok, but identical economic rights)\n• Cannot be owned by C-Corps, most LLCs, or non-qualifying trusts\n\nBenefits:\n• Pass-through taxation — no double tax\n• Shareholders can reduce self-employment tax by taking a reasonable salary\n\nVs. LLC: S-Corp is more rigid but better for SE-tax planning; LLC allows more flexible ownership.',
+    front: 'S-Corporation - eligibility requirements',
+    back: 'To qualify for S-Corp election (IRS Form 2553):\n• Maximum 100 shareholders\n• Shareholders must be U.S. citizens or permanent residents\n• Only ONE class of stock (voting vs. non-voting ok, but identical economic rights)\n• Cannot be owned by C-Corps, most LLCs, or non-qualifying trusts\n\nBenefits:\n• Pass-through taxation - no double tax\n• Shareholders can reduce self-employment tax by taking a reasonable salary\n\nVs. LLC: S-Corp is more rigid but better for SE-tax planning; LLC allows more flexible ownership.',
   },
   {
     ch: 9, topic: 'LLCs and S-Corps',
     front: 'LLC Formation and Operating Agreement',
-    back: 'Formation: File Articles of Organization with state + pay filing fee ($50–$500)\n\nOperating Agreement (not always required by state but critical):\n• Member-managed vs. manager-managed structure\n• Capital contributions and ownership percentages\n• Profit distribution rules (can differ from ownership %)\n• Voting thresholds for major decisions\n• Membership transfer restrictions\n• Dissolution procedures\n\nLLCs offer maximum flexibility — operating agreement can customize almost any aspect of governance unlike corporations bound by state default statutes.',
+    back: 'Formation: File Articles of Organization with state + pay filing fee ($50–$500)\n\nOperating Agreement (not always required by state but critical):\n• Member-managed vs. manager-managed structure\n• Capital contributions and ownership percentages\n• Profit distribution rules (can differ from ownership %)\n• Voting thresholds for major decisions\n• Membership transfer restrictions\n• Dissolution procedures\n\nLLCs offer maximum flexibility - operating agreement can customize almost any aspect of governance unlike corporations bound by state default statutes.',
   },
   {
     ch: 9, topic: 'Partnerships',
     front: 'Key Contents of a Partnership Agreement',
-    back: 'A partnership agreement should address:\n1. Capital contributions — who puts in what\n2. Profit/loss distribution — equally or by contribution %\n3. Management authority and voting rights\n4. Salaries and draws for working partners\n5. Admission of new partners\n6. Buyout/exit provisions (buy-sell agreement)\n7. Death or disability of a partner\n8. Dispute resolution mechanism\n9. Non-compete and confidentiality clauses\n10. Duration of partnership\n\nWithout an agreement, default rules of RUPA (Revised Uniform Partnership Act) govern — often unfavorable.',
+    back: 'A partnership agreement should address:\n1. Capital contributions - who puts in what\n2. Profit/loss distribution - equally or by contribution %\n3. Management authority and voting rights\n4. Salaries and draws for working partners\n5. Admission of new partners\n6. Buyout/exit provisions (buy-sell agreement)\n7. Death or disability of a partner\n8. Dispute resolution mechanism\n9. Non-compete and confidentiality clauses\n10. Duration of partnership\n\nWithout an agreement, default rules of RUPA (Revised Uniform Partnership Act) govern - often unfavorable.',
   },
   {
     ch: 9, topic: 'Copyrights',
     front: 'Work-for-Hire Doctrine',
-    back: 'Work created by an employee within the scope of employment automatically belongs to the EMPLOYER, not the creator.\n\nAlso applies to commissioned works under written agreement when the work falls in 9 statutory categories (e.g., contribution to collective work, translation, instructional text).\n\nCritical for entrepreneurs:\n• Always use written work-for-hire or IP assignment agreements with contractors\n• Without them, freelancers may own IP they created for you\n• Especially critical for: software, logos, marketing materials, product designs\n\nVerify IP ownership before pitching investors — undisclosed ownership gaps kill deals in due diligence.',
+    back: 'Work created by an employee within the scope of employment automatically belongs to the EMPLOYER, not the creator.\n\nAlso applies to commissioned works under written agreement when the work falls in 9 statutory categories (e.g., contribution to collective work, translation, instructional text).\n\nCritical for entrepreneurs:\n• Always use written work-for-hire or IP assignment agreements with contractors\n• Without them, freelancers may own IP they created for you\n• Especially critical for: software, logos, marketing materials, product designs\n\nVerify IP ownership before pitching investors - undisclosed ownership gaps kill deals in due diligence.',
   },
   {
     ch: 9, topic: 'Bankruptcy',
@@ -225,22 +225,22 @@ export const FLASHCARDS = [
   {
     ch: 10, topic: 'Entrepreneurial Marketing',
     front: 'What is Guerrilla Marketing?',
-    back: 'Use of nonconventional, low-cost, high-impact tactics to market a product or service.\n• Relies on time, energy, and imagination — NOT money\n• Examples: flash mobs, viral stunts, street art, referral programs, pop-up events\n• Especially effective for resource-constrained new ventures\n• Goal: maximum impact for minimum budget',
+    back: 'Use of nonconventional, low-cost, high-impact tactics to market a product or service.\n• Relies on time, energy, and imagination - NOT money\n• Examples: flash mobs, viral stunts, street art, referral programs, pop-up events\n• Especially effective for resource-constrained new ventures\n• Goal: maximum impact for minimum budget',
   },
   {
     ch: 10, topic: 'Market Segmentation',
     front: '4 Types of Market Segmentation',
-    back: '1. Geographic — region, city, climate, population density\n2. Demographic — age, gender, income, education, marital status, occupation\n3. Psychographic — lifestyle, values, personality traits, social class\n4. Behavioral — usage rate, brand loyalty, purchase occasion, benefits sought\n\nSegmentation leads to targeted strategies that avoid wasted marketing spend.',
+    back: '1. Geographic - region, city, climate, population density\n2. Demographic - age, gender, income, education, marital status, occupation\n3. Psychographic - lifestyle, values, personality traits, social class\n4. Behavioral - usage rate, brand loyalty, purchase occasion, benefits sought\n\nSegmentation leads to targeted strategies that avoid wasted marketing spend.',
   },
   {
     ch: 10, topic: 'Consumer Behavior',
     front: '4 Factors Influencing Consumer Behavior',
-    back: '1. Psychological — motivation, perception, learning, beliefs, attitudes\n2. Personal — age, occupation, lifestyle, economic situation, self-concept\n3. Social — reference groups, family influence, roles and status\n4. Cultural — culture, subculture, social class\n\nEntrepreneurs use these to build customer personas and refine messaging.',
+    back: '1. Psychological - motivation, perception, learning, beliefs, attitudes\n2. Personal - age, occupation, lifestyle, economic situation, self-concept\n3. Social - reference groups, family influence, roles and status\n4. Cultural - culture, subculture, social class\n\nEntrepreneurs use these to build customer personas and refine messaging.',
   },
   {
     ch: 10, topic: 'Distribution Channels',
     front: 'Distribution Channel Types and Intensity Levels',
-    back: 'Types:\n• Direct — manufacturer → consumer (own store, website, direct sales force)\n• Indirect — uses intermediaries (wholesalers, distributors, retailers)\n\nIntensity levels:\n• Intensive — maximum outlets (convenience goods, e.g., gum, soda)\n• Selective — chosen retailers (shopping goods, e.g., appliances)\n• Exclusive — single outlet per area (specialty goods, e.g., luxury cars)',
+    back: 'Types:\n• Direct - manufacturer → consumer (own store, website, direct sales force)\n• Indirect - uses intermediaries (wholesalers, distributors, retailers)\n\nIntensity levels:\n• Intensive - maximum outlets (convenience goods, e.g., gum, soda)\n• Selective - chosen retailers (shopping goods, e.g., appliances)\n• Exclusive - single outlet per area (specialty goods, e.g., luxury cars)',
   },
   {
     ch: 10, topic: 'Pricing Strategies',
@@ -250,42 +250,42 @@ export const FLASHCARDS = [
   {
     ch: 10, topic: 'Marketing Plan',
     front: 'Components of an Entrepreneurial Marketing Plan',
-    back: '1. Current marketing research — sales analysis, market share analysis, cost analysis\n2. Customer analysis — demographics, needs, buying behavior\n3. Competitive analysis — direct and indirect competitors, market positioning\n4. Marketing goals — quantified targets (revenue, market share, units)\n5. Marketing strategies — 4Ps customized for target segments\n6. Financial projections — marketing budget, ROI expectations',
+    back: '1. Current marketing research - sales analysis, market share analysis, cost analysis\n2. Customer analysis - demographics, needs, buying behavior\n3. Competitive analysis - direct and indirect competitors, market positioning\n4. Marketing goals - quantified targets (revenue, market share, units)\n5. Marketing strategies - 4Ps customized for target segments\n6. Financial projections - marketing budget, ROI expectations',
   },
   {
     ch: 10, topic: '4Cs Marketing Framework',
-    front: '4Cs Marketing Framework vs 4Ps — what they are',
-    back: '4Ps (seller perspective):\n• Product, Price, Place, Promotion\n\n4Cs (customer perspective):\n• Customer Solution — what need does it solve? (replaces Product)\n• Customer Cost — total cost of ownership, not just price (replaces Price)\n• Convenience — ease of purchase and use (replaces Place)\n• Communication — two-way dialogue, not just ads (replaces Promotion)\n\nEntrepreneurs prefer 4Cs because it forces a customer-centric view before designing the offering.',
+    front: '4Cs Marketing Framework vs 4Ps - what they are',
+    back: '4Ps (seller perspective):\n• Product, Price, Place, Promotion\n\n4Cs (customer perspective):\n• Customer Solution - what need does it solve? (replaces Product)\n• Customer Cost - total cost of ownership, not just price (replaces Price)\n• Convenience - ease of purchase and use (replaces Place)\n• Communication - two-way dialogue, not just ads (replaces Promotion)\n\nEntrepreneurs prefer 4Cs because it forces a customer-centric view before designing the offering.',
   },
   {
     ch: 10, topic: '4Cs Marketing Framework',
-    front: '4Cs — applying each element for a startup',
-    back: 'Customer Solution: validate the problem before building; start with customer pain points, not product features\n\nCustomer Cost: price is only one component; include switching costs, time, and learning curve; use value-based pricing\n\nConvenience: reduce friction at every step — discovery, trial, purchase, usage; match channels to customer behavior\n\nCommunication: social media enables two-way conversations at low cost; word-of-mouth and referrals are most cost-effective for early-stage ventures',
+    front: '4Cs - applying each element for a startup',
+    back: 'Customer Solution: validate the problem before building; start with customer pain points, not product features\n\nCustomer Cost: price is only one component; include switching costs, time, and learning curve; use value-based pricing\n\nConvenience: reduce friction at every step - discovery, trial, purchase, usage; match channels to customer behavior\n\nCommunication: social media enables two-way conversations at low cost; word-of-mouth and referrals are most cost-effective for early-stage ventures',
   },
   {
     ch: 10, topic: 'Market Research',
     front: 'Primary vs Secondary Market Research',
-    back: 'Primary Research (firsthand collection):\n• Surveys — quantitative, scalable\n• Focus groups — qualitative group insights\n• Interviews — deep individual insights; best for complex B2B\n• Observation — watching behavior in context\n• A/B testing — direct behavioral data\n\nSecondary Research (existing data):\n• Government sources (Census, Bureau of Labor, SBA)\n• Trade associations and industry reports\n• Academic journals\n• Nielsen, Forrester, IBISWorld (paid)\n\nRule: Start with secondary (cheap), then validate with primary.',
+    back: 'Primary Research (firsthand collection):\n• Surveys - quantitative, scalable\n• Focus groups - qualitative group insights\n• Interviews - deep individual insights; best for complex B2B\n• Observation - watching behavior in context\n• A/B testing - direct behavioral data\n\nSecondary Research (existing data):\n• Government sources (Census, Bureau of Labor, SBA)\n• Trade associations and industry reports\n• Academic journals\n• Nielsen, Forrester, IBISWorld (paid)\n\nRule: Start with secondary (cheap), then validate with primary.',
   },
   {
     ch: 10, topic: 'Market Research',
-    front: 'TAM, SAM, SOM — Market Sizing Definitions',
-    back: 'TAM (Total Addressable Market): total global revenue if you captured 100% market share\n\nSAM (Serviceable Addressable Market): portion of TAM you can realistically serve given geography, product fit, and channel constraints\n\nSOM (Serviceable Obtainable Market): realistic share you can capture in 3–5 years given competition and resources\n\nInvestors care most about SOM — the credible near-term target.\n\nExample (fitness app):\n• TAM: global fitness industry = $96B\n• SAM: U.S. app users = $12B\n• SOM: Year-1 realistic target = $5M',
+    front: 'TAM, SAM, SOM - Market Sizing Definitions',
+    back: 'TAM (Total Addressable Market): total global revenue if you captured 100% market share\n\nSAM (Serviceable Addressable Market): portion of TAM you can realistically serve given geography, product fit, and channel constraints\n\nSOM (Serviceable Obtainable Market): realistic share you can capture in 3–5 years given competition and resources\n\nInvestors care most about SOM - the credible near-term target.\n\nExample (fitness app):\n• TAM: global fitness industry = $96B\n• SAM: U.S. app users = $12B\n• SOM: Year-1 realistic target = $5M',
   },
   {
     ch: 10, topic: 'Social Media Marketing',
-    front: 'Social Media Platforms — best uses for entrepreneurs',
-    back: 'Instagram: visual products, B2C, lifestyle; Stories/Reels for organic reach; influencer partnerships\n\nLinkedIn: B2B, professional services, thought leadership content\n\nTikTok: highest organic reach currently; short-form video; Gen Z/Millennial audiences\n\nFacebook: older demographics; highly targeted paid ads; Groups for community building\n\nYouTube: long-form tutorials and demos; strong SEO value; high purchase intent searches\n\nKey principle: be where your customers already are — not where you want to be.',
+    front: 'Social Media Platforms - best uses for entrepreneurs',
+    back: 'Instagram: visual products, B2C, lifestyle; Stories/Reels for organic reach; influencer partnerships\n\nLinkedIn: B2B, professional services, thought leadership content\n\nTikTok: highest organic reach currently; short-form video; Gen Z/Millennial audiences\n\nFacebook: older demographics; highly targeted paid ads; Groups for community building\n\nYouTube: long-form tutorials and demos; strong SEO value; high purchase intent searches\n\nKey principle: be where your customers already are - not where you want to be.',
   },
   {
     ch: 10, topic: 'Social Media Marketing',
-    front: 'Viral Marketing and Word-of-Mouth — STEPPS Framework',
-    back: 'Word-of-mouth is the most trusted and cost-effective marketing channel (92% of consumers trust peer recommendations over ads).\n\nContagious (Jonah Berger) STEPPS framework — 6 triggers of viral content:\n1. Social Currency — makes the sharer look good\n2. Triggers — environmental cues that remind people of the product\n3. Emotion — high-arousal emotions (awe, humor, anger) drive sharing\n4. Public — visible behavior is imitated\n5. Practical Value — useful content people share to help others\n6. Stories — narratives that naturally carry the brand message',
+    front: 'Viral Marketing and Word-of-Mouth - STEPPS Framework',
+    back: 'Word-of-mouth is the most trusted and cost-effective marketing channel (92% of consumers trust peer recommendations over ads).\n\nContagious (Jonah Berger) STEPPS framework - 6 triggers of viral content:\n1. Social Currency - makes the sharer look good\n2. Triggers - environmental cues that remind people of the product\n3. Emotion - high-arousal emotions (awe, humor, anger) drive sharing\n4. Public - visible behavior is imitated\n5. Practical Value - useful content people share to help others\n6. Stories - narratives that naturally carry the brand message',
   },
   {
     ch: 10, topic: 'Consumer Behavior',
     front: '5-Stage Consumer Decision-Making Process',
-    back: '1. Problem Recognition — consumer identifies a need or desire\n2. Information Search — internal memory first, then external (reviews, friends, search)\n3. Evaluation of Alternatives — comparing options on key criteria (price, features, trust)\n4. Purchase Decision — selecting the product; can be disrupted by negative reviews or stock-outs\n5. Post-Purchase Evaluation — satisfaction → loyalty → positive WOM; dissatisfaction → returns/complaints\n\nMarketing application:\n• Stage 1: trigger awareness\n• Stage 2: strong SEO and review presence\n• Stage 3: comparison advantages\n• Stage 5: follow-up emails drive repeat purchase and referrals',
+    back: '1. Problem Recognition - consumer identifies a need or desire\n2. Information Search - internal memory first, then external (reviews, friends, search)\n3. Evaluation of Alternatives - comparing options on key criteria (price, features, trust)\n4. Purchase Decision - selecting the product; can be disrupted by negative reviews or stock-outs\n5. Post-Purchase Evaluation - satisfaction → loyalty → positive WOM; dissatisfaction → returns/complaints\n\nMarketing application:\n• Stage 1: trigger awareness\n• Stage 2: strong SEO and review presence\n• Stage 3: comparison advantages\n• Stage 5: follow-up emails drive repeat purchase and referrals',
   },
   {
     ch: 10, topic: 'Pricing Strategies',
@@ -294,13 +294,13 @@ export const FLASHCARDS = [
   },
   {
     ch: 10, topic: 'Entrepreneurial Marketing',
-    front: 'AIDA Framework — buyer journey stages',
-    back: 'AIDA = four stages a buyer moves through before purchase:\n\n1. Attention (Awareness) — prospect learns the brand exists\n   Tactics: paid ads, PR, viral content, SEO\n\n2. Interest — prospect engages and wants to know more\n   Tactics: website content, demos, email nurturing\n\n3. Desire — prospect wants this specific product\n   Tactics: testimonials, free trials, comparison tools\n\n4. Action — prospect makes the purchase\n   Tactics: strong CTA, easy checkout, limited-time offers\n\nEntrepreneurs often skip to "Action" too quickly. Building awareness and interest first is critical for sustainable growth.',
+    front: 'AIDA Framework - buyer journey stages',
+    back: 'AIDA = four stages a buyer moves through before purchase:\n\n1. Attention (Awareness) - prospect learns the brand exists\n   Tactics: paid ads, PR, viral content, SEO\n\n2. Interest - prospect engages and wants to know more\n   Tactics: website content, demos, email nurturing\n\n3. Desire - prospect wants this specific product\n   Tactics: testimonials, free trials, comparison tools\n\n4. Action - prospect makes the purchase\n   Tactics: strong CTA, easy checkout, limited-time offers\n\nEntrepreneurs often skip to "Action" too quickly. Building awareness and interest first is critical for sustainable growth.',
   },
   {
     ch: 10, topic: 'Distribution Channels',
-    front: 'Direct vs Indirect Distribution — trade-offs',
-    back: 'Direct (manufacturer → consumer):\n• Higher margins — no intermediary markup\n• Direct customer relationship and data ownership\n• Requires investment in sales and fulfillment infrastructure\n• Examples: Tesla, Warby Parker, Dell\n\nIndirect (via wholesalers/distributors/retailers):\n• Faster market penetration — leverage existing networks\n• Lower upfront investment\n• Less control over pricing, shelf placement, and customer experience\n• Examples: Coca-Cola, Procter & Gamble\n\nStartup pattern: start direct to learn, then add indirect channels as volume grows.',
+    front: 'Direct vs Indirect Distribution - trade-offs',
+    back: 'Direct (manufacturer → consumer):\n• Higher margins - no intermediary markup\n• Direct customer relationship and data ownership\n• Requires investment in sales and fulfillment infrastructure\n• Examples: Tesla, Warby Parker, Dell\n\nIndirect (via wholesalers/distributors/retailers):\n• Faster market penetration - leverage existing networks\n• Lower upfront investment\n• Less control over pricing, shelf placement, and customer experience\n• Examples: Coca-Cola, Procter & Gamble\n\nStartup pattern: start direct to learn, then add indirect channels as volume grows.',
   },
   {
     ch: 10, topic: 'Market Segmentation',
@@ -315,8 +315,8 @@ export const FLASHCARDS = [
   // ── Chapter 12: Business Plan ──────────────────────────────────────────────
   {
     ch: 12, topic: 'Business Model Canvas',
-    front: 'Business Model Canvas — 9 Building Blocks',
-    back: '1. Customer Segments — who are you serving?\n2. Value Propositions — what problem do you solve?\n3. Channels — how do you reach customers?\n4. Customer Relationships — how do you keep them?\n5. Revenue Streams — how do you make money?\n6. Key Resources — what assets do you need?\n7. Key Activities — what must you do to deliver value?\n8. Key Partnerships — who helps you?\n9. Cost Structure — what does it cost to operate?\n\nOne-page tool; used before writing a full business plan.',
+    front: 'Business Model Canvas - 9 Building Blocks',
+    back: '1. Customer Segments - who are you serving?\n2. Value Propositions - what problem do you solve?\n3. Channels - how do you reach customers?\n4. Customer Relationships - how do you keep them?\n5. Revenue Streams - how do you make money?\n6. Key Resources - what assets do you need?\n7. Key Activities - what must you do to deliver value?\n8. Key Partnerships - who helps you?\n9. Cost Structure - what does it cost to operate?\n\nOne-page tool; used before writing a full business plan.',
   },
   {
     ch: 12, topic: 'Benefits of a Business Plan',
@@ -325,12 +325,12 @@ export const FLASHCARDS = [
   },
   {
     ch: 12, topic: 'Executive Summary',
-    front: 'Executive Summary — rules and what to include',
-    back: '• Written LAST, placed FIRST (Section I)\n• Length: 2–3 pages; must stand completely alone\n• Most critical section — if it doesn\'t grab readers, they stop\n\nMust include:\n• Venture concept and value proposition\n• Unique product/service features\n• Target market definition\n• Management team overview\n• Funding amount required and use of funds\n• Key financial highlights (revenue projection, break-even)',
+    front: 'Executive Summary - rules and what to include',
+    back: '• Written LAST, placed FIRST (Section I)\n• Length: 2–3 pages; must stand completely alone\n• Most critical section - if it doesn\'t grab readers, they stop\n\nMust include:\n• Venture concept and value proposition\n• Unique product/service features\n• Target market definition\n• Management team overview\n• Funding amount required and use of funds\n• Key financial highlights (revenue projection, break-even)',
   },
   {
     ch: 12, topic: 'Market and Competitor Analysis',
-    front: 'Table 12.1 — Common Business Plan Phrases vs Reality',
+    front: 'Table 12.1 - Common Business Plan Phrases vs Reality',
     back: '"No competition exists" → Reality: You haven\'t done enough research\n"We only need 1% of the market" → Reality: No credible path to even 1% shown\n"Our projections are conservative" → Reality: Usually wildly optimistic\n"Everyone is our target market" → Reality: No segmentation; fatal flaw\n\nInvestors red-flag these phrases. Competitive analysis must name direct AND indirect competitors and clearly articulate differentiation.',
   },
   {
@@ -341,7 +341,7 @@ export const FLASHCARDS = [
   {
     ch: 12, topic: 'Financial Segment',
     front: 'What belongs in the Financial Segment of a Business Plan?',
-    back: '• Startup cost schedule (one-time expenses to launch)\n• Use of funds breakdown (equity vs debt; specific allocation)\n• 3-year pro forma income statement, balance sheet, cash flow\n• Break-even analysis\n• Key financial assumptions (clearly stated)\n• Funding requirements — total amount, type, and timeline\n• Exit strategy (acquisition, IPO, management buyout)\n\nTable 12.4 assessment tool scores the financial segment on 10 criteria.',
+    back: '• Startup cost schedule (one-time expenses to launch)\n• Use of funds breakdown (equity vs debt; specific allocation)\n• 3-year pro forma income statement, balance sheet, cash flow\n• Break-even analysis\n• Key financial assumptions (clearly stated)\n• Funding requirements - total amount, type, and timeline\n• Exit strategy (acquisition, IPO, management buyout)\n\nTable 12.4 assessment tool scores the financial segment on 10 criteria.',
   },
   {
     ch: 12, topic: 'Pitching the Plan',
@@ -356,22 +356,22 @@ export const FLASHCARDS = [
   {
     ch: 12, topic: 'Planning Pitfalls',
     front: 'Why Business Plans Fail to Attract Investors',
-    back: 'Most common investor rejections:\n• Management team is weak, incomplete, or lacks relevant experience\n• Market is too small (<$50M) or not growing\n• No defensible competitive advantage or moat\n• Financial projections not credible (assumptions not shown)\n• No evidence of customer validation or traction\n• Founder overvalues idea vs. execution capability\n• No specific ask — plan doesn\'t state how much is needed or why\n\nInvestors evaluate: people first, market second, product third.\n"Show me you understand this problem better than anyone else in the room."',
+    back: 'Most common investor rejections:\n• Management team is weak, incomplete, or lacks relevant experience\n• Market is too small (<$50M) or not growing\n• No defensible competitive advantage or moat\n• Financial projections not credible (assumptions not shown)\n• No evidence of customer validation or traction\n• Founder overvalues idea vs. execution capability\n• No specific ask - plan doesn\'t state how much is needed or why\n\nInvestors evaluate: people first, market second, product third.\n"Show me you understand this problem better than anyone else in the room."',
   },
   {
     ch: 12, topic: 'Milestone Schedule',
-    front: 'Milestone Schedule — purpose and key milestones to include',
+    front: 'Milestone Schedule - purpose and key milestones to include',
     back: 'A milestone schedule translates the business plan into a timeline of measurable achievements.\n\nPurpose:\n• Demonstrates founders have thought through execution, not just strategy\n• Provides accountability benchmarks for the team\n• Identifies critical dependencies and resource needs\n\nTypical milestones:\n• Prototype/product completion\n• First customer or first revenue\n• Key management hires\n• Regulatory approvals (if applicable)\n• Break-even point\n• Next funding round\n• Key partnership agreements signed\n\nBest format: Gantt chart or milestone table with owner and target date.',
   },
   {
     ch: 12, topic: 'Updating the Business Plan',
     front: 'When and How to Update a Business Plan',
-    back: 'A business plan is a living document — update it when:\n• Market conditions change significantly\n• A major competitor enters or exits\n• Financial projections prove wrong (revise; never hide)\n• You pivot product or target market\n• A new funding round is being pursued\n• Management team changes significantly\n\nBest practices:\n• Review quarterly; formal update annually\n• Tie updates to milestone achievement or failure\n• Compare actual results to projections and explain variances\n• Keep version history to track strategic evolution\n\nUpdating = learning. A plan that never changes shows a founder isn\'t listening to the market.',
+    back: 'A business plan is a living document - update it when:\n• Market conditions change significantly\n• A major competitor enters or exits\n• Financial projections prove wrong (revise; never hide)\n• You pivot product or target market\n• A new funding round is being pursued\n• Management team changes significantly\n\nBest practices:\n• Review quarterly; formal update annually\n• Tie updates to milestone achievement or failure\n• Compare actual results to projections and explain variances\n• Keep version history to track strategic evolution\n\nUpdating = learning. A plan that never changes shows a founder isn\'t listening to the market.',
   },
   {
     ch: 12, topic: 'Market and Competitor Analysis',
-    front: 'SWOT Analysis — framework and business plan application',
-    back: 'Internal factors:\n• Strengths — what you do better than competitors (tech, team, brand)\n• Weaknesses — gaps in resources, experience, or execution capacity\n\nExternal factors:\n• Opportunities — market trends, regulatory changes, competitor gaps\n• Threats — competitive responses, macro risks, substitute products\n\nStrategy links:\n• Strength + Opportunity → offensive growth strategy\n• Weakness + Threat → defensive mitigation strategy\n\nRule: every SWOT item must be specific and backed by data. Generic SWOTs ("our weakness is lack of brand awareness") add no value to investors.',
+    front: 'SWOT Analysis - framework and business plan application',
+    back: 'Internal factors:\n• Strengths - what you do better than competitors (tech, team, brand)\n• Weaknesses - gaps in resources, experience, or execution capacity\n\nExternal factors:\n• Opportunities - market trends, regulatory changes, competitor gaps\n• Threats - competitive responses, macro risks, substitute products\n\nStrategy links:\n• Strength + Opportunity → offensive growth strategy\n• Weakness + Threat → defensive mitigation strategy\n\nRule: every SWOT item must be specific and backed by data. Generic SWOTs ("our weakness is lack of brand awareness") add no value to investors.',
   },
   {
     ch: 12, topic: 'Benefits of a Business Plan',
@@ -380,22 +380,22 @@ export const FLASHCARDS = [
   },
   {
     ch: 12, topic: 'Financial Segment',
-    front: 'Break-Even Analysis — formula and interpretation',
+    front: 'Break-Even Analysis - formula and interpretation',
     back: 'Break-Even (units) = Fixed Costs ÷ Contribution Margin per Unit\nContribution Margin = Price per Unit − Variable Cost per Unit\n\nBreak-Even (revenue) = Fixed Costs ÷ Contribution Margin Ratio\nCM Ratio = (Price − Variable Cost) ÷ Price\n\nExample:\n• Fixed costs: $100,000\n• Price: $50/unit, Variable cost: $30/unit\n• CM per unit: $20\n• Break-even: 100,000 ÷ 20 = 5,000 units\n\nInvestors expect you to know your break-even and have a credible timeline to reach it.',
   },
   {
     ch: 12, topic: 'Financial Segment',
-    front: 'Pro Forma Financial Statements — 3 required statements',
-    back: '1. Income Statement (P&L):\n   Revenue → COGS → Gross Profit → Operating Expenses → EBITDA → Net Income\n   Show monthly for Year 1, quarterly for Years 2–3\n\n2. Balance Sheet:\n   Assets = Liabilities + Equity at end of each projected year\n   Validates capital structure and solvency\n\n3. Cash Flow Statement:\n   Tracks actual cash in/out by month\n   MOST IMPORTANT — many profitable businesses fail from cash-flow timing gaps\n\nKey rule: always show your assumptions explicitly. If revenue grows 25% YoY, explain why with data.\n\nRed flag: projections with no bad months, no receivables delay, no customer churn.',
+    front: 'Pro Forma Financial Statements - 3 required statements',
+    back: '1. Income Statement (P&L):\n   Revenue → COGS → Gross Profit → Operating Expenses → EBITDA → Net Income\n   Show monthly for Year 1, quarterly for Years 2–3\n\n2. Balance Sheet:\n   Assets = Liabilities + Equity at end of each projected year\n   Validates capital structure and solvency\n\n3. Cash Flow Statement:\n   Tracks actual cash in/out by month\n   MOST IMPORTANT - many profitable businesses fail from cash-flow timing gaps\n\nKey rule: always show your assumptions explicitly. If revenue grows 25% YoY, explain why with data.\n\nRed flag: projections with no bad months, no receivables delay, no customer churn.',
   },
   {
     ch: 12, topic: 'Executive Summary',
     front: 'Elevator Pitch formula for the Executive Summary hook',
-    back: 'The opening paragraph must immediately answer:\n• FOR WHOM — specific target customer\n• THE PROBLEM — pain point that exists today\n• OUR SOLUTION — specific product or service\n• THE BENEFIT — measurable improvement over status quo\n• THE ASK — how much capital and for what purpose\n\nFormula:\n"For [specific customer] who [has problem X], [company] provides [solution] that [delivers measurable benefit], unlike [alternatives] which [fail in specific way]."\n\nWeak hooks to avoid:\n• "We are disrupting the $50B market..."\n• "Our patent-pending technology will revolutionize..."\n\nStrong hooks are specific, brief, and jargon-free.',
+    back: 'The opening paragraph must immediately answer:\n• FOR WHOM - specific target customer\n• THE PROBLEM - pain point that exists today\n• OUR SOLUTION - specific product or service\n• THE BENEFIT - measurable improvement over status quo\n• THE ASK - how much capital and for what purpose\n\nFormula:\n"For [specific customer] who [has problem X], [company] provides [solution] that [delivers measurable benefit], unlike [alternatives] which [fail in specific way]."\n\nWeak hooks to avoid:\n• "We are disrupting the $50B market..."\n• "Our patent-pending technology will revolutionize..."\n\nStrong hooks are specific, brief, and jargon-free.',
   },
   {
     ch: 12, topic: 'Market and Competitor Analysis',
-    front: 'Porter\'s Five Forces — competitive analysis framework',
+    front: 'Porter\'s Five Forces - competitive analysis framework',
     back: '1. Competitive Rivalry: intensity among existing firms; high rivalry → price wars, low margins\n\n2. Threat of New Entrants: ease for new competitors to enter; high barriers protect position (patents, brand loyalty, scale economies)\n\n3. Threat of Substitutes: alternative ways to solve the same problem; limits pricing power\n\n4. Bargaining Power of Suppliers: few suppliers = they can raise prices or reduce quality\n\n5. Bargaining Power of Buyers: concentrated or price-sensitive buyers erode margins\n\nBusiness plan use: Five Forces analysis shows investors you understand the structural attractiveness of the industry. Weak position requires explicit mitigation strategy.',
   },
   {
@@ -405,7 +405,7 @@ export const FLASHCARDS = [
   },
   {
     ch: 12, topic: 'Pitching the Plan',
-    front: 'Due Diligence Process — what happens after a successful pitch',
+    front: 'Due Diligence Process - what happens after a successful pitch',
     back: 'Investor due diligence is the comprehensive investigation before finalizing the investment:\n\n1. Management interviews (deep founder assessment)\n2. Market validation (independent customer calls)\n3. Legal review (IP ownership, contracts, litigation history)\n4. Financial audit (reconcile projections with actuals)\n5. Reference checks (customers, ex-employees, co-investors)\n6. Cap table review (clean ownership structure)\n7. Technical diligence (for software/deep-tech)\n\nDuration: 30–90 days (angel/seed); 3–6 months (Series A+)\n\nDeal-killers in DD: undisclosed litigation, inconsistent financials, IP not owned by company, key-person dependencies with no succession plan.',
   },
 ]

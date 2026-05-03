@@ -162,7 +162,7 @@ export function FlashcardsScreen({
           </div>
         )}
 
-        {/* Flashcard — 3D flip */}
+        {/* Flashcard - 3D flip */}
         {fcCard && (
           <div
             onClick={() => setFcFlipped(f => !f)}
@@ -179,7 +179,7 @@ export function FlashcardsScreen({
               transform: fcFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
             }}>
 
-              {/* FRONT — question */}
+              {/* FRONT - question */}
               <div style={{ ...faceStyle, background: cardBg }}>
                 <div style={{ position: 'absolute', top: 12, left: 14, right: 14, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <span style={{ fontSize: 10, fontFamily: 'monospace', color: subText }}>QUESTION &middot; tap or Space</span>
@@ -193,7 +193,7 @@ export function FlashcardsScreen({
                 </p>
               </div>
 
-              {/* BACK — answer */}
+              {/* BACK - answer */}
               <div style={{ ...faceStyle, background: dk ? '#0f172a' : '#f1f5f9', transform: 'rotateY(180deg)' }}>
                 <div style={{ position: 'absolute', top: 12, left: 14, right: 14, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <span style={{ fontSize: 10, fontFamily: 'monospace', color: subText }}>ANSWER &middot; tap or Space</span>
