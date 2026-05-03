@@ -1,5 +1,5 @@
 export const S = {
-  page:         { minHeight: '100vh', background: '#f1f5f9', fontFamily: "'Georgia','Times New Roman',serif", padding: '32px 20px 60px' },
+  page:         { minHeight: '100vh', background: '#f1f5f9', fontFamily: "'Georgia','Times New Roman',serif", padding: '28px 20px 16px' },
   container:    { maxWidth: 900, margin: '0 auto' },
   header:       { textAlign: 'center', marginBottom: 24 },
   badge:        { display: 'inline-block', background: '#1e293b', color: '#94a3b8', fontSize: 12, fontWeight: 700, letterSpacing: 2.5, padding: '6px 18px', borderRadius: 2, marginBottom: 14, fontFamily: 'monospace' },

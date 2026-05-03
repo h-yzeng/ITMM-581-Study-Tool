@@ -1,3 +1,5 @@
+export const CHAPTER_IDS = [8, 9, 10, 12]
+
 export const CHAPTER_COLORS = {
   8:  '#3b82f6',
   9:  '#8b5cf6',
