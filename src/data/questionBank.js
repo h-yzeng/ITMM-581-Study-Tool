@@ -667,7 +667,7 @@ export const QUESTION_BANK = [
   // IP Comparison
   { chapter:9, topic:"Trademarks and Trade Secrets", type:"mcq", difficulty:"medium",
     question:"Which form of intellectual property protection can potentially last INDEFINITELY as long as the owner actively maintains it in commerce?",
-    options:["A. Utility patent (20-year term)","B. Copyright (life of author plus 70 years)","C. Trademark (renewable indefinitely while in use)","D. Design patent (15-year term)"],
+    options:["A. Utility patent","B. Copyright","C. Trademark","D. Design patent"],
     answer:"C", explanation:"Trademark protection can last indefinitely as long as the owner continues to use the mark in commerce and files timely renewal applications with the USPTO. Unlike patents and copyrights, there is no absolute expiration." },
 
   // Patent Rules
@@ -689,7 +689,7 @@ export const QUESTION_BANK = [
 
   { chapter:9, topic:"Trademarks and Trade Secrets", type:"mcq", difficulty:"medium",
     question:"For a proprietary manufacturing process a company wants to protect indefinitely, which IP form is MOST appropriate?",
-    options:["A. Patent - because it provides 20 years of exclusive rights","B. Copyright - because it protects the written documentation of the process","C. Trade secret - because it can last indefinitely as long as secrecy is maintained","D. Trademark - because it identifies the source of goods"],
+    options:["A. Patent - because it grants exclusive rights after full public disclosure","B. Copyright - because it protects the written documentation of the process","C. Trade secret - because it requires no registration and protection continues as long as secrecy is maintained","D. Trademark - because it identifies the source of goods"],
     answer:"C", explanation:"For a process that should remain secret indefinitely, trade secret protection is superior to a patent - patents expire after 20 years and require full public disclosure, which permanently destroys the secrecy." },
 
   // Business Forms Additional
@@ -831,7 +831,7 @@ export const QUESTION_BANK = [
   // Market Segmentation Additional
   { chapter:10, topic:"Market Segmentation", type:"mcq", difficulty:"medium",
     question:"A clothing retailer targeting teenage girls ages 13–17 with median household income under $75,000 is using which type of segmentation?",
-    options:["A. Psychographic only","B. Geographic only","C. Demographic segmentation (age, gender, income)","D. Behavioral segmentation"],
+    options:["A. Psychographic segmentation","B. Geographic segmentation","C. Demographic segmentation","D. Behavioral segmentation"],
     answer:"C", explanation:"Segmenting by age, gender, and income level are all demographic variables. This is demographic segmentation - the most commonly used segmentation approach due to its measurability." },
 
   { chapter:10, topic:"Market Segmentation", type:"tf", difficulty:"easy",
