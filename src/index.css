@@ -1,5 +1,5 @@
 *, *::before, *::after { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
+html, body { margin: 0; padding: 0; font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; }
 
 /* Remove default outline; restore a clean one only for keyboard navigation */
 :focus { outline: none; }
@@ -7,4 +7,24 @@ html, body { margin: 0; padding: 0; }
   outline: 2px solid #6366f1;
   outline-offset: 3px;
   border-radius: 4px;
+}
+
+/* Hide number input spinners */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] { -moz-appearance: textfield; appearance: textfield; }
+
+/* Mobile: horizontal scroll for pill rows */
+@media (max-width: 600px) {
+  .pill-row {
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+  .pill-row::-webkit-scrollbar { display: none; }
 }

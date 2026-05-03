@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { CHAPTERS, TOPIC_CARDS, CHAPTER_COLORS, TOPICS_BY_CHAPTER } from '../data/chapters.js'
 import { QUESTION_BANK } from '../data/questionBank.js'
 import { qKey } from '../hooks/useStorage.js'
@@ -27,8 +28,8 @@ export function HomeScreen({
 }) {
   const { dk, bg, cardBg, text, subText, border, pillSel } = theme
 
-  const pill  = active => ({ ...S.pill,     background: active ? pillSel : cardBg, color: active ? '#fff' : text, border: `1.5px solid ${active ? pillSel : border}`, transition: 'opacity 0.15s' })
-  const count = active => ({ ...S.countBtn, background: active ? pillSel : cardBg, color: active ? '#fff' : text, border: `1.5px solid ${active ? pillSel : border}`, transition: 'opacity 0.15s' })
+  const [chapOpen, setChapOpen] = useState(false)
+  const pill  = active => ({ ...S.pill, background: active ? pillSel : cardBg, color: active ? '#fff' : text, border: `1.5px solid ${active ? pillSel : border}`, transition: 'opacity 0.15s' })
   const hov   = e => { e.currentTarget.style.opacity = '0.75' }
   const unhov = e => { e.currentTarget.style.opacity = '1' }
 
@@ -108,9 +109,9 @@ export function HomeScreen({
 
         <div style={S.section}>
           <label style={{ ...S.label, color: subText }}>CHAPTER FOCUS</label>
-          <div style={S.pills}>
+          <div className="pill-row" style={S.pills}>
             {CHAPTERS.map(c => (
-              <button key={c.id} onClick={() => { setSelChapter(c.id); setSelTopics([]) }} onMouseEnter={hov} onMouseLeave={unhov} style={pill(selChapter === c.id)}>
+              <button key={c.id} onClick={() => { setSelChapter(c.id); setSelTopics([]) }} onMouseEnter={hov} onMouseLeave={unhov} style={{ ...pill(selChapter === c.id), flexShrink: 0 }}>
                 {c.label}
                 {c.id !== 'all' && <span style={{ fontSize: 10, opacity: 0.65, marginLeft: 5 }}>({qByChap[parseInt(c.id)] || 0})</span>}
               </button>
@@ -121,17 +122,17 @@ export function HomeScreen({
         {mode !== 'flashcards' && (<>
           <div style={S.section}>
             <label style={{ ...S.label, color: subText }}>QUESTION TYPE</label>
-            <div style={S.pills}>
+            <div className="pill-row" style={S.pills}>
               {[{ id: 'mcq', label: 'Multiple Choice' }, { id: 'tf', label: 'True / False' }, { id: 'mixed', label: 'Mixed' }].map(t => (
-                <button key={t.id} onClick={() => setQType(t.id)} onMouseEnter={hov} onMouseLeave={unhov} style={pill(qType === t.id)}>{t.label}</button>
+                <button key={t.id} onClick={() => setQType(t.id)} onMouseEnter={hov} onMouseLeave={unhov} style={{ ...pill(qType === t.id), flexShrink: 0 }}>{t.label}</button>
               ))}
             </div>
           </div>
           <div style={S.section}>
             <label style={{ ...S.label, color: subText }}>DIFFICULTY</label>
-            <div style={S.pills}>
+            <div className="pill-row" style={S.pills}>
               {[{ id: 'all', label: 'All Levels' }, { id: 'easy', label: 'Easy' }, { id: 'medium', label: 'Medium' }, { id: 'hard', label: 'Hard' }].map(d => (
-                <button key={d.id} onClick={() => setSelDiff(d.id)} onMouseEnter={hov} onMouseLeave={unhov} style={pill(selDiff === d.id)}>{d.label}</button>
+                <button key={d.id} onClick={() => setSelDiff(d.id)} onMouseEnter={hov} onMouseLeave={unhov} style={{ ...pill(selDiff === d.id), flexShrink: 0 }}>{d.label}</button>
               ))}
             </div>
           </div>
@@ -160,21 +161,14 @@ export function HomeScreen({
           )}
           {mode !== 'cram' && (<div style={S.section}>
             <label style={{ ...S.label, color: subText }}>NUMBER OF QUESTIONS</label>
-            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center' }}>
-              <div style={S.countRow}>
-                {[5, 10, 15, 20, 40].map(n => (
-                  <button key={n} onClick={() => setQCount(n)} onMouseEnter={hov} onMouseLeave={unhov} style={count(qCount === n)}>{n}</button>
-                ))}
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-                <button onClick={() => setQCount(q => Math.max(1, q - 1))} style={{ ...S.countBtn, minWidth: 36, padding: '0 10px', fontSize: 18 }}>-</button>
-                <input
-                  type="number" min={1} max={201} value={qCount}
-                  onChange={e => { const v = parseInt(e.target.value); if (!isNaN(v) && v >= 1 && v <= 201) setQCount(v) }}
-                  style={{ width: 56, height: 58, borderRadius: 8, border: `1.5px solid ${border}`, background: cardBg, color: text, fontSize: 18, fontWeight: 700, textAlign: 'center', fontFamily: 'monospace', outline: 'none' }}
-                />
-                <button onClick={() => setQCount(q => Math.min(201, q + 1))} style={{ ...S.countBtn, minWidth: 36, padding: '0 10px', fontSize: 18 }}>+</button>
-              </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+              <button onClick={() => setQCount(q => Math.max(1, q - 1))} onMouseEnter={hov} onMouseLeave={unhov} style={{ ...S.countBtn, minWidth: 40, padding: '0 12px', fontSize: 20, transition: 'opacity 0.15s' }}>−</button>
+              <input
+                type="number" min={1} max={201} value={qCount}
+                onChange={e => { const v = parseInt(e.target.value); if (!isNaN(v) && v >= 1 && v <= 201) setQCount(v) }}
+                style={{ width: 60, height: 44, borderRadius: 8, border: `1.5px solid ${border}`, background: cardBg, color: text, fontSize: 18, fontWeight: 700, textAlign: 'center', outline: 'none' }}
+              />
+              <button onClick={() => setQCount(q => Math.min(201, q + 1))} onMouseEnter={hov} onMouseLeave={unhov} style={{ ...S.countBtn, minWidth: 40, padding: '0 12px', fontSize: 20, transition: 'opacity 0.15s' }}>+</button>
             </div>
           </div>)}
         </>)}
@@ -187,18 +181,6 @@ export function HomeScreen({
             <strong>Cram Mode:</strong> all questions matching your filters, shuffled, no timer &middot; reveal as you go
           </div>
         )}
-
-        <div style={S.topicsGrid}>
-          {TOPIC_CARDS.map(item => (
-            <div key={item.ch} style={{ ...S.topicCard, background: cardBg, borderTop: `3px solid ${CHAPTER_COLORS[item.ch]}` }}>
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, marginBottom: 4 }}>
-                <span style={{ fontSize: 13, fontWeight: 800, color: CHAPTER_COLORS[item.ch] }}>{item.title}</span>
-                <span style={{ fontSize: 10, color: subText, fontFamily: 'sans-serif' }}>{item.sub}</span>
-              </div>
-              {item.topics.map(t => <div key={t} style={{ ...S.topicItem, color: subText }}>&middot; {t}</div>)}
-            </div>
-          ))}
-        </div>
 
         {weakQs.length > 0 && mode !== 'flashcards' && (
           <button onClick={startWeakDrill} style={{ ...S.retryPoolBtn, background: dk ? '#1c1917' : '#fef3c7', borderColor: '#f59e0b', color: '#92400e' }}>
@@ -234,7 +216,7 @@ export function HomeScreen({
           if (selTopics.length > 0)    pool = pool.filter(q => selTopics.includes(q.topic))
           const poolSize = pool.length
           return (
-            <div style={{ textAlign: 'center', fontSize: 12, color: poolSize > 0 ? '#10b981' : '#ef4444', fontFamily: 'monospace', marginBottom: 8 }}>
+            <div style={{ textAlign: 'center', fontSize: 12, color: poolSize > 0 ? '#10b981' : '#ef4444', marginBottom: 8 }}>
               {poolSize > 0
                 ? `${poolSize} question${poolSize !== 1 ? 's' : ''} match your filters - drawing ${Math.min(qCount, poolSize)}`
                 : 'No questions match these filters - try adjusting Chapter, Type, or Difficulty'}
@@ -249,6 +231,26 @@ export function HomeScreen({
         <div style={{ ...S.bankStatus, color: subText }}>
           <span style={{ ...S.bankDot, background: '#10b981' }} />
           {BANK_SIZE} questions ready &middot; no account required
+        </div>
+
+        <div style={{ marginTop: 8, marginBottom: 4 }}>
+          <button onClick={() => setChapOpen(o => !o)} onMouseEnter={hov} onMouseLeave={unhov}
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, width: '100%', padding: '8px 12px', borderRadius: 8, border: `1px solid ${border}`, background: cardBg, color: subText, fontSize: 12, fontWeight: 600, cursor: 'pointer', transition: 'opacity 0.15s' }}>
+            {chapOpen ? '▲' : '▼'} Chapter Topics
+          </button>
+          {chapOpen && (
+            <div style={{ ...S.topicsGrid, marginTop: 10 }}>
+              {TOPIC_CARDS.map(item => (
+                <div key={item.ch} style={{ ...S.topicCard, background: cardBg, borderTop: `3px solid ${CHAPTER_COLORS[item.ch]}` }}>
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, marginBottom: 4 }}>
+                    <span style={{ fontSize: 13, fontWeight: 800, color: CHAPTER_COLORS[item.ch] }}>{item.title}</span>
+                    <span style={{ fontSize: 10, color: subText }}>{item.sub}</span>
+                  </div>
+                  {item.topics.map(t => <div key={t} style={{ ...S.topicItem, color: subText }}>&middot; {t}</div>)}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
       </div>
