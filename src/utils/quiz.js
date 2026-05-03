@@ -6,15 +6,17 @@ export function pullQuestions(count, ch, type, diff) {
   if (type === 'mcq') pool = pool.filter(q => q.type === 'mcq')
   if (type === 'tf')  pool = pool.filter(q => q.type === 'tf')
   if (diff !== 'all') pool = pool.filter(q => q.difficulty === diff)
+  if (!pool.length) return []
+
   pool.sort(() => Math.random() - 0.5)
-  while (pool.length < count && pool.length > 0) {
-    const extra = [...QUESTION_BANK]
-      .filter(q => ch === 'all'     || String(q.chapter) === ch)
-      .filter(q => type === 'mixed' || q.type === type)
-      .filter(q => diff === 'all'   || q.difficulty === diff)
-      .sort(() => Math.random() - 0.5)
-    pool = [...pool, ...extra]
+
+  // If filtered pool is smaller than requested count, pad by repeating the pool
+  // (keeps duplicates bounded to pool size rather than re-filtering the full bank)
+  const base = [...pool]
+  while (pool.length < count) {
+    pool.push(...base.sort(() => Math.random() - 0.5))
   }
+
   return pool.slice(0, count)
 }
 

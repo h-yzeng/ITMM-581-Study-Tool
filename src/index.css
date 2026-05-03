@@ -1,2 +1,10 @@
 *, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
+
+/* Remove default outline; restore a clean one only for keyboard navigation */
+:focus { outline: none; }
+:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 3px;
+  border-radius: 4px;
+}

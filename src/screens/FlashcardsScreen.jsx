@@ -8,17 +8,27 @@ export function FlashcardsScreen({
   theme, toggleDark,
   fcCards, fcIdx, setFcIdx, fcFlipped, setFcFlipped,
   fcCh, setFcCh, fcTopic, setFcTopic,
-  fcKnown, fcKnownCount, fcLastSeen, fcCard, fcTopics,
+  fcKnown, setFcKnown, fcKnownCount, fcLastSeen, fcCard, fcTopics,
   doMarkCard, setScreen,
 }) {
   const { dk, border, cardBg } = theme
   const fcProg    = fcCards.length > 0 ? Math.round((fcIdx + 1) / fcCards.length * 100) : 0
-  const isKnown   = fcKnown[fcIdx]
+  // Key by stable card identity, not index — matches how doMarkCard writes the value
+  const isKnown   = fcCard ? fcKnown[fcCardKey(fcCard)] : undefined
   const lastSeen  = fcCard ? fcLastSeen[fcCardKey(fcCard)] : null
   const daysSince = lastSeen ? Math.floor((Date.now() - lastSeen) / 86400000) : null
 
   const goNext = () => { setFcFlipped(false); setTimeout(() => setFcIdx(i => Math.min(i + 1, fcCards.length - 1)), 100) }
   const goPrev = () => { setFcFlipped(false); setTimeout(() => setFcIdx(i => Math.max(0, i - 1)), 100) }
+
+  const resetDeck = () => { setFcIdx(0); setFcFlipped(false); setFcKnown({}) }
+
+  const changeCh = id => {
+    setFcCh(id); setFcIdx(0); setFcFlipped(false); setFcTopic('all'); setFcKnown({})
+  }
+  const changeTopic = t => {
+    setFcTopic(t); setFcIdx(0); setFcFlipped(false); setFcKnown({})
+  }
 
   return (
     <div style={{ background: '#0f172a', minHeight: '100vh', padding: '28px 20px 16px', fontFamily: S.page.fontFamily }}>
@@ -36,32 +46,61 @@ export function FlashcardsScreen({
           <span style={{ color: '#10b981', fontSize: 12, fontFamily: 'monospace' }}>&#10003; {fcKnownCount}</span>
         </div>
 
-        <div style={{ display: 'flex', gap: 5, flexWrap: 'wrap', marginBottom: 8 }}>
+        {/* Chapter filter */}
+        <div role="group" aria-label="Filter by chapter" style={{ display: 'flex', gap: 5, flexWrap: 'wrap', marginBottom: 8 }}>
           {[{ id: 'all', lbl: 'All' }, ...CHAPTER_IDS.map(n => ({ id: String(n), lbl: `Ch.${n}` }))].map(c => (
-            <button key={c.id} onClick={() => { setFcCh(c.id); setFcIdx(0); setFcFlipped(false); setFcTopic('all') }}
-              style={{ ...S.pill, background: fcCh === c.id ? '#6366f1' : '#1e293b', color: fcCh === c.id ? '#fff' : '#94a3b8', border: '1px solid #334155', fontSize: 11, padding: '4px 10px' }}>
+            <button
+              key={c.id}
+              onClick={() => changeCh(c.id)}
+              aria-pressed={fcCh === c.id}
+              style={{ ...S.pill, background: fcCh === c.id ? '#6366f1' : '#1e293b', color: fcCh === c.id ? '#fff' : '#94a3b8', border: '1px solid #334155', fontSize: 11, padding: '4px 10px' }}
+            >
               {c.lbl}
             </button>
           ))}
         </div>
 
+        {/* Topic filter */}
         {fcCh !== 'all' && fcTopics.length > 0 && (
-          <div style={{ display: 'flex', gap: 5, flexWrap: 'wrap', marginBottom: 12 }}>
-            <button onClick={() => { setFcTopic('all'); setFcIdx(0); setFcFlipped(false) }}
-              style={{ ...S.pill, background: fcTopic === 'all' ? '#334155' : '#1a2332', color: fcTopic === 'all' ? '#e2e8f0' : '#64748b', border: '1px solid #334155', fontSize: 10, padding: '3px 9px' }}>
+          <div role="group" aria-label="Filter by topic" style={{ display: 'flex', gap: 5, flexWrap: 'wrap', marginBottom: 12 }}>
+            <button
+              onClick={() => changeTopic('all')}
+              aria-pressed={fcTopic === 'all'}
+              style={{ ...S.pill, background: fcTopic === 'all' ? '#334155' : '#1a2332', color: fcTopic === 'all' ? '#e2e8f0' : '#64748b', border: '1px solid #334155', fontSize: 10, padding: '3px 9px' }}
+            >
               All Topics
             </button>
             {fcTopics.map(t => (
-              <button key={t} onClick={() => { setFcTopic(t); setFcIdx(0); setFcFlipped(false) }}
-                style={{ ...S.pill, background: fcTopic === t ? '#334155' : '#1a2332', color: fcTopic === t ? '#e2e8f0' : '#64748b', border: '1px solid #334155', fontSize: 10, padding: '3px 9px' }}>
+              <button
+                key={t}
+                onClick={() => changeTopic(t)}
+                aria-pressed={fcTopic === t}
+                style={{ ...S.pill, background: fcTopic === t ? '#334155' : '#1a2332', color: fcTopic === t ? '#e2e8f0' : '#64748b', border: '1px solid #334155', fontSize: 10, padding: '3px 9px' }}
+              >
                 {t}
               </button>
             ))}
           </div>
         )}
 
+        {/* Empty state */}
+        {fcCards.length === 0 && (
+          <div style={{ textAlign: 'center', padding: '48px 20px', color: '#475569', fontFamily: 'sans-serif' }}>
+            <div style={{ fontSize: 14, marginBottom: 8 }}>No flashcards match this filter.</div>
+            <div style={{ fontSize: 12, color: '#334155' }}>Try selecting a different chapter or topic.</div>
+          </div>
+        )}
+
+        {/* Flashcard */}
         {fcCard && (
-          <div onClick={() => setFcFlipped(f => !f)} style={{ ...S.fcCard, borderColor: isKnown === true ? '#10b981' : isKnown === false ? '#ef4444' : '#334155' }}>
+          <div
+            onClick={() => setFcFlipped(f => !f)}
+            role="button"
+            tabIndex={0}
+            aria-label={fcFlipped ? 'Answer side. Press Enter or Space to see question.' : 'Question side. Press Enter or Space to flip to answer.'}
+            onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setFcFlipped(f => !f) } }}
+            style={{ ...S.fcCard, borderColor: isKnown === true ? '#10b981' : isKnown === false ? '#ef4444' : '#334155' }}
+          >
             <div style={{ position: 'absolute', top: 12, left: 14, right: 14, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <span style={{ fontSize: 10, fontFamily: 'monospace', color: '#475569' }}>{fcFlipped ? 'ANSWER' : 'QUESTION'} &middot; tap or Space</span>
               {daysSince !== null ? (
@@ -81,10 +120,12 @@ export function FlashcardsScreen({
           </div>
         )}
 
-        <div style={{ display: 'flex', gap: 10, marginBottom: 12 }}>
-          <button onClick={() => doMarkCard(false)} style={S.fcNo}>&#10007; Still Learning (X)</button>
-          <button onClick={() => doMarkCard(true)}  style={S.fcYes}>&#10003; Got It (G)</button>
-        </div>
+        {fcCard && (
+          <div style={{ display: 'flex', gap: 10, marginBottom: 12 }}>
+            <button onClick={() => doMarkCard(false)} style={S.fcNo}>&#10007; Still Learning (X)</button>
+            <button onClick={() => doMarkCard(true)}  style={S.fcYes}>&#10003; Got It (G)</button>
+          </div>
+        )}
 
         <div style={S.navRow}>
           <button onClick={goPrev} disabled={fcIdx === 0} style={{ ...S.navBtn, opacity: fcIdx === 0 ? 0.3 : 1, background: '#1e293b', color: '#94a3b8', border: '1px solid #334155' }}>&larr; Prev</button>
@@ -95,14 +136,16 @@ export function FlashcardsScreen({
           &larr; &rarr; navigate &middot; Space flip &middot; G got it &middot; X still learning
         </div>
 
-        {fcIdx === fcCards.length - 1 && (
+        {fcCards.length > 0 && fcIdx === fcCards.length - 1 && (
           <div style={{ textAlign: 'center', marginTop: 16, color: '#64748b', fontFamily: 'sans-serif', fontSize: 13 }}>
             <div style={{ color: fcKnownCount === fcCards.length ? '#10b981' : '#64748b', marginBottom: 6, display: 'flex', justifyContent: 'center' }}>
               {fcKnownCount === fcCards.length ? <IconStar size={28} /> : <IconBook size={28} />}
             </div>
             <div>{fcKnownCount}/{fcCards.length} marked as known</div>
-            <button onClick={() => { setFcIdx(0); setFcFlipped(false) }}
-              style={{ ...S.homeBtn, width: 'auto', marginTop: 10, padding: '10px 24px', background: '#6366f1' }}>
+            <button
+              onClick={resetDeck}
+              style={{ ...S.homeBtn, width: 'auto', marginTop: 10, padding: '10px 24px', background: '#6366f1' }}
+            >
               Restart Deck
             </button>
           </div>

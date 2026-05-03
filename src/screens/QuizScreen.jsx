@@ -42,14 +42,23 @@ export function QuizScreen({
           </button>
         </div>
 
-        <div style={S.qNav}>
-          {questions.map((_, i) => (
-            <button key={i} onClick={() => setCurIdx(i)} style={{
-              ...S.qDot,
-              background: i === curIdx ? (dk ? '#6366f1' : '#1e293b') : !isExam && revealed[i] ? (answers[i] === questions[i].answer ? '#10b981' : '#ef4444') : answers[i] ? '#6366f1' : (dk ? '#334155' : '#e2e8f0'),
-              color: (i === curIdx || answers[i]) ? '#fff' : (dk ? '#64748b' : '#94a3b8'),
-            }}>{i + 1}</button>
-          ))}
+        <div role="group" aria-label="Question navigation" style={S.qNav}>
+          {questions.map((_, i) => {
+            let dotLabel = `Question ${i + 1}`
+            if (i === curIdx) dotLabel += ', current'
+            if (answers[i]) dotLabel += ', answered'
+            if (!isExam && revealed[i]) dotLabel += answers[i] === questions[i].answer ? ', correct' : ', incorrect'
+            return (
+              <button key={i} onClick={() => setCurIdx(i)}
+                aria-label={dotLabel}
+                aria-current={i === curIdx ? 'step' : undefined}
+                style={{
+                  ...S.qDot,
+                  background: i === curIdx ? (dk ? '#6366f1' : '#1e293b') : !isExam && revealed[i] ? (answers[i] === questions[i].answer ? '#10b981' : '#ef4444') : answers[i] ? '#6366f1' : (dk ? '#334155' : '#e2e8f0'),
+                  color: (i === curIdx || answers[i]) ? '#fff' : (dk ? '#64748b' : '#94a3b8'),
+                }}>{i + 1}</button>
+            )
+          })}
         </div>
 
         <div style={{ ...S.qCard, background: cardBg, border: dk ? `1px solid ${border}` : 'none', boxShadow: dk ? 'none' : '0 2px 8px rgba(0,0,0,0.07)' }}>
@@ -70,9 +79,9 @@ export function QuizScreen({
             </button>
           </div>
 
-          <p style={{ ...S.qText, color: text }}>{q.question}</p>
+          <p id="question-text" style={{ ...S.qText, color: text }}>{q.question}</p>
 
-          <div style={{ ...S.options, ...(q.type === 'tf' ? { flexDirection: 'row', gap: 12 } : {}) }}>
+          <div role="radiogroup" aria-labelledby="question-text" style={{ ...S.options, ...(q.type === 'tf' ? { flexDirection: 'row', gap: 12 } : {}) }}>
             {q.options.map(opt => {
               const letter = opt[0], isChosen = chosen === letter, isCorrect = q.answer === letter
               let bg2 = dk ? '#0f172a' : '#f8fafc', bdr = border, col = text
@@ -83,6 +92,7 @@ export function QuizScreen({
               const isTF = q.type === 'tf'
               return (
                 <button key={letter} onClick={() => selectAnswer(curIdx, letter)}
+                  role="radio" aria-checked={isChosen}
                   style={{ ...S.optBtn, ...(isTF ? { flex: 1, justifyContent: 'center', fontSize: 15, fontWeight: 700, padding: '16px 0' } : {}), background: bg2, border: `1.5px solid ${bdr}`, color: col }}>
                   {!isTF && <span style={S.optLetter}>{letter}</span>}
                   <span>{opt.slice(3)}</span>

@@ -28,6 +28,7 @@ export default function App() {
 
   const [timeLeft, setTimeLeft]     = useState(null)
   const timerRef                    = useRef(null)
+  const finishQuizRef               = useRef(null)
 
   const [fcIdx, setFcIdx]           = useState(0)
   const [fcFlipped, setFcFlipped]   = useState(false)
@@ -63,11 +64,13 @@ export default function App() {
   const fcKnownCount = useMemo(() => Object.values(fcKnown).filter(Boolean).length, [fcKnown])
 
   const doMarkCard = useCallback(v => {
-    setFcKnown(p => ({ ...p, [fcIdx]: v }))
     const card = fcCards[fcIdx]
     if (card) {
+      // Key by stable card identity, not array index — survives filter changes
+      const key = fcCardKey(card)
+      setFcKnown(p => ({ ...p, [key]: v }))
       setFcLastSeen(p => {
-        const n = { ...p, [fcCardKey(card)]: Date.now() }
+        const n = { ...p, [key]: Date.now() }
         saveStore('fcLastSeen', n)
         return n
       })
@@ -97,13 +100,13 @@ export default function App() {
     document.body.style.background = darkMode ? '#0f172a' : '#f1f5f9'
   }, [darkMode])
 
-  // Exam timer
+  // Exam timer — ref pattern keeps finishQuiz fresh without adding it to deps
   useEffect(() => {
     if (screen === 'quiz' && mode === 'exam' && timeLeft !== null && timeLeft > 0) {
       timerRef.current = setTimeout(() => setTimeLeft(t => t - 1), 1000)
       return () => clearTimeout(timerRef.current)
     }
-    if (screen === 'quiz' && mode === 'exam' && timeLeft === 0) finishQuiz()
+    if (screen === 'quiz' && mode === 'exam' && timeLeft === 0) finishQuizRef.current?.()
   }, [screen, mode, timeLeft])
 
   // Quiz keyboard shortcuts
@@ -196,6 +199,7 @@ export default function App() {
     if (answers[idx]) setRevealed(p => ({ ...p, [idx]: true }))
   }, [answers])
 
+  // Keep ref current every render so the timer effect always calls the latest version
   const finishQuiz = () => {
     clearTimeout(timerRef.current)
     const correct = questions.filter((q, i) => answers[i] === q.answer).length
@@ -232,6 +236,7 @@ export default function App() {
     saveStore('stats', ns); saveStore('wrongBank', nw); saveStore('rightBank', nr)
     saveStore('sessionHistory', newHist)
   }
+  finishQuizRef.current = finishQuiz
 
   const exportStats = useCallback(() => {
     const data = { stats, wrongBank, rightBank, flagged, sessionHistory, exportedAt: new Date().toISOString() }
@@ -242,15 +247,17 @@ export default function App() {
     a.click(); URL.revokeObjectURL(url)
   }, [stats, wrongBank, rightBank, flagged, sessionHistory])
 
-  // ── Theme ──────────────────────────────────────────────────────────────────
-  const dk      = darkMode
-  const bg      = dk ? '#0f172a' : '#f1f5f9'
-  const cardBg  = dk ? '#1e293b' : '#fff'
-  const text    = dk ? '#e2e8f0' : '#1e293b'
-  const subText = dk ? '#94a3b8' : '#64748b'
-  const border  = dk ? '#334155' : '#e2e8f0'
-  const pillSel = dk ? '#4f46e5' : '#1e293b'
-  const theme   = { dk, bg, cardBg, text, subText, border, pillSel }
+  // ── Theme (memoized — only recomputes when darkMode flips) ───────────────────
+  const theme = useMemo(() => {
+    const dk      = darkMode
+    const bg      = dk ? '#0f172a' : '#f1f5f9'
+    const cardBg  = dk ? '#1e293b' : '#fff'
+    const text    = dk ? '#e2e8f0' : '#1e293b'
+    const subText = dk ? '#94a3b8' : '#64748b'
+    const border  = dk ? '#334155' : '#e2e8f0'
+    const pillSel = dk ? '#4f46e5' : '#1e293b'
+    return { dk, bg, cardBg, text, subText, border, pillSel }
+  }, [darkMode])
 
   const answeredAll = questions.length > 0 && Object.keys(answers).length === questions.length
   const prog        = questions.length ? Math.round(Object.keys(answers).length / questions.length * 100) : 0
@@ -312,7 +319,7 @@ export default function App() {
       fcFlipped={fcFlipped} setFcFlipped={setFcFlipped}
       fcCh={fcCh} setFcCh={setFcCh}
       fcTopic={fcTopic} setFcTopic={setFcTopic}
-      fcKnown={fcKnown} fcKnownCount={fcKnownCount}
+      fcKnown={fcKnown} setFcKnown={setFcKnown} fcKnownCount={fcKnownCount}
       fcLastSeen={fcLastSeen} fcCard={fcCard} fcTopics={fcTopics}
       doMarkCard={doMarkCard} setScreen={setScreen}
     />
