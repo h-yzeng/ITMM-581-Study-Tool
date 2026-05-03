@@ -20,24 +20,16 @@ input[type="number"] { -moz-appearance: textfield; appearance: textfield; }
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 0 28px 14px;
-  min-height: 0;
-  overflow: hidden;
-}
-/* Study-mode card area grows to fill spare height */
-.mode-section {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  min-height: 72px;
+  gap: 12px;
+  padding: 0 28px 16px;
+  overflow-y: auto;
 }
 /* Q-type + Difficulty side by side */
 .qtype-diff { display: flex; gap: 12px; }
 .qtype-diff > div { flex: 1; min-width: 0; }
 
-/* Fixed chapter-topics panel */
-.sidebar-panel {
+/* Fixed chapter-topics panel — desktop only */
+.sidebar-fixed {
   position: fixed;
   right: 0;
   top: 0;
@@ -48,8 +40,9 @@ input[type="number"] { -moz-appearance: textfield; appearance: textfield; }
   padding: 68px 12px 20px;
   scrollbar-width: thin;
 }
-/* Mobile toggle shown only on small screens */
-.sidebar-mobile-toggle { display: none; }
+
+/* Mobile section hidden on desktop */
+.sidebar-mobile-wrap { display: none; }
 
 /* ── Mobile overrides ── */
 @media (max-width: 780px) {
@@ -62,28 +55,10 @@ input[type="number"] { -moz-appearance: textfield; appearance: textfield; }
     overflow: visible;
     gap: 12px;
   }
-  .mode-section { flex: 0 0 auto; }
-  .qtype-diff { flex-direction: column; gap: 10px; }
+  /* Hide desktop fixed sidebar on mobile */
+  .sidebar-fixed { display: none; }
+  /* Show mobile collapsible section */
+  .sidebar-mobile-wrap { display: block; padding: 0 16px 20px; }
 
-  /* Sidebar becomes static collapsible panel */
-  .sidebar-panel {
-    position: static;
-    width: 100%;
-    height: auto;
-    padding: 14px 16px 16px;
-  }
-  .sidebar-panel.hidden { display: none; }
-  .sidebar-mobile-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    width: 100%;
-    padding: 10px;
-    margin: 0 0 4px;
-    border-radius: 8px;
-    font-size: 12px;
-    font-weight: 600;
-    cursor: pointer;
-  }
+  .qtype-diff { flex-direction: column; gap: 10px; }
 }

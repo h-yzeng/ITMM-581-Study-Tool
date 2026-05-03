@@ -61,11 +61,10 @@ export function HomeScreen({
     return count
   })()
 
-  const sidebarCards = (
+  const chapterCards = (
     <>
-      <label style={{ ...S.label, color: subText }}>CHAPTER TOPICS</label>
       {TOPIC_CARDS.map(item => (
-        <div key={item.ch} style={{ ...S.topicCard, background: dk ? '#1e293b' : '#fff', borderTop: `3px solid ${CHAPTER_COLORS[item.ch]}`, marginBottom: 8 }}>
+        <div key={item.ch} style={{ ...S.topicCard, background: cardBg, borderTop: `3px solid ${CHAPTER_COLORS[item.ch]}`, marginBottom: 8 }}>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, marginBottom: 4 }}>
             <span style={{ fontSize: 13, fontWeight: 800, color: CHAPTER_COLORS[item.ch] }}>{item.title}</span>
             <span style={{ fontSize: 10, color: subText }}>{item.sub}</span>
@@ -79,7 +78,7 @@ export function HomeScreen({
   return (
     <div className="home-wrap" style={{ background: bg }}>
 
-      {/* Dark toggle sits at fixed right:22 — naturally inside the 260px sidebar */}
+      {/* Dark toggle — fixed at right:22, sits naturally inside the 260px sidebar */}
       <DarkToggle onClick={toggleDark} dk={dk} border={border} cardBg={cardBg} />
 
       {streak > 0 && (
@@ -88,9 +87,10 @@ export function HomeScreen({
         </div>
       )}
 
-      {/* ── Fixed right sidebar (desktop) ── */}
-      <div className="sidebar-panel" style={{ background: dk ? '#0f172a' : '#f8fafc', borderLeft: `1px solid ${border}` }}>
-        {sidebarCards}
+      {/* ── Fixed right sidebar — desktop only (hidden on mobile via CSS) ── */}
+      <div className="sidebar-fixed" style={{ background: bg, borderLeft: `1px solid ${border}` }}>
+        <label style={{ ...S.label, color: subText }}>CHAPTER TOPICS</label>
+        {chapterCards}
       </div>
 
       {/* ── Header ── */}
@@ -125,17 +125,17 @@ export function HomeScreen({
         </div>
       )}
 
-      {/* ── Main sections (fills remaining height) ── */}
+      {/* ── Main sections ── */}
       <div className="home-sections">
 
-        {/* Study Mode — grows to fill spare height */}
-        <div className="mode-section">
+        {/* Study Mode — fixed 96px height, no unbounded growth */}
+        <div style={{ flexShrink: 0 }}>
           <label style={{ ...S.label, color: subText }}>STUDY MODE</label>
-          <div style={{ flex: 1, display: 'flex', gap: 8, marginTop: 6 }}>
+          <div style={{ display: 'flex', gap: 8, height: 96, marginTop: 6 }}>
             {MODES.map(({ id, Icon, label, sub }) => (
               <button key={id} onClick={() => setMode(id)} onMouseEnter={hov} onMouseLeave={unhov}
-                style={{ ...S.modeBtn, flex: 1, justifyContent: 'center', background: mode === id ? pillSel : cardBg, border: `1.5px solid ${mode === id ? pillSel : border}`, color: mode === id ? '#fff' : text, transition: 'opacity 0.15s' }}>
-                <span style={{ color: mode === id ? '#c7d2fe' : subText, display: 'flex' }}><Icon size={26} /></span>
+                style={{ ...S.modeBtn, flex: 1, height: '100%', justifyContent: 'center', background: mode === id ? pillSel : cardBg, border: `1.5px solid ${mode === id ? pillSel : border}`, color: mode === id ? '#fff' : text, transition: 'opacity 0.15s' }}>
+                <span style={{ color: mode === id ? '#c7d2fe' : subText, display: 'flex' }}><Icon size={24} /></span>
                 <span style={{ fontWeight: 700, fontSize: 14 }}>{label}</span>
                 <span style={{ fontSize: 11, color: mode === id ? '#c7d2fe' : subText, lineHeight: 1.3 }}>{sub}</span>
               </button>
@@ -159,7 +159,7 @@ export function HomeScreen({
           </div>
         </div>
 
-        {/* Question Type + Difficulty (side by side) */}
+        {/* Question Type + Difficulty side by side */}
         {mode !== 'flashcards' && (
           <div className="qtype-diff" style={{ flexShrink: 0 }}>
             <div>
@@ -183,7 +183,7 @@ export function HomeScreen({
           </div>
         )}
 
-        {/* Topic Drill (conditional) */}
+        {/* Topic Drill */}
         {mode !== 'flashcards' && selChapter !== 'all' && TOPICS_BY_CHAPTER[parseInt(selChapter)]?.length > 0 && (
           <div style={{ flexShrink: 0 }}>
             <label style={{ ...S.label, color: subText }}>
@@ -228,8 +228,8 @@ export function HomeScreen({
           </div>
         )}
 
-        {/* ── Bottom zone: banners, quick actions, start ── */}
-        <div style={{ flexShrink: 0 }}>
+        {/* ── Bottom zone: pushed to bottom via marginTop auto ── */}
+        <div style={{ marginTop: 'auto', flexShrink: 0 }}>
 
           {mode === 'exam' && (
             <div style={{ ...S.examBanner, marginBottom: 8 }}><strong>Exam Sim:</strong> {qCount} min timer &middot; answers locked until you submit</div>
@@ -240,7 +240,6 @@ export function HomeScreen({
             </div>
           )}
 
-          {/* Compact quick-action row */}
           {(weakQs.length > 0 || wCount > 0 || fCount > 0) && mode !== 'flashcards' && (
             <div style={{ display: 'flex', gap: 6, marginBottom: 8 }}>
               {weakQs.length > 0 && (
@@ -301,21 +300,21 @@ export function HomeScreen({
           </div>
 
         </div>
-
       </div>
 
-      {/* ── Mobile collapsible chapter topics (hidden on desktop via CSS) ── */}
-      <div style={{ padding: '0 16px 20px' }}>
-        <button className="sidebar-mobile-toggle"
+      {/* ── Mobile collapsible chapter topics — hidden on desktop via CSS ── */}
+      <div className="sidebar-mobile-wrap">
+        <button
           onClick={() => setChapOpen(o => !o)}
           onMouseEnter={hov} onMouseLeave={unhov}
-          style={{ border: `1px solid ${border}`, background: cardBg, color: subText, borderRadius: 8, transition: 'opacity 0.15s' }}>
+          style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, width: '100%', padding: '10px', borderRadius: 8, border: `1px solid ${border}`, background: cardBg, color: subText, fontSize: 12, fontWeight: 600, cursor: 'pointer', marginBottom: 8, transition: 'opacity 0.15s' }}>
           {chapOpen ? '▲' : '▼'} Chapter Topics
         </button>
-        <div className={`sidebar-panel${chapOpen ? '' : ' hidden'}`}
-          style={{ background: dk ? '#0f172a' : '#f8fafc', borderTop: `1px solid ${border}`, borderRadius: '0 0 8px 8px' }}>
-          {sidebarCards}
-        </div>
+        {chapOpen && (
+          <div style={{ padding: '4px 0' }}>
+            {chapterCards}
+          </div>
+        )}
       </div>
 
     </div>
