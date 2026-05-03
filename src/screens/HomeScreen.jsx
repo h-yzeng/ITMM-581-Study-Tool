@@ -269,13 +269,13 @@ export function HomeScreen({
           </div>
         )}
 
-        {/* Chapter Topics — flex:1 fills remaining space so no empty void */}
-        <div style={{ flex: 1, minHeight: 0, overflow: 'hidden' }}>
-          <label style={{ ...S.label, color: subText }}>CHAPTER TOPICS</label>
-          <div style={{ ...S.topicsGrid, marginBottom: 0, marginTop: 6 }}>
+        {/* Chapter Topics — flex:1 + grid stretch fills remaining space */}
+        <div style={{ flex: 1, minHeight: 0, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+          <label style={{ ...S.label, color: subText, flexShrink: 0 }}>CHAPTER TOPICS</label>
+          <div style={{ ...S.topicsGrid, flex: 1, alignContent: 'stretch', marginBottom: 0, marginTop: 6 }}>
             {TOPIC_CARDS.map(item => (
               <div key={item.ch} style={{ ...S.topicCard, background: cardBg, borderTop: `3px solid ${CHAPTER_COLORS[item.ch]}` }}>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, marginBottom: 4 }}>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, marginBottom: 6 }}>
                   <span style={{ fontSize: 13, fontWeight: 800, color: CHAPTER_COLORS[item.ch] }}>{item.title}</span>
                   <span style={{ fontSize: 10, color: subText }}>{item.sub}</span>
                 </div>
@@ -284,7 +284,7 @@ export function HomeScreen({
                     onClick={() => { setSelChapter(String(item.ch)); setSelTopics([t]) }}
                     onMouseEnter={e => { e.currentTarget.style.color = CHAPTER_COLORS[item.ch] }}
                     onMouseLeave={e => { e.currentTarget.style.color = subText }}
-                    style={{ ...S.topicItem, color: subText, cursor: 'pointer' }}>
+                    style={{ ...S.topicItem, fontSize: 13, lineHeight: 1.6, marginTop: 5, color: subText, cursor: 'pointer' }}>
                     &middot; {t}
                   </div>
                 ))}
