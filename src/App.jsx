@@ -43,21 +43,31 @@ export default function App() {
   const [darkMode, setDarkMode]     = useState(false)
   const [sessionHistory, setSessionHistory] = useState([])
   const [fcLastSeen, setFcLastSeen] = useState({})
+  const [fcWeakOnly, setFcWeakOnly] = useState(false)
+  const [fcShuffle, setFcShuffle]   = useState(false)
 
   // ── Flashcard derived state (memoized) ────────────────────────────────────
-  const fcCardsRaw = useMemo(() => FLASHCARDS.filter(c => {
+  const fcCardsBase = useMemo(() => FLASHCARDS.filter(c => {
     if (fcCh !== 'all' && c.ch !== parseInt(fcCh)) return false
     if (fcTopic !== 'all' && c.topic !== fcTopic) return false
     return true
   }), [fcCh, fcTopic])
 
-  const fcCards = useMemo(() => [...fcCardsRaw].sort((a, b) => {
+  const fcCardsRaw = useMemo(() =>
+    fcWeakOnly ? fcCardsBase.filter(c => fcKnown[fcCardKey(c)] === false) : fcCardsBase,
+  [fcCardsBase, fcWeakOnly, fcKnown])
+
+  const fcCardsSorted = useMemo(() => [...fcCardsRaw].sort((a, b) => {
     const la = fcLastSeen[fcCardKey(a)] || 0
     const lb = fcLastSeen[fcCardKey(b)] || 0
     if (!la && lb) return -1
     if (la && !lb) return 1
     return la - lb
   }), [fcCardsRaw, fcLastSeen])
+
+  const fcCardsShuffled = useMemo(() => [...fcCardsRaw].sort(() => Math.random() - 0.5), [fcCardsRaw])
+
+  const fcCards = fcShuffle ? fcCardsShuffled : fcCardsSorted
 
   const fcCard       = fcCards[fcIdx] || fcCards[0]
   const fcTopics     = useMemo(() => fcCh !== 'all' ? (TOPICS_BY_CHAPTER[parseInt(fcCh)] || []) : [], [fcCh])
@@ -66,9 +76,12 @@ export default function App() {
   const doMarkCard = useCallback(v => {
     const card = fcCards[fcIdx]
     if (card) {
-      // Key by stable card identity, not array index — survives filter changes
       const key = fcCardKey(card)
-      setFcKnown(p => ({ ...p, [key]: v }))
+      setFcKnown(p => {
+        const n = { ...p, [key]: v }
+        saveStore('fcKnown', n)
+        return n
+      })
       setFcLastSeen(p => {
         const n = { ...p, [key]: Date.now() }
         saveStore('fcLastSeen', n)
@@ -91,6 +104,7 @@ export default function App() {
     setDarkMode(loadStore('darkMode', false))
     setSessionHistory(loadStore('sessionHistory', []))
     setFcLastSeen(loadStore('fcLastSeen', {}))
+    setFcKnown(loadStore('fcKnown', {}))
   }, [])
 
   const toggleDark = useCallback(() => setDarkMode(d => { saveStore('darkMode', !d); return !d }), [])
@@ -174,8 +188,9 @@ export default function App() {
 
   const startSession = useCallback(() => {
     if (mode === 'flashcards') {
-      setFcIdx(0); setFcFlipped(false); setFcKnown({})
+      setFcIdx(0); setFcFlipped(false)
       setFcCh(selChapter); setFcTopic('all')
+      setFcWeakOnly(false); setFcShuffle(false)
       setScreen('flashcards'); return
     }
     const qs = pullQuestions(qCount, selChapter, qType, selDiff)
@@ -321,6 +336,8 @@ export default function App() {
       fcTopic={fcTopic} setFcTopic={setFcTopic}
       fcKnown={fcKnown} setFcKnown={setFcKnown} fcKnownCount={fcKnownCount}
       fcLastSeen={fcLastSeen} fcCard={fcCard} fcTopics={fcTopics}
+      fcWeakOnly={fcWeakOnly} setFcWeakOnly={setFcWeakOnly}
+      fcShuffle={fcShuffle} setFcShuffle={setFcShuffle}
       doMarkCard={doMarkCard} setScreen={setScreen}
     />
   )
