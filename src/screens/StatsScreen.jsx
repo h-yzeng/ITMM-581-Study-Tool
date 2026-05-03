@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { CHAPTER_IDS, CHAPTER_COLORS, TOPICS_BY_CHAPTER } from '../data/chapters.js'
 import { QUESTION_BANK } from '../data/questionBank.js'
 import { qKey, saveStore } from '../hooks/useStorage.js'
@@ -9,9 +10,10 @@ import { IconBarChart, IconFlag, IconRepeat } from '../components/Icons.jsx'
 export function StatsScreen({
   theme, toggleDark,
   stats, wrongBank, rightBank, flagged, sessionHistory,
-  setFlagged, startRetry, setScreen, exportStats,
+  setFlagged, startRetry, setScreen, exportStats, resetStats,
 }) {
   const { dk, bg, cardBg, text, subText, border, pillSel } = theme
+  const [confirmReset, setConfirmReset] = useState(false)
 
   const total   = stats?.totalAnswered || 0
   const byChap  = stats?.byChapter    || {}
@@ -63,6 +65,29 @@ export function StatsScreen({
             {sessionHistory.length > 0 && <span style={{ fontSize: 11, color: subText, fontFamily: 'monospace' }}>last {sessionHistory.length} session{sessionHistory.length !== 1 ? 's' : ''}</span>}
           </div>
           <SChart sessionHistory={sessionHistory} dk={dk} cardBg={cardBg} subText={subText} />
+          {sessionHistory.length > 0 && (
+            <div style={{ marginTop: 16, overflowX: 'auto' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12, fontFamily: 'monospace' }}>
+                <thead>
+                  <tr style={{ borderBottom: `1px solid ${border}` }}>
+                    {['Date', 'Score', 'Correct', 'Total'].map(h => (
+                      <th key={h} style={{ padding: '6px 8px', textAlign: 'left', color: subText, fontWeight: 700, fontSize: 10, letterSpacing: 1, textTransform: 'uppercase' }}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {[...sessionHistory].reverse().map((s, i) => (
+                    <tr key={i} style={{ borderBottom: `1px solid ${dk ? '#1e293b' : '#f1f5f9'}` }}>
+                      <td style={{ padding: '6px 8px', color: subText }}>{s.date}</td>
+                      <td style={{ padding: '6px 8px', color: s.pct >= 80 ? '#10b981' : s.pct >= 60 ? '#f59e0b' : '#ef4444', fontWeight: 700 }}>{s.pct}%</td>
+                      <td style={{ padding: '6px 8px', color: text }}>{s.correct}</td>
+                      <td style={{ padding: '6px 8px', color: subText }}>{s.total}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
 
         <div style={{ ...S.secCard, background: cardBg, border: dk ? `1px solid ${border}` : 'none' }}>
@@ -129,7 +154,7 @@ export function StatsScreen({
               const q = QUESTION_BANK.find(q => qKey(q) === k)
               if (!q) return null
               return (
-                <div key={k} style={{ ...S.reviewCard, background: dk ? '#0f172a' : '#fff', border: `1px solid ${border}`, borderLeft: '4px solid #8b5cf6', padding: '10px 14px', marginBottom: 8 }}>
+                <div key={k} title={`Ch.${q.chapter} - ${q.topic}`} style={{ ...S.reviewCard, background: dk ? '#0f172a' : '#fff', border: `1px solid ${border}`, borderLeft: '4px solid #8b5cf6', padding: '10px 14px', marginBottom: 8 }}>
                   <p style={{ margin: 0, fontSize: 13, color: text }}>{q.question}</p>
                   <div style={{ fontSize: 11, color: subText, marginTop: 4, fontFamily: 'sans-serif' }}>Ch.{q.chapter} &middot; {q.topic}</div>
                 </div>
@@ -170,9 +195,13 @@ export function StatsScreen({
           </div>
         )}
 
-        <div style={{ display: 'flex', gap: 8 }}>
+        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
           <button onClick={() => setScreen('home')} style={{ ...S.homeBtn, background: pillSel, flex: 1 }}>&larr; Back to Home</button>
           <button onClick={exportStats} style={{ ...S.revBtn, background: dk ? '#334155' : '#f1f5f9', color: text, flex: 0, padding: '11px 16px', fontSize: 12, whiteSpace: 'nowrap' }}>Export JSON</button>
+          {!confirmReset
+            ? <button onClick={() => setConfirmReset(true)} style={{ ...S.revBtn, background: dk ? '#450a0a' : '#fee2e2', color: '#ef4444', flex: 0, padding: '11px 16px', fontSize: 12, whiteSpace: 'nowrap', border: '1px solid #ef4444' }}>Reset Stats</button>
+            : <button onClick={() => { resetStats(); setConfirmReset(false) }} style={{ ...S.revBtn, background: '#ef4444', color: '#fff', flex: 0, padding: '11px 16px', fontSize: 12, whiteSpace: 'nowrap', fontWeight: 800 }}>Confirm Reset</button>
+          }
         </div>
 
       </div>

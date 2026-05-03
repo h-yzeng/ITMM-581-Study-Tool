@@ -21,8 +21,13 @@ export function QuizScreen({
   const tw        = timeLeft !== null && timeLeft < 120
   const isFlagged = q && flagged[qKey(q)]
 
+  const announcement = !isExam && isRev
+    ? answers[curIdx] === q?.answer ? 'Correct!' : 'Incorrect.'
+    : ''
+
   return (
     <div style={{ ...S.page, background: bg }}>
+      <div aria-live="polite" aria-atomic="true" style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden', clip: 'rect(0,0,0,0)', whiteSpace: 'nowrap' }}>{announcement}</div>
       <DarkToggle onClick={toggleDark} dk={dk} border={border} cardBg={cardBg} />
       <div style={S.container}>
 
@@ -42,7 +47,13 @@ export function QuizScreen({
           </button>
         </div>
 
-        <div role="group" aria-label="Question navigation" style={S.qNav}>
+        <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 6, fontSize: 10, fontFamily: 'monospace', color: subText }}>
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}><span style={{ width: 10, height: 10, borderRadius: 3, background: dk ? '#334155' : '#e2e8f0', display: 'inline-block' }} /> Unanswered</span>
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}><span style={{ width: 10, height: 10, borderRadius: 3, background: '#6366f1', display: 'inline-block' }} /> Answered</span>
+          {!isExam && <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}><span style={{ width: 10, height: 10, borderRadius: 3, background: '#10b981', display: 'inline-block' }} /> Correct</span>}
+          {!isExam && <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}><span style={{ width: 10, height: 10, borderRadius: 3, background: '#ef4444', display: 'inline-block' }} /> Wrong</span>}
+        </div>
+        <div role="group" aria-label="Question navigation" style={{ ...S.qNav, flexWrap: 'nowrap', overflowX: 'auto', paddingBottom: 4, WebkitOverflowScrolling: 'touch', scrollbarWidth: 'thin' }}>
           {questions.map((_, i) => {
             let dotLabel = `Question ${i + 1}`
             if (i === curIdx) dotLabel += ', current'
@@ -53,7 +64,7 @@ export function QuizScreen({
                 aria-label={dotLabel}
                 aria-current={i === curIdx ? 'step' : undefined}
                 style={{
-                  ...S.qDot,
+                  ...S.qDot, flexShrink: 0,
                   background: i === curIdx ? (dk ? '#6366f1' : '#1e293b') : !isExam && revealed[i] ? (answers[i] === questions[i].answer ? '#10b981' : '#ef4444') : answers[i] ? '#6366f1' : (dk ? '#334155' : '#e2e8f0'),
                   color: (i === curIdx || answers[i]) ? '#fff' : (dk ? '#64748b' : '#94a3b8'),
                 }}>{i + 1}</button>
@@ -107,9 +118,27 @@ export function QuizScreen({
             <button onClick={() => revealAnswer(curIdx)} style={{ ...S.revealBtn, background: pillSel }}>Check Answer</button>
           )}
           {!isExam && isRev && (
-            <div style={{ ...S.explanation, background: dk ? '#0f172a' : '#f8fafc', border: `1px solid ${border}`, color: subText }}>
-              <strong style={{ color: text }}>Explanation:</strong> {q.explanation}
-            </div>
+            <>
+              <div style={{ ...S.explanation, background: dk ? '#0f172a' : '#f8fafc', border: `1px solid ${border}`, color: subText }}>
+                <strong style={{ color: text }}>Explanation:</strong> {q.explanation}
+              </div>
+              {curIdx < questions.length - 1 && (
+                <button
+                  onClick={() => setCurIdx(i => i + 1)}
+                  style={{ ...S.revealBtn, background: '#10b981', marginTop: 10 }}
+                >
+                  Next Question &rarr;
+                </button>
+              )}
+              {curIdx === questions.length - 1 && (
+                <button
+                  onClick={finishQuiz}
+                  style={{ ...S.revealBtn, background: '#10b981', marginTop: 10 }}
+                >
+                  {answeredAll ? 'Finish Quiz ✓' : 'Finish Quiz'}
+                </button>
+              )}
+            </>
           )}
         </div>
 
@@ -117,8 +146,8 @@ export function QuizScreen({
           <button onClick={() => setCurIdx(Math.max(0, curIdx - 1))} disabled={curIdx === 0} style={{ ...S.navBtn, background: cardBg, border: `1.5px solid ${border}`, color: text, opacity: curIdx === 0 ? 0.3 : 1 }}>&larr; Prev</button>
           <button onClick={() => setCurIdx(Math.min(questions.length - 1, curIdx + 1))} disabled={curIdx === questions.length - 1} style={{ ...S.navBtn, background: cardBg, border: `1.5px solid ${border}`, color: text, opacity: curIdx === questions.length - 1 ? 0.3 : 1 }}>Next &rarr;</button>
         </div>
-        <div style={{ textAlign: 'center', fontSize: 10, color: subText, fontFamily: 'monospace', paddingBottom: 4 }}>
-          &larr; &rarr; navigate &middot; A/B/C/D select &middot; Space reveal &middot; F flag
+        <div style={{ textAlign: 'center', fontSize: 11, color: subText, fontFamily: 'monospace', paddingBottom: 4, lineHeight: 1.6 }}>
+          &larr; &rarr; navigate &middot; A/B/C/D select &middot; Space reveal &middot; Enter next &middot; F flag
         </div>
 
       </div>

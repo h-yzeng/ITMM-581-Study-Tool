@@ -1,9 +1,9 @@
-import { CHAPTERS, TOPIC_CARDS, CHAPTER_COLORS } from '../data/chapters.js'
+import { CHAPTERS, TOPIC_CARDS, CHAPTER_COLORS, TOPICS_BY_CHAPTER } from '../data/chapters.js'
 import { QUESTION_BANK } from '../data/questionBank.js'
 import { qKey } from '../hooks/useStorage.js'
 import { S } from '../styles.js'
 import { DarkToggle } from '../components/DarkToggle.jsx'
-import { IconPencil, IconClock, IconCards, IconFlag, IconBarChart, IconRepeat, IconTarget } from '../components/Icons.jsx'
+import { IconPencil, IconClock, IconCards, IconFlag, IconBarChart, IconRepeat, IconTarget, IconZap } from '../components/Icons.jsx'
 
 const BANK_SIZE   = QUESTION_BANK.length
 const CHAPTER_IDS = [8, 9, 10, 12]
@@ -11,27 +11,48 @@ const CHAPTER_IDS = [8, 9, 10, 12]
 const MODES = [
   { id: 'practice',   Icon: IconPencil, label: 'Practice',   sub: 'Reveal as you go' },
   { id: 'exam',       Icon: IconClock,  label: 'Exam Sim',   sub: 'Timed & locked'   },
+  { id: 'cram',       Icon: IconZap,    label: 'Cram',       sub: 'All questions, no timer' },
   { id: 'flashcards', Icon: IconCards,  label: 'Flashcards', sub: 'Flip-card review'  },
 ]
 
 export function HomeScreen({
   theme, toggleDark,
-  stats, wrongBank, flagged, weakQs,
+  stats, wrongBank, flagged, weakQs, sessionHistory,
   mode, setMode, selChapter, setSelChapter,
   qType, setQType, selDiff, setSelDiff,
   qCount, setQCount,
+  selTopics, setSelTopics,
   startSession, startWeakDrill, startRetry,
   setScreen,
 }) {
   const { dk, bg, cardBg, text, subText, border, pillSel } = theme
 
-  const pill  = active => ({ ...S.pill,     background: active ? pillSel : cardBg, color: active ? '#fff' : text, border: `1.5px solid ${active ? pillSel : border}` })
-  const count = active => ({ ...S.countBtn, background: active ? pillSel : cardBg, color: active ? '#fff' : text, border: `1.5px solid ${active ? pillSel : border}` })
+  const pill  = active => ({ ...S.pill,     background: active ? pillSel : cardBg, color: active ? '#fff' : text, border: `1.5px solid ${active ? pillSel : border}`, transition: 'opacity 0.15s' })
+  const count = active => ({ ...S.countBtn, background: active ? pillSel : cardBg, color: active ? '#fff' : text, border: `1.5px solid ${active ? pillSel : border}`, transition: 'opacity 0.15s' })
+  const hov   = e => { e.currentTarget.style.opacity = '0.75' }
+  const unhov = e => { e.currentTarget.style.opacity = '1' }
 
   const wCount   = wrongBank ? Object.keys(wrongBank).length : 0
   const fCount   = flagged   ? Object.keys(flagged).length   : 0
   const total    = stats?.totalAnswered || 0
   const qByChap  = QUESTION_BANK.reduce((a, q) => { a[q.chapter] = (a[q.chapter] || 0) + 1; return a }, {})
+
+  const streak = (() => {
+    if (!sessionHistory?.length) return 0
+    const days = new Set(sessionHistory.map(s => s.date))
+    const today = new Date().toLocaleDateString('en-US', { month: 'numeric', day: 'numeric' })
+    const yesterday = new Date(Date.now() - 86400000).toLocaleDateString('en-US', { month: 'numeric', day: 'numeric' })
+    if (!days.has(today) && !days.has(yesterday)) return 0
+    let count = 0, d = new Date()
+    if (!days.has(today)) d = new Date(Date.now() - 86400000)
+    while (true) {
+      const lbl = d.toLocaleDateString('en-US', { month: 'numeric', day: 'numeric' })
+      if (!days.has(lbl)) break
+      count++
+      d = new Date(d.getTime() - 86400000)
+    }
+    return count
+  })()
 
   return (
     <div style={{ ...S.page, background: bg }}>
@@ -60,6 +81,12 @@ export function HomeScreen({
               <span style={{ ...S.statsNum, color: '#ef4444' }}>{wCount}</span>
               <span style={{ ...S.statsLbl, color: subText }}>Retry</span>
             </div>
+            {streak > 0 && (
+              <div style={S.statsCell}>
+                <span style={{ ...S.statsNum, color: '#f59e0b' }}>{streak}</span>
+                <span style={{ ...S.statsLbl, color: subText }}>🔥 Streak</span>
+              </div>
+            )}
             <span style={{ ...S.statsArrow, color: subText, display: 'flex', alignItems: 'center', gap: 4 }}>
               <IconBarChart size={14} /> &rarr;
             </span>
@@ -70,7 +97,7 @@ export function HomeScreen({
           <label style={{ ...S.label, color: subText }}>STUDY MODE</label>
           <div style={S.modeRow}>
             {MODES.map(({ id, Icon, label, sub }) => (
-              <button key={id} onClick={() => setMode(id)} style={{ ...S.modeBtn, background: mode === id ? pillSel : cardBg, border: `1.5px solid ${mode === id ? pillSel : border}`, color: mode === id ? '#fff' : text }}>
+              <button key={id} onClick={() => setMode(id)} onMouseEnter={hov} onMouseLeave={unhov} style={{ ...S.modeBtn, background: mode === id ? pillSel : cardBg, border: `1.5px solid ${mode === id ? pillSel : border}`, color: mode === id ? '#fff' : text, transition: 'opacity 0.15s' }}>
                 <span style={{ color: mode === id ? '#c7d2fe' : subText, display: 'flex' }}><Icon size={22} /></span>
                 <span style={{ fontWeight: 700, fontSize: 13 }}>{label}</span>
                 <span style={{ fontSize: 10, color: mode === id ? '#c7d2fe' : subText, lineHeight: 1.3 }}>{sub}</span>
@@ -83,7 +110,7 @@ export function HomeScreen({
           <label style={{ ...S.label, color: subText }}>CHAPTER FOCUS</label>
           <div style={S.pills}>
             {CHAPTERS.map(c => (
-              <button key={c.id} onClick={() => setSelChapter(c.id)} style={pill(selChapter === c.id)}>
+              <button key={c.id} onClick={() => { setSelChapter(c.id); setSelTopics([]) }} onMouseEnter={hov} onMouseLeave={unhov} style={pill(selChapter === c.id)}>
                 {c.label}
                 {c.id !== 'all' && <span style={{ fontSize: 10, opacity: 0.65, marginLeft: 5 }}>({qByChap[parseInt(c.id)] || 0})</span>}
               </button>
@@ -96,7 +123,7 @@ export function HomeScreen({
             <label style={{ ...S.label, color: subText }}>QUESTION TYPE</label>
             <div style={S.pills}>
               {[{ id: 'mcq', label: 'Multiple Choice' }, { id: 'tf', label: 'True / False' }, { id: 'mixed', label: 'Mixed' }].map(t => (
-                <button key={t.id} onClick={() => setQType(t.id)} style={pill(qType === t.id)}>{t.label}</button>
+                <button key={t.id} onClick={() => setQType(t.id)} onMouseEnter={hov} onMouseLeave={unhov} style={pill(qType === t.id)}>{t.label}</button>
               ))}
             </div>
           </div>
@@ -104,22 +131,61 @@ export function HomeScreen({
             <label style={{ ...S.label, color: subText }}>DIFFICULTY</label>
             <div style={S.pills}>
               {[{ id: 'all', label: 'All Levels' }, { id: 'easy', label: 'Easy' }, { id: 'medium', label: 'Medium' }, { id: 'hard', label: 'Hard' }].map(d => (
-                <button key={d.id} onClick={() => setSelDiff(d.id)} style={pill(selDiff === d.id)}>{d.label}</button>
+                <button key={d.id} onClick={() => setSelDiff(d.id)} onMouseEnter={hov} onMouseLeave={unhov} style={pill(selDiff === d.id)}>{d.label}</button>
               ))}
             </div>
           </div>
-          <div style={S.section}>
+          {selChapter !== 'all' && TOPICS_BY_CHAPTER[parseInt(selChapter)]?.length > 0 && (
+            <div style={S.section}>
+              <label style={{ ...S.label, color: subText }}>TOPIC DRILL (optional - pick 1 or more)</label>
+              <div style={S.pills}>
+                {TOPICS_BY_CHAPTER[parseInt(selChapter)].map(t => {
+                  const active = selTopics.includes(t)
+                  return (
+                    <button key={t} onMouseEnter={hov} onMouseLeave={unhov}
+                      onClick={() => setSelTopics(prev => active ? prev.filter(x => x !== t) : [...prev, t])}
+                      style={{ ...pill(active), fontSize: 12, padding: '6px 14px' }}>
+                      {t}
+                    </button>
+                  )
+                })}
+                {selTopics.length > 0 && (
+                  <button onClick={() => setSelTopics([])} onMouseEnter={hov} onMouseLeave={unhov}
+                    style={{ ...S.pill, fontSize: 11, padding: '6px 12px', color: '#ef4444', border: `1.5px solid #ef4444`, background: cardBg, transition: 'opacity 0.15s' }}>
+                    Clear
+                  </button>
+                )}
+              </div>
+            </div>
+          )}
+          {mode !== 'cram' && (<div style={S.section}>
             <label style={{ ...S.label, color: subText }}>NUMBER OF QUESTIONS</label>
-            <div style={S.countRow}>
-              {[5, 10, 15, 20, 40].map(n => (
-                <button key={n} onClick={() => setQCount(n)} style={count(qCount === n)}>{n}</button>
-              ))}
+            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center' }}>
+              <div style={S.countRow}>
+                {[5, 10, 15, 20, 40].map(n => (
+                  <button key={n} onClick={() => setQCount(n)} onMouseEnter={hov} onMouseLeave={unhov} style={count(qCount === n)}>{n}</button>
+                ))}
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                <button onClick={() => setQCount(q => Math.max(1, q - 1))} style={{ ...S.countBtn, minWidth: 36, padding: '0 10px', fontSize: 18 }}>-</button>
+                <input
+                  type="number" min={1} max={201} value={qCount}
+                  onChange={e => { const v = parseInt(e.target.value); if (!isNaN(v) && v >= 1 && v <= 201) setQCount(v) }}
+                  style={{ width: 56, height: 58, borderRadius: 8, border: `1.5px solid ${border}`, background: cardBg, color: text, fontSize: 18, fontWeight: 700, textAlign: 'center', fontFamily: 'monospace', outline: 'none' }}
+                />
+                <button onClick={() => setQCount(q => Math.min(201, q + 1))} style={{ ...S.countBtn, minWidth: 36, padding: '0 10px', fontSize: 18 }}>+</button>
+              </div>
             </div>
-          </div>
+          </div>)}
         </>)}
 
         {mode === 'exam' && (
           <div style={S.examBanner}><strong>Exam Sim:</strong> {qCount} min timer &middot; answers locked until you submit</div>
+        )}
+        {mode === 'cram' && (
+          <div style={{ ...S.examBanner, background: dk ? '#1a1a3e' : '#ede9fe', border: '1px solid #8b5cf6', color: '#4c1d95' }}>
+            <strong>Cram Mode:</strong> all questions matching your filters, shuffled, no timer &middot; reveal as you go
+          </div>
         )}
 
         <div style={S.topicsGrid}>
@@ -159,8 +225,25 @@ export function HomeScreen({
           </button>
         )}
 
-        <button onClick={startSession} style={{ ...S.startBtn, background: pillSel }}>
-          {mode === 'flashcards' ? 'Start Flashcards →' : mode === 'exam' ? 'Start Exam Simulation →' : 'Start Practice Quiz →'}
+        {mode !== 'flashcards' && (() => {
+          let pool = QUESTION_BANK
+          if (selChapter !== 'all')    pool = pool.filter(q => String(q.chapter) === selChapter)
+          if (qType === 'mcq')         pool = pool.filter(q => q.type === 'mcq')
+          if (qType === 'tf')          pool = pool.filter(q => q.type === 'tf')
+          if (selDiff !== 'all')       pool = pool.filter(q => q.difficulty === selDiff)
+          if (selTopics.length > 0)    pool = pool.filter(q => selTopics.includes(q.topic))
+          const poolSize = pool.length
+          return (
+            <div style={{ textAlign: 'center', fontSize: 12, color: poolSize > 0 ? '#10b981' : '#ef4444', fontFamily: 'monospace', marginBottom: 8 }}>
+              {poolSize > 0
+                ? `${poolSize} question${poolSize !== 1 ? 's' : ''} match your filters - drawing ${Math.min(qCount, poolSize)}`
+                : 'No questions match these filters - try adjusting Chapter, Type, or Difficulty'}
+            </div>
+          )
+        })()}
+
+        <button onClick={startSession} onMouseEnter={hov} onMouseLeave={unhov} style={{ ...S.startBtn, background: pillSel, transition: 'opacity 0.15s' }}>
+          {mode === 'flashcards' ? 'Start Flashcards →' : mode === 'exam' ? 'Start Exam Simulation →' : mode === 'cram' ? 'Start Cram Session →' : 'Start Practice Quiz →'}
         </button>
 
         <div style={{ ...S.bankStatus, color: subText }}>

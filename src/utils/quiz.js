@@ -1,11 +1,12 @@
 import { QUESTION_BANK } from '../data/questionBank.js'
 
-export function pullQuestions(count, ch, type, diff) {
+export function pullQuestions(count, ch, type, diff, topics = []) {
   let pool = [...QUESTION_BANK]
-  if (ch !== 'all')   pool = pool.filter(q => String(q.chapter) === ch)
-  if (type === 'mcq') pool = pool.filter(q => q.type === 'mcq')
-  if (type === 'tf')  pool = pool.filter(q => q.type === 'tf')
-  if (diff !== 'all') pool = pool.filter(q => q.difficulty === diff)
+  if (ch !== 'all')      pool = pool.filter(q => String(q.chapter) === ch)
+  if (type === 'mcq')    pool = pool.filter(q => q.type === 'mcq')
+  if (type === 'tf')     pool = pool.filter(q => q.type === 'tf')
+  if (diff !== 'all')    pool = pool.filter(q => q.difficulty === diff)
+  if (topics.length > 0) pool = pool.filter(q => topics.includes(q.topic))
   if (!pool.length) return []
 
   pool.sort(() => Math.random() - 0.5)

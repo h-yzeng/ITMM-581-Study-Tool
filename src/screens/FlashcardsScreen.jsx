@@ -13,16 +13,30 @@ export function FlashcardsScreen({
   fcKnown, setFcKnown, fcKnownCount, fcLastSeen, fcCard, fcTopics,
   fcWeakOnly, setFcWeakOnly,
   fcShuffle, setFcShuffle,
+  fcDiff, setFcDiff,
+  fcDailyOnly, setFcDailyOnly,
   doMarkCard, setScreen,
 }) {
   const { dk, bg, border, cardBg, text, subText } = theme
   const fcByChap = FLASHCARDS.reduce((a, c) => { a[c.ch] = (a[c.ch] || 0) + 1; return a }, {})
 
+  const readKnownVal = v => { if (v === undefined || v === null) return undefined; if (typeof v === 'boolean') return v; return v.known }
+  const dueCount = FLASHCARDS.filter(c => {
+    const v = fcKnown[fcCardKey(c)]
+    if (!v) return true
+    const nextReview = typeof v === 'object' ? v?.nextReview : null
+    return !nextReview || nextReview <= Date.now()
+  }).length
+
   const fcProg           = fcCards.length > 0 ? Math.round((fcIdx + 1) / fcCards.length * 100) : 0
-  const isKnown          = fcCard ? fcKnown[fcCardKey(fcCard)] : undefined
+  const readKnown = readKnownVal
+  const rawKnown         = fcCard ? fcKnown[fcCardKey(fcCard)] : undefined
+  const isKnown          = readKnown(rawKnown)
   const lastSeen         = fcCard ? fcLastSeen[fcCardKey(fcCard)] : null
   const daysSince        = lastSeen ? Math.floor((Date.now() - lastSeen) / 86400000) : null
-  const stillLearning    = fcWeakOnly ? fcCards.length : fcCards.filter(c => fcKnown[fcCardKey(c)] === false).length
+  const nextReviewDays   = typeof rawKnown === 'object' && rawKnown?.nextReview
+    ? Math.ceil((rawKnown.nextReview - Date.now()) / 86400000) : null
+  const stillLearning    = fcWeakOnly ? fcCards.length : fcCards.filter(c => readKnown(fcKnown[fcCardKey(c)]) === false).length
 
   const goNext = () => { setFcFlipped(false); setTimeout(() => setFcIdx(i => Math.min(i + 1, fcCards.length - 1)), 100) }
   const goPrev = () => { setFcFlipped(false); setTimeout(() => setFcIdx(i => Math.max(0, i - 1)), 100) }
@@ -33,7 +47,7 @@ export function FlashcardsScreen({
   }
 
   const changeCh = id => {
-    setFcCh(id); setFcIdx(0); setFcFlipped(false); setFcTopic('all'); setFcWeakOnly(false)
+    setFcCh(id); setFcIdx(0); setFcFlipped(false); setFcTopic('all'); setFcWeakOnly(false); setFcDiff('all')
   }
   const changeTopic = t => {
     setFcTopic(t); setFcIdx(0); setFcFlipped(false)
@@ -52,6 +66,12 @@ export function FlashcardsScreen({
   ) : (
     <span style={{ fontSize: 9, fontFamily: 'monospace', color: '#6366f1', background: dk ? '#1a1a3e' : '#ede9fe', padding: '1px 6px', borderRadius: 3 }}>new</span>
   )
+
+  const nextReviewBadge = nextReviewDays !== null ? (
+    <span style={{ fontSize: 9, fontFamily: 'monospace', padding: '1px 6px', borderRadius: 3, background: nextReviewDays <= 0 ? '#fee2e2' : dk ? '#0f172a' : '#f1f5f9', color: nextReviewDays <= 0 ? '#ef4444' : '#10b981' }}>
+      {nextReviewDays <= 0 ? 'due now' : `review in ${nextReviewDays}d`}
+    </span>
+  ) : null
 
   const cardBorderColor = isKnown === true ? '#10b981' : isKnown === false ? '#ef4444' : border
 
@@ -123,6 +143,16 @@ export function FlashcardsScreen({
           </div>
         )}
 
+        {/* Difficulty filter */}
+        <div role="group" aria-label="Filter by difficulty" style={{ display: 'flex', gap: 5, flexWrap: 'wrap', marginBottom: 8 }}>
+          {[{ id: 'all', label: 'All Levels' }, { id: 'easy', label: 'Easy' }, { id: 'medium', label: 'Medium' }, { id: 'hard', label: 'Hard' }].map(d => (
+            <button key={d.id} onClick={() => { setFcDiff(d.id); setFcIdx(0); setFcFlipped(false) }} aria-pressed={fcDiff === d.id}
+              style={{ ...S.pill, background: fcDiff === d.id ? (dk ? '#334155' : '#e2e8f0') : cardBg, color: fcDiff === d.id ? text : subText, border: `1px solid ${border}`, fontSize: 10, padding: '3px 9px' }}>
+              {d.label}
+            </button>
+          ))}
+        </div>
+
         {/* Deck tools */}
         <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginBottom: 12 }}>
           <button
@@ -141,12 +171,26 @@ export function FlashcardsScreen({
               &#10007; Still Learning{!fcWeakOnly && `: ${stillLearning}`}
             </button>
           )}
+          <button
+            onClick={() => { setFcDailyOnly(d => !d); setFcIdx(0); setFcFlipped(false) }}
+            aria-pressed={fcDailyOnly}
+            style={{ ...S.pill, background: fcDailyOnly ? '#f59e0b' : cardBg, color: fcDailyOnly ? '#fff' : '#f59e0b', border: `1px solid #f59e0b`, fontSize: 10, padding: '3px 9px' }}
+          >
+            &#9733; Daily Review{!fcDailyOnly && `: ${dueCount}`}
+          </button>
         </div>
 
         {/* Empty state */}
         {fcCards.length === 0 && (
           <div style={{ textAlign: 'center', padding: '48px 20px', fontFamily: 'sans-serif' }}>
-            {fcWeakOnly ? (
+            {fcDailyOnly ? (
+              <>
+                <div style={{ fontSize: 28, color: '#f59e0b', marginBottom: 10 }}>&#9733;</div>
+                <div style={{ fontSize: 15, fontWeight: 600, color: text, marginBottom: 6 }}>No cards due for review today!</div>
+                <div style={{ fontSize: 12, color: subText, marginBottom: 16 }}>Come back tomorrow or switch to full deck.</div>
+                <button onClick={() => setFcDailyOnly(false)} style={{ ...S.pill, background: '#f59e0b', color: '#fff', border: 'none', fontSize: 12, padding: '6px 18px', cursor: 'pointer' }}>Show All Cards</button>
+              </>
+            ) : fcWeakOnly ? (
               <>
                 <div style={{ fontSize: 28, color: '#10b981', marginBottom: 10 }}>&#10003;</div>
                 <div style={{ fontSize: 15, fontWeight: 600, color: text, marginBottom: 6 }}>All cards in this set are known!</div>
@@ -195,9 +239,9 @@ export function FlashcardsScreen({
 
               {/* BACK - answer */}
               <div style={{ ...faceStyle, background: dk ? '#0f172a' : '#f1f5f9', transform: 'rotateY(180deg)' }}>
-                <div style={{ position: 'absolute', top: 12, left: 14, right: 14, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div style={{ position: 'absolute', top: 12, left: 14, right: 14, display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 6 }}>
                   <span style={{ fontSize: 10, fontFamily: 'monospace', color: subText }}>ANSWER &middot; tap or Space</span>
-                  {lastSeenBadge}
+                  <div style={{ display: 'flex', gap: 4 }}>{lastSeenBadge}{nextReviewBadge}</div>
                 </div>
                 <div style={{ fontSize: 10, fontWeight: 700, padding: '2px 10px', borderRadius: 4, fontFamily: 'monospace', background: CHAPTER_COLORS[fcCard.ch] + '33', color: CHAPTER_COLORS[fcCard.ch] }}>
                   Ch.{fcCard.ch} &middot; {fcCard.topic}
