@@ -221,7 +221,8 @@ export default function App() {
   const startSession = useCallback(() => {
     if (mode === 'flashcards') {
       setFcIdx(0); setFcFlipped(false)
-      setFcCh(selChapter); setFcTopic('all')
+      setFcCh(selChapter)
+      setFcTopic(selTopics.length === 1 ? selTopics[0] : 'all')
       setFcWeakOnly(false); setFcShuffle(false)
       setScreen('flashcards'); return
     }

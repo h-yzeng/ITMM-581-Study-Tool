@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { CHAPTERS, TOPIC_CARDS, CHAPTER_COLORS, TOPICS_BY_CHAPTER } from '../data/chapters.js'
 import { QUESTION_BANK } from '../data/questionBank.js'
 import { qKey } from '../hooks/useStorage.js'
@@ -10,10 +9,10 @@ const BANK_SIZE   = QUESTION_BANK.length
 const CHAPTER_IDS = [8, 9, 10, 12]
 
 const MODES = [
-  { id: 'practice',   Icon: IconPencil, label: 'Practice',   sub: 'Reveal as you go'       },
-  { id: 'exam',       Icon: IconClock,  label: 'Exam Sim',   sub: 'Timed & locked'          },
-  { id: 'cram',       Icon: IconZap,    label: 'Cram',       sub: 'All questions, no timer' },
-  { id: 'flashcards', Icon: IconCards,  label: 'Flashcards', sub: 'Flip-card review'        },
+  { id: 'practice',   Icon: IconPencil, label: 'Practice',   sub: 'Pick count · instant feedback'  },
+  { id: 'exam',       Icon: IconClock,  label: 'Exam Sim',   sub: 'Timed & locked'                 },
+  { id: 'cram',       Icon: IconZap,    label: 'Cram',       sub: 'All matching · no limit'        },
+  { id: 'flashcards', Icon: IconCards,  label: 'Flashcards', sub: 'Flip-card review'               },
 ]
 
 export function HomeScreen({
@@ -27,7 +26,6 @@ export function HomeScreen({
   setScreen,
 }) {
   const { dk, bg, cardBg, text, subText, border, pillSel } = theme
-  const [chapOpen, setChapOpen] = useState(false)
 
   const fBtn = active => ({
     ...S.filterBtn,
@@ -61,24 +59,9 @@ export function HomeScreen({
     return count
   })()
 
-  const chapterCards = (
-    <>
-      {TOPIC_CARDS.map(item => (
-        <div key={item.ch} style={{ ...S.topicCard, background: cardBg, borderTop: `3px solid ${CHAPTER_COLORS[item.ch]}`, marginBottom: 8 }}>
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, marginBottom: 4 }}>
-            <span style={{ fontSize: 13, fontWeight: 800, color: CHAPTER_COLORS[item.ch] }}>{item.title}</span>
-            <span style={{ fontSize: 10, color: subText }}>{item.sub}</span>
-          </div>
-          {item.topics.map(t => <div key={t} style={{ ...S.topicItem, color: subText }}>&middot; {t}</div>)}
-        </div>
-      ))}
-    </>
-  )
-
   return (
     <div className="home-wrap" style={{ background: bg }}>
 
-      {/* Dark toggle — fixed at right:22, sits naturally inside the 260px sidebar */}
       <DarkToggle onClick={toggleDark} dk={dk} border={border} cardBg={cardBg} />
 
       {streak > 0 && (
@@ -86,12 +69,6 @@ export function HomeScreen({
           {streak} DAY STREAK
         </div>
       )}
-
-      {/* ── Fixed right sidebar — desktop only (hidden on mobile via CSS) ── */}
-      <div className="sidebar-fixed" style={{ background: bg, borderLeft: `1px solid ${border}` }}>
-        <label style={{ ...S.label, color: subText }}>CHAPTER TOPICS</label>
-        {chapterCards}
-      </div>
 
       {/* ── Header ── */}
       <div style={{ textAlign: 'center', padding: '14px 28px 8px' }}>
@@ -128,7 +105,7 @@ export function HomeScreen({
       {/* ── Main sections ── */}
       <div className="home-sections">
 
-        {/* Study Mode — fixed 96px height, no unbounded growth */}
+        {/* Study Mode */}
         <div style={{ flexShrink: 0 }}>
           <label style={{ ...S.label, color: subText }}>STUDY MODE</label>
           <div style={{ display: 'flex', gap: 8, height: 96, marginTop: 6 }}>
@@ -159,7 +136,7 @@ export function HomeScreen({
           </div>
         </div>
 
-        {/* Question Type + Difficulty side by side */}
+        {/* Question Type + Difficulty — hidden for flashcards */}
         {mode !== 'flashcards' && (
           <div className="qtype-diff" style={{ flexShrink: 0 }}>
             <div>
@@ -183,8 +160,8 @@ export function HomeScreen({
           </div>
         )}
 
-        {/* Topic Drill */}
-        {mode !== 'flashcards' && selChapter !== 'all' && TOPICS_BY_CHAPTER[parseInt(selChapter)]?.length > 0 && (
+        {/* Topic Drill — shown for all modes when a chapter is selected */}
+        {selChapter !== 'all' && TOPICS_BY_CHAPTER[parseInt(selChapter)]?.length > 0 && (
           <div style={{ flexShrink: 0 }}>
             <label style={{ ...S.label, color: subText }}>
               TOPIC DRILL <span style={{ fontSize: 9, fontWeight: 400, letterSpacing: 0 }}>(optional)</span>
@@ -210,7 +187,7 @@ export function HomeScreen({
           </div>
         )}
 
-        {/* Number of Questions */}
+        {/* Number of Questions — practice only */}
         {mode !== 'flashcards' && mode !== 'cram' && (
           <div style={{ flexShrink: 0 }}>
             <label style={{ ...S.label, color: subText }}>NUMBER OF QUESTIONS</label>
@@ -228,15 +205,31 @@ export function HomeScreen({
           </div>
         )}
 
-        {/* ── Bottom zone: pushed to bottom via marginTop auto ── */}
-        <div style={{ marginTop: 'auto', flexShrink: 0 }}>
+        {/* Chapter Topics — flex:1 fills remaining space so no empty void */}
+        <div style={{ flex: 1, minHeight: 0, overflow: 'hidden' }}>
+          <label style={{ ...S.label, color: subText }}>CHAPTER TOPICS</label>
+          <div style={{ ...S.topicsGrid, marginBottom: 0, marginTop: 6 }}>
+            {TOPIC_CARDS.map(item => (
+              <div key={item.ch} style={{ ...S.topicCard, background: cardBg, borderTop: `3px solid ${CHAPTER_COLORS[item.ch]}` }}>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, marginBottom: 4 }}>
+                  <span style={{ fontSize: 13, fontWeight: 800, color: CHAPTER_COLORS[item.ch] }}>{item.title}</span>
+                  <span style={{ fontSize: 10, color: subText }}>{item.sub}</span>
+                </div>
+                {item.topics.map(t => <div key={t} style={{ ...S.topicItem, color: subText }}>&middot; {t}</div>)}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Bottom zone: start button and supporting rows ── */}
+        <div style={{ flexShrink: 0 }}>
 
           {mode === 'exam' && (
             <div style={{ ...S.examBanner, marginBottom: 8 }}><strong>Exam Sim:</strong> {qCount} min timer &middot; answers locked until you submit</div>
           )}
           {mode === 'cram' && (
             <div style={{ ...S.examBanner, background: dk ? '#1a1a3e' : '#ede9fe', border: '1px solid #8b5cf6', color: '#4c1d95', marginBottom: 8 }}>
-              <strong>Cram Mode:</strong> all questions matching your filters, shuffled, no timer &middot; reveal as you go
+              <strong>Cram Mode:</strong> every question matching your filters, shuffled &middot; no timer, reveal as you go
             </div>
           )}
 
@@ -283,7 +276,7 @@ export function HomeScreen({
             return (
               <div style={{ textAlign: 'center', fontSize: 12, color: poolSize > 0 ? '#10b981' : '#ef4444', marginBottom: 8 }}>
                 {poolSize > 0
-                  ? `${poolSize} question${poolSize !== 1 ? 's' : ''} match your filters - drawing ${Math.min(qCount, poolSize)}`
+                  ? `${poolSize} question${poolSize !== 1 ? 's' : ''} match your filters${mode === 'cram' ? '' : ` - drawing ${Math.min(qCount, poolSize)}`}`
                   : 'No questions match these filters - try adjusting Chapter, Type, or Difficulty'}
               </div>
             )
@@ -300,21 +293,6 @@ export function HomeScreen({
           </div>
 
         </div>
-      </div>
-
-      {/* ── Mobile collapsible chapter topics — hidden on desktop via CSS ── */}
-      <div className="sidebar-mobile-wrap">
-        <button
-          onClick={() => setChapOpen(o => !o)}
-          onMouseEnter={hov} onMouseLeave={unhov}
-          style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, width: '100%', padding: '10px', borderRadius: 8, border: `1px solid ${border}`, background: cardBg, color: subText, fontSize: 12, fontWeight: 600, cursor: 'pointer', marginBottom: 8, transition: 'opacity 0.15s' }}>
-          {chapOpen ? '▲' : '▼'} Chapter Topics
-        </button>
-        {chapOpen && (
-          <div style={{ padding: '4px 0' }}>
-            {chapterCards}
-          </div>
-        )}
       </div>
 
     </div>

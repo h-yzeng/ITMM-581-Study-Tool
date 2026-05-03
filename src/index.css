@@ -8,16 +8,16 @@ input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
 input[type="number"] { -moz-appearance: textfield; appearance: textfield; }
 
-/* ── Desktop: fixed sidebar + full-height main ── */
+/* ── Desktop: fixed-height full-viewport layout ── */
 .home-wrap {
   height: 100vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  padding-right: 260px;
 }
 .home-sections {
   flex: 1;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -28,37 +28,9 @@ input[type="number"] { -moz-appearance: textfield; appearance: textfield; }
 .qtype-diff { display: flex; gap: 12px; }
 .qtype-diff > div { flex: 1; min-width: 0; }
 
-/* Fixed chapter-topics panel — desktop only */
-.sidebar-fixed {
-  position: fixed;
-  right: 0;
-  top: 0;
-  width: 260px;
-  height: 100vh;
-  overflow-y: auto;
-  z-index: 50;
-  padding: 68px 12px 20px;
-  scrollbar-width: thin;
-}
-
-/* Mobile section hidden on desktop */
-.sidebar-mobile-wrap { display: none; }
-
 /* ── Mobile overrides ── */
 @media (max-width: 780px) {
-  .home-wrap {
-    height: auto;
-    overflow: visible;
-    padding-right: 0;
-  }
-  .home-sections {
-    overflow: visible;
-    gap: 12px;
-  }
-  /* Hide desktop fixed sidebar on mobile */
-  .sidebar-fixed { display: none; }
-  /* Show mobile collapsible section */
-  .sidebar-mobile-wrap { display: block; padding: 0 16px 20px; }
-
+  .home-wrap { height: auto; overflow: visible; }
+  .home-sections { overflow: visible; gap: 12px; }
   .qtype-diff { flex-direction: column; gap: 10px; }
 }
