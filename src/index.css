@@ -1,7 +1,6 @@
 *, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; }
 
-/* Remove default outline; restore a clean one only for keyboard navigation */
 :focus { outline: none; }
 :focus-visible {
   outline: 2px solid #6366f1;
@@ -17,14 +16,22 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 input[type="number"] { -moz-appearance: textfield; appearance: textfield; }
 
-/* Mobile: horizontal scroll for pill rows */
-@media (max-width: 600px) {
-  .pill-row {
-    flex-wrap: nowrap !important;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 4px;
-    scrollbar-width: none;
-  }
-  .pill-row::-webkit-scrollbar { display: none; }
+/* Two-column home layout */
+.home-layout {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.main-controls {
+  flex: 1;
+  min-width: 0;
+}
+.chapter-sidebar {
+  width: 252px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 780px) {
+  .home-layout { flex-direction: column; }
+  .chapter-sidebar { width: 100%; }
 }
