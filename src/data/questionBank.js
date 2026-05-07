@@ -290,16 +290,6 @@ export const QUESTION_BANK = [
     explanation:"The LLC is a hybrid entity that provides limited liability protection (like a corporation) while allowing income and losses to pass through to members' personal tax returns (like a partnership)." },
 
   // Bankruptcy
-  { chapter:9, topic:"Bankruptcy", type:"mcq", difficulty:"medium",
-    question:"Which chapter of the U.S. Bankruptcy Code deals with liquidation, where assets are sold and debts are discharged?",
-    options:["A. Chapter 7","B. Chapter 11","C. Chapter 13","D. Chapter 3"],
-    answer:"A", explanation:"Chapter 7 is liquidation bankruptcy - a trustee sells the debtor's non-exempt assets and distributes the proceeds to creditors. The remaining eligible debts are discharged." },
-
-  { chapter:9, topic:"Bankruptcy", type:"mcq", difficulty:"medium",
-    question:"Which bankruptcy chapter allows a business to continue operating while restructuring its debts under a court-approved plan?",
-    options:["A. Chapter 7","B. Chapter 11","C. Chapter 13","D. Chapter 9"],
-    answer:"B", explanation:"Chapter 11 reorganization allows a debtor (typically a business) to continue operating as a 'debtor in possession' while proposing a restructuring plan to repay creditors over time." },
-
   { chapter:9, topic:"Bankruptcy", type:"tf", difficulty:"easy",
     question:"Chapter 13 bankruptcy is designed for individuals with regular income who want to repay debts through a structured 3-5 year repayment plan.",
     options:["A. True","B. False"], answer:"A",
