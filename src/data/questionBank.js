@@ -138,9 +138,9 @@ export const QUESTION_BANK = [
 
   // Venture Capital
   { chapter:8, topic:"Venture Capital", type:"mcq", difficulty:"medium",
-    question:"According to Table 8.2, what return on investment do venture capitalists typically seek for a seed-stage investment?",
+    question:"What return on investment do venture capitalists typically seek for a seed-stage investment?",
     options:["A. 10–20%","B. 20–30%","C. 30–50%","D. 50–100% or more"],
-    answer:"D", explanation:"Table 8.2 shows that seed-stage investments carry the highest risk and therefore VCs expect the highest returns - 50 to 100 percent or more - to compensate for the high failure rate." },
+    answer:"D", explanation:"Seed-stage investments carry the highest risk, so VCs expect the highest returns - 50 to 100 percent or more - to compensate for the high failure rate." },
 
   { chapter:8, topic:"Venture Capital", type:"mcq", difficulty:"medium",
     question:"Which factor do venture capitalists consider MOST important when evaluating a new venture?",
@@ -155,7 +155,7 @@ export const QUESTION_BANK = [
   { chapter:8, topic:"Venture Capital", type:"mcq", difficulty:"hard",
     question:"A venture capitalist investing at the 'bridge/IPO' stage would typically seek which level of return?",
     options:["A. 50–100%+","B. 30–50%","C. 20–30%","D. 10–15%"],
-    answer:"C", explanation:"According to Table 8.2, bridge/IPO stage investors accept lower returns (20–30%) because the risk is lower - the company is already mature and preparing to go public." },
+    answer:"C", explanation:"Bridge/IPO stage investors accept lower returns (20–30%) because the risk is lower - the company is already mature and preparing to go public." },
 
   // Angel Financing
   { chapter:8, topic:"Angel Financing", type:"mcq", difficulty:"medium",
@@ -313,9 +313,9 @@ export const QUESTION_BANK = [
   // ── CHAPTER 10: Marketing Challenges ──────────────────────────────────────
 
   { chapter:10, topic:"Entrepreneurial Marketing", type:"mcq", difficulty:"easy",
-    question:"How does entrepreneurial marketing differ from conventional marketing according to Table 10.3?",
+    question:"How does entrepreneurial marketing fundamentally differ from conventional marketing?",
     options:["A. Entrepreneurial marketing relies on large budgets and mass media","B. Entrepreneurial marketing is resource-constrained, opportunity-driven, and relies on customer intimacy","C. Conventional marketing emphasizes guerrilla tactics over media advertising","D. Entrepreneurial marketing only uses digital channels"],
-    answer:"B", explanation:"Table 10.3 contrasts conventional marketing (large budgets, formal research, mass marketing) with entrepreneurial marketing (resource-constrained, opportunity-driven, customer intimacy, guerrilla tactics, interactive)." },
+    answer:"B", explanation:"Conventional marketing relies on large budgets, formal research, and mass marketing, while entrepreneurial marketing is resource-constrained, opportunity-driven, and built on customer intimacy and guerrilla tactics." },
 
   { chapter:10, topic:"Entrepreneurial Marketing", type:"tf", difficulty:"easy",
     question:"Guerrilla marketing relies on large advertising budgets to achieve high impact in the marketplace.",
@@ -393,7 +393,7 @@ export const QUESTION_BANK = [
     answer:"B", explanation:"Penetration pricing sets a low price at launch to quickly capture market share. It can discourage competition and build brand loyalty quickly, though it sacrifices early margin." },
 
   { chapter:10, topic:"Pricing Strategies", type:"mcq", difficulty:"hard",
-    question:"According to Table 10.5, what pricing strategy is typically recommended during the MATURITY stage of the product life cycle?",
+    question:"What pricing strategy is typically recommended during the MATURITY stage of the product life cycle?",
     options:["A. High skimming prices to recover R&D costs","B. Penetration pricing to gain initial market share","C. Competitive and promotional pricing to maintain market share","D. Premium pricing to signal quality"],
     answer:"C", explanation:"During maturity, competition intensifies and price wars are common. Companies use competitive and promotional pricing (discounts, coupons) to defend market share against rivals." },
 
@@ -465,14 +465,14 @@ export const QUESTION_BANK = [
     explanation:"This is a critical rule of business plan writing. The Executive Summary is the first thing readers see but the last thing written, ensuring it accurately reflects the complete, finalized plan." },
 
   { chapter:12, topic:"Market and Competitor Analysis", type:"mcq", difficulty:"medium",
-    question:"According to Table 12.1, what does the common business plan phrase 'No competition exists' actually signal to investors?",
+    question:"What does the common business plan phrase 'No competition exists' actually signal to investors?",
     options:["A. A genuinely novel market opportunity with no rivals","B. Insufficient competitive research by the entrepreneur","C. A large untapped market with huge potential","D. Government-protected monopoly status"],
-    answer:"B", explanation:"Table 12.1 reveals that 'no competition exists' is a red flag signaling inadequate research. Every opportunity has competition - direct, indirect, or substitute products. Investors know this and will distrust the plan." },
+    answer:"B", explanation:"'No competition exists' is a red flag signaling inadequate research. Every opportunity has competition - direct, indirect, or substitute products. Investors know this and will distrust the plan." },
 
   { chapter:12, topic:"Market and Competitor Analysis", type:"mcq", difficulty:"medium",
-    question:"Which business plan mistake from Table 12.1 involves claiming only a tiny percentage of a huge market is needed for success?",
+    question:"Which business plan mistake involves claiming only a tiny percentage of a huge market is needed for success?",
     options:["A. Ignoring competition","B. Weak management team section","C. 'We only need 1% of the market' fallacy","D. Unrealistic financial projections"],
-    answer:"C", explanation:"The '1% of the market' fallacy is flagged in Table 12.1 - it demonstrates no real understanding of how to acquire customers. Investors want to see a credible customer acquisition strategy, not market-share arithmetic." },
+    answer:"C", explanation:"The '1% of the market' fallacy demonstrates no real understanding of how to acquire customers. Investors want to see a credible customer acquisition strategy, not market-share arithmetic." },
 
   { chapter:12, topic:"Market and Competitor Analysis", type:"tf", difficulty:"medium",
     question:"A competitive analysis in a business plan must identify both direct and indirect competitors.",
@@ -535,14 +535,14 @@ export const QUESTION_BANK = [
     explanation:"The textbook emphasizes that the management team should develop the plan themselves to ensure genuine understanding, commitment, and ownership. A plan written only by the founder or an outside consultant lacks this buy-in." },
 
   { chapter:12, topic:"Market and Competitor Analysis", type:"mcq", difficulty:"hard",
-    question:"Table 12.2 lists the Complete Outline of a Business Plan. What is listed as Section I?",
+    question:"In a standard complete business plan outline, what section is listed first?",
     options:["A. Market Analysis","B. Financial Segment","C. Executive Summary","D. Operations"],
-    answer:"C", explanation:"According to Table 12.2, Section I is the Executive Summary - it is the first section of the plan even though it is written last. The complete outline runs through Section X (Appendix/Bibliography)." },
+    answer:"C", explanation:"The Executive Summary is the first section of a complete business plan outline even though it is written last. The full outline runs through ten sections ending with the Appendix/Bibliography." },
 
   { chapter:12, topic:"Benefits of a Business Plan", type:"mcq", difficulty:"hard",
-    question:"Table 12.4 in the textbook provides a Business Plan Assessment Tool. How many components does it evaluate?",
+    question:"A standard Business Plan Assessment Tool evaluates a business plan on a scoring rubric. How many components does it assess?",
     options:["A. 5 components","B. 7 components","C. 10 components","D. 12 components"],
-    answer:"C", explanation:"Table 12.4 evaluates all 10 components of a business plan on a scoring rubric, allowing entrepreneurs and investors to objectively assess the quality and completeness of each section." },
+    answer:"C", explanation:"A Business Plan Assessment Tool evaluates all 10 components of a business plan on a scoring rubric, allowing entrepreneurs and investors to objectively assess the quality and completeness of each section." },
 
   // ── CHAPTER 8: Additional Questions ──────────────────────────────────────
 
@@ -924,7 +924,7 @@ export const QUESTION_BANK = [
     answer:"B", explanation:"The textbook recommends 20 to 40 pages for a comprehensive business plan, excluding appendices. Plans that are too short lack detail; plans that are too long lose the reader's attention." },
 
   { chapter:12, topic:"Market and Competitor Analysis", type:"mcq", difficulty:"medium",
-    question:"According to Table 12.1, what does the common phrase 'We have a first-mover advantage' typically signal to a skeptical investor?",
+    question:"What does the common business plan claim 'We have a first-mover advantage' typically signal to a skeptical investor?",
     options:["A. The company has secured patents protecting its position","B. The entrepreneur may be overestimating the defensibility of simply being first to market","C. The company has already captured significant market share","D. The entrepreneur has conducted thorough competitive analysis"],
     answer:"B", explanation:"First-mover advantage is frequently overstated. Research shows that being first to market doesn't guarantee success - being BEST at execution does. Investors probe for sustainable competitive advantages beyond timing alone." },
 
